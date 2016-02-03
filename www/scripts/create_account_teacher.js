@@ -36,4 +36,8 @@ $(document).ready(function() {
 			window.location.href = './index.html';
 		}
 	});
+	
+	$('#cancel').click(function() {
+		window.location.href = './index.html';
+	});
 });
