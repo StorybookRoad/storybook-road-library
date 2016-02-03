@@ -11,9 +11,9 @@ var io = require('socket.io')(server);
 var path = require('path');
 
 var port = process.env.PORT || 8080;
-var mongo_url = 'mongodb://localhost:27017/test';
+var mongo_url = 'mongodb://localhost:27017/storybook_road';
 
-app.use(express.static(path.join(__dirname, '..', '/www')));
+app.use(express.static(path.join(__dirname, '/www')));
 	
 app.get('/', function (req, res) {
 	res.sendFile(path.join('/index.html'));
