@@ -29,6 +29,7 @@ $(document).ready(function() {
 	});
 	
 	socket.on('credentials_accepted', function (login_info) {
+		document.cookie = "email=" + login_info.email;
 		if (login_info.type == 'teacher') {
 			window.location.href = './teacher_home.html';
 		}
