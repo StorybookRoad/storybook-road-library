@@ -33,7 +33,16 @@ $(document).ready(function() {
 				'type':'teacher'
 			};
 			socket.emit('create_account_teacher', account_info);
-			window.location.href = './index.html';
+		}
+	});
+	
+	socket.on('account_created', function() {
+		window.location.href = './index.html';
+	});
+	
+	socket.on('server_error', function(err) {
+		if (err.message == 'email_already_taken') {
+			$('#warning').html('Email already taken!');
 		}
 	});
 	
