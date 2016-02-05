@@ -15,13 +15,21 @@ var port = process.env.PORT || 8080;
 var mongo_url = 'mongodb://localhost:27017/storybook_road';
 
 app.use(express.static(path.join(__dirname, '/www')));
-	
+
 app.get('/', function (req, res) {
 	res.sendFile(path.join('/index.html'));
 });
 
 io.on('connection', function(client) {
-	
+	client.on('game',function(credentials){
+		MongoClient.connect(mongo_url, function(err,db){
+			if(err){
+				console.log("FAILED");
+			}
+			console.log("ADF")
+			//retrieve_puzzle(db, credentials, )
+		})
+	});
 	client.on('create_account_teacher', function (data) {
 		MongoClient.connect(mongo_url, function(err, db) {
 			assert.equal(null,err);
@@ -36,7 +44,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('login', function(credentials) {
 		MongoClient.connect(mongo_url, function (err,db) {
 			assert.equal(null, err);
@@ -76,7 +84,7 @@ function login (db, credentials, callback) {
 				else {
 					callback(1);
 				}
-			});	
+			});
 		}
 	});
 }
