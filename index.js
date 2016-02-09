@@ -21,15 +21,45 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function(client) {
-	client.on('game',function(credentials){
-		MongoClient.connect(mongo_url, function(err,db){
+	client.on('game',function(data){
+			MongoClient.connect(mongo_url, function(err,db){
+			if(err){
+				console.log("FAILED");
+				client.emit("game_failed");
+			}
+			generate_game(db, data, function(result){
+				if(result != 0){
+					var puzzle_info = {
+						'puzzle_id': result.puzzle_id,
+						'question' : result.question,
+						'story_text' : result.story_text,
+						'answer' : result.answer
+					};
+					client.emit("game_info", puzzle_info);
+					db.close();
+				}
+			});
+		});
+	});
+
+	client.on('puzzle_ending', function(data){
+		MongoClient.connect(mongo_url, function (err, db) {
 			if(err){
 				console.log("FAILED");
 			}
-			console.log("ADF")
-			//retrieve_puzzle(db, credentials, )
-		})
+			confirm_puzzle(db, data, function(result){
+				if(data.user_answer == result.answer)
+				{
+					client.emit("user_correct");
+				}
+				else {
+					client.emit("user_incorrect");
+				}
+				db.close();
+			});
+		});
 	});
+
 	client.on('create_account_teacher', function (data) {
 		MongoClient.connect(mongo_url, function(err, db) {
 			assert.equal(null,err);
@@ -104,6 +134,46 @@ function insert_teacher_account(db, data, callback) {
 				callback(result);
 			});
 		}
+	});
+}
+function generate_game(db, data, callback){
+	var cursor = db.collection('puzzle').find({"puzzle_id": data["puzzle_id"]});
+	cursor.count(function(err, count) {
+		if(err){
+			console.log(err);
+		}
+		if(count > 0){
+			cursor.next(function(err, result){
+					assert.equal(null, err);
+					callback(result);
+			});
+		}
+		else{
+			console.log("Puzzle not found");
+			callback(0);
+		}
+		assert.equal(null, err);
+
+	});
+}
+function confirm_puzzle(db, data, callback){
+	var cursor = db.collection('puzzle').find({"puzzle_id": data["puzzle_id"]});
+	cursor.count(function(err, count) {
+		if(err){
+			console.log(err);
+		}
+		if(count > 0){
+			cursor.next(function(err, result){
+					assert.equal(null, err);
+					callback(result);
+			});
+		}
+		else{
+			console.log("Puzzle not found");
+			callback(0);
+		}
+		assert.equal(null, err);
+
 	});
 }
 
