@@ -1,17 +1,27 @@
+/* Create our globals */
 var url = "http://localhost:8080";
 var socket = io.connect(url);
 var puzzle;
+
 $(document).ready(function() {
+  /* Will need to maintain basic data about the game here */
   var user_data = {"puzzle_id": 1};
   socket.emit("game", user_data);
 
+  /* Retrieve our game from the database */
   socket.on("game_info", function(game_info){
     puzzle = new PUZZLES.Puzzle_1(1, "storytext", "user_answer", game_info);
     puzzle.generate_puzzle("test_canvas");
     $("#problem").blur(function(){
-      if($("#problem").val() == "" || $("#problem").val() == " ")
+      if($("#problem").val() == "" || $("#problem").val() == " "){
         $("#problem").val(puzzle.shuffled);
+        $("#problem").css({"color": "gray"});
+      }
+      else {
+        $("#problem").css({"color":"black"})
+      }
     });
+
   });
 
   socket.on("user_correct", function(){
