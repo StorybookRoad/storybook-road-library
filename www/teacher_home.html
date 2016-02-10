@@ -8,6 +8,23 @@
 		<script type='text/javascript' src='.\scripts\teacher_home.js'></script>
 	</head>
 	<body>
-		Teacher home page.
+		<h1>My Classes</h1>
+		<div id='class_div'></div>
+		<button type='button' id='new_class'>Create New Class</button>
+		<form id='class_details'>
+			Class Name:
+			<input type='text' id='class_name'>
+			<div id='warning' style='display:none;'>Enter class name!</div>
+			<p>
+				Grade:
+				<select id='grade'>
+					<option value='1'>1</option>
+					<option value='2'>2</option>
+					<option value='3'>3</option>
+					<option value='4'>4</option>
+					<option value='5'>5</option>
+				</select>
+			</p>
+		</form>
 	</body>
 </html>

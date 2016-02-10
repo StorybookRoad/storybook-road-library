@@ -58,7 +58,49 @@ io.on('connection', function(client) {
 			});
 		});
 	});
+	
+	client.on('create_class', function (data) {
+		MongoClient.connect(mongo_url, function (err, db) {
+			assert.equal(null, err);
+			create_class(db, data, function (result) {
+				if (result == 0) {
+					client.emit('server_error', {'message':'class_already_exists'});
+				}
+				else {
+					update_client_class_list(data.email, db, function(result) {
+						client.emit('update_class_list', result);
+					});
+				}
+			});
+		});
+	});
+	
+	client.on('get_classes', function (email) {
+		MongoClient.connect(mongo_url, function (err, db) {
+			assert.equal(null, err);
+			update_client_class_list(email, db, function(result) {
+				client.emit('update_class_list', result);
+			});
+		});
+	});
 });
+
+function create_class(db, data, callback) {
+	var cursor = db.collection('storybook_road_classes').find( {$and:[{'email':data.email}, {'class_name':data.class_name} ] } );
+	cursor.count(function (err, count) {
+		assert.equal(null, err);
+		if (count > 0) {
+			console.log("class already exists");
+			callback(0);
+		}
+		else {
+			db.collection('storybook_road_classes').insertOne(data, function (err, result) {
+				assert.equal(null, err);
+				callback(result);
+			});
+		}
+	});
+}
 
 function login (db, credentials, callback) {
 	var cursor = db.collection('storybook_road_accounts').find({'email':credentials.email});
@@ -95,6 +137,21 @@ function insert_teacher_account(db, data, callback) {
 				assert.equal(null, err);
 				callback(result);
 			});
+		}
+	});
+}
+
+function update_client_class_list(email, db, callback) {
+	var result = {};
+	var cursor = db.collection('storybook_road_classes').find({'email':email});
+	cursor.each(function (err, class_obj) {
+		assert.equal(err, null);	
+		if (class_obj == null) {
+			callback(result);
+		}
+		else {
+			console.log(class_obj);
+			result[class_obj._id] = class_obj;
 		}
 	});
 }
