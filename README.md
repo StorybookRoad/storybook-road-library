@@ -12,7 +12,7 @@ Installation
 To configure and open the app locally:
 ----------------------------------
 
-1.  Install MongoDB:
+1.  Install MongoDB:  [windows instal](https://docs.mongodb.org/v3.0/tutorial/install-mongodb-on-windows/)
 
         Windows:    [windows instal](https://docs.mongodb.org/v3.0/tutorial/install-mongodb-on-windows/)
         Mac:        `https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/`
