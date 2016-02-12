@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Storybook Road</title>
+		<link rel='stylesheet' type='text/css' href='.\styles\teacher_home.css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 		<script type='text/javascript' src='https://cdn.socket.io/socket.io-1.0.0.js'></script>
 		<script type='text/javascript' src='.\scripts\util.js'></script>
@@ -10,12 +11,14 @@
 	<body>
 		<h1>My Classes</h1>
 		<div id='class_div'></div>
-		<button type='button' id='new_class'>Create New Class</button>
+		<button type='button' id='new_class' class='home_button' class='teal'>Create New Class</button>
 		<form id='class_details'>
-			Class Name:
-			<input type='text' id='class_name'>
-			<div id='warning' style='display:none;'>Enter class name!</div>
-			<p>
+			<div id='class_name_div'>
+				Class Name:
+				<input type='text' id='class_name'>
+				<div id='warning' style='display:none;'>Enter class name!</div>
+			</div>
+			<div id='class_grade_div'>
 				Grade:
 				<select id='grade'>
 					<option value='1'>1</option>
@@ -24,7 +27,9 @@
 					<option value='4'>4</option>
 					<option value='5'>5</option>
 				</select>
-			</p>
+			</div>
+			<br>
+			<input type='submit' name='create_button' id='create_button' class='home_button' value='Create'>
 		</form>
 	</body>
 </html>

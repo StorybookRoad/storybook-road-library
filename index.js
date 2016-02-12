@@ -65,10 +65,12 @@ io.on('connection', function(client) {
 			create_class(db, data, function (result) {
 				if (result == 0) {
 					client.emit('server_error', {'message':'class_already_exists'});
+					db.close();
 				}
 				else {
 					update_client_class_list(data.email, db, function(result) {
 						client.emit('update_class_list', result);
+						db.close()
 					});
 				}
 			});
@@ -80,6 +82,7 @@ io.on('connection', function(client) {
 			assert.equal(null, err);
 			update_client_class_list(email, db, function(result) {
 				client.emit('update_class_list', result);
+				db.close();
 			});
 		});
 	});
@@ -145,12 +148,11 @@ function update_client_class_list(email, db, callback) {
 	var result = {};
 	var cursor = db.collection('storybook_road_classes').find({'email':email});
 	cursor.each(function (err, class_obj) {
-		assert.equal(err, null);	
+		assert.equal(err, null);
 		if (class_obj == null) {
 			callback(result);
 		}
 		else {
-			console.log(class_obj);
 			result[class_obj._id] = class_obj;
 		}
 	});

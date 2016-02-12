@@ -1,0 +1,25 @@
+body {
+  text-align: center;
+  font-family: Century Gothic, sans-serif; }
+
+#class_div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 40%;
+  margin: auto; }
+
+.class_item {
+  margin: auto;
+  margin-top: 20px;
+  border-style: solid;
+  border-radius: 15px;
+  width: 200px;
+  height: 200px; }
+
+#class_details {
+  margin: auto;
+  border-style: solid;
+  width: 30%; }
+
+/*# sourceMappingURL=teacher_home.css.map */
