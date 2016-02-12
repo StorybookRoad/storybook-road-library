@@ -18,9 +18,8 @@ To configure and open the app locally:
 [Linux install](https://docs.mongodb.org/manual/administration/install-on-linux/)    
 
 
-2.  Install node.js:
-
-        ![Node.js Installation](https://docs.npmjs.com/getting-started/installing-node)
+2.  Install node.js:    
+[Node.js install](https://docs.npmjs.com/getting-started/installing-node)
 
 
 3.  Make sure that the /data/db directory exists in your root directory. If it isn't, create it (this is where Mongodb stores its data)    
