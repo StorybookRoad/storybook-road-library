@@ -14,10 +14,9 @@ To configure and open the app locally:
 
 1.  Install MongoDB:
 
-        Windows:    ![Windows](https://docs.mongodb.org/v3.0/tutorial/install-mongodb-on-windows/)
-        link:https://docs.mongodb.org/v3.0/tutorial/install-mongodb-on-windows/[Windows]
-        Mac:        ![OSX](https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
-        Linux:      ![Linux](https://docs.mongodb.org/manual/administration/install-on-linux/)
+        Windows:    (https://docs.mongodb.org/v3.0/tutorial/install-mongodb-on-windows/)
+        Mac:        (https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
+        Linux:      (https://docs.mongodb.org/manual/administration/install-on-linux/)
 
 
 2.  Install node.js:
