@@ -82,6 +82,16 @@ io.on('connection', function(client) {
 		});
 	});
 	
+	client.on('get_students', function(args) {
+		MongoClient.connect(mongo_url, function(err, db) {
+			assert.equal(null, err);
+			get_students(db, args, function(students) {
+				client.emit('student_list', students);
+				db.close();
+			});
+		});
+	});
+	
 	client.on('login', function(credentials) {
 		MongoClient.connect(mongo_url, function (err,db) {
 			assert.equal(null, err);
@@ -255,6 +265,26 @@ function get_class_list(db, teacher_email, callback) {
 		}
 		else {
 			classes[doc._id] = doc;
+		}
+	});
+}
+
+function get_students(db, args, callback) {
+	var students = {};
+	var class_name = args.class_name;
+	var email = args.email;
+	
+	var findTeacherName = db.collection('storybook_road_accounts').find({'type':'teacher', 'email':email},{'fname': 1, 'lname': 1}).next();
+	var teacherName = findTeacherName.fname + " " + findTeacherName.lname;
+	
+	var cursor = db.collection('storybook_road_accounts').find({'type':'student', 'teacher':teacherName, 'class':class_name},{'fname': 1, 'lname': 1, 'email': 1});
+	cursor.each(function(err, doc) {
+		assert.equal(err, null);
+		if (doc == null) {
+			callback(students);
+		}
+		else {
+			students[doc._id] = doc;
 		}
 	});
 }
