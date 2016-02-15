@@ -23,6 +23,14 @@ input[type=text] {
 input[type=password] {
   font-size: 20px; }
 
+#info {
+  border-bottom: solid;
+  border-color: #142BCC;
+  padding: 10px; }
+  #info select {
+    font-size: 20px;
+    height: 24px; }
+
 .buttons {
   width: 40%;
   height: 40px;
@@ -47,11 +55,6 @@ input[type=password] {
 
 #header {
   display: flex;
-  border-bottom: solid;
-  border-color: #142BCC;
-  padding: 10px; }
-
-#contact_input {
   border-bottom: solid;
   border-color: #142BCC;
   padding: 10px; }
@@ -107,4 +110,4 @@ input[type=password] {
 #prof_pic:hover {
   border-color: #FF9D1E; }
 
-/*# sourceMappingURL=create_account_teacher.css.map */
+/*# sourceMappingURL=create_account_student.css.map */

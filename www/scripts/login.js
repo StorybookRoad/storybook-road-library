@@ -20,6 +20,10 @@ $(document).ready(function() {
 		window.location.href = './create_account_teacher.html';
 	});
 	
+	$('#student').click(function(event) {
+		window.location.href = './create_account_student.html';
+	});
+	
 	$('#login_form').submit(function(event) {
 		event.preventDefault();
 		if ($('#email').val() != "" && $('#password').val() != "") {

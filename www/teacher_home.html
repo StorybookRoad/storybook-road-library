@@ -10,26 +10,32 @@
 	</head>
 	<body>
 		<h1>My Classes</h1>
-		<div id='class_div'></div>
-		<button type='button' id='new_class' class='home_button' class='teal'>Create New Class</button>
-		<form id='class_details'>
-			<div id='class_name_div'>
-				Class Name:
-				<input type='text' id='class_name'>
-				<div id='warning' style='display:none;'>Enter class name!</div>
+		<div id='classes'>
+			<div id='main'>
+				<button type='button' id='new_class' class='home_button' class='side'>+</button>
+				<div id='class_div'></div>
 			</div>
-			<div id='class_grade_div'>
-				Grade:
-				<select id='grade'>
-					<option value='1'>1</option>
-					<option value='2'>2</option>
-					<option value='3'>3</option>
-					<option value='4'>4</option>
-					<option value='5'>5</option>
-				</select>
+			<div id='side_bar'>
+				<form id='class_details' class='side'>
+					<div id='class_name_div'>
+						New Class Name:
+						<input type='text' id='class_name'>
+						<div id='warning' style='display:none;'>Enter class name!</div>
+					</div>
+					<div id='class_grade_div'>
+						Grade:
+						<select id='grade'>
+							<option value='1'>1</option>
+							<option value='2'>2</option>
+							<option value='3'>3</option>
+							<option value='4'>4</option>
+							<option value='5'>5</option>
+						</select>
+					</div>
+					<br>
+					<input type='submit' name='create_button' id='create_button' class='home_button' value='Create'>
+				</form>
 			</div>
-			<br>
-			<input type='submit' name='create_button' id='create_button' class='home_button' value='Create'>
-		</form>
+		</div>
 	</body>
 </html>
