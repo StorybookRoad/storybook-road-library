@@ -21,6 +21,8 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function(client) {
+	/* Retrieve information regarding the puzzle and possibly the story */
+	//TODO Determine where to retrieve information from the story
 	client.on('game',function(data){
 			MongoClient.connect(mongo_url, function(err,db){
 			if(err){
@@ -33,7 +35,9 @@ io.on('connection', function(client) {
 						'puzzle_id': result.puzzle_id,
 						'question' : result.question,
 						'story_text' : result.story_text,
-						'answer' : result.answer
+						'answer' : result.answer,
+						'background' : result.background,
+						'character': result.character
 					};
 					client.emit("game_info", puzzle_info);
 					db.close();

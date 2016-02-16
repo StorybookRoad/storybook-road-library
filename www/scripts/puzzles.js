@@ -28,10 +28,10 @@ PUZZLES.Puzzle_1 = function(problem_number, question_id, text_id, problem_info)
 {
   //Make Puzzle_1 inherit from Puzzlef
   PUZZLES.Puzzle.call(this, problem_number, question_id, text_id, problem_info);
-  var shuffled_answer = shuffle_answer(problem_info.answer);
+  var shuffled_answer = shuffle_string(problem_info.answer);
   /* make sure the string is actually shuffled */
   while(shuffled_answer == problem_info.answer){
-      shuffled_answer = shuffle_answer(problem_info.answer);
+      shuffled_answer = shuffle_string(problem_info.answer);
   }
   this.shuffled = shuffled_answer;
   this.story_text = this.story_text.replace("#answer", "<input id=\"problem\" name=\"problem\" value=\""+shuffled_answer+"\"></input>");
@@ -59,8 +59,75 @@ PUZZLES.Puzzle_1.prototype.generate_puzzle = function(canvas_id)
   //Develops the Puzzle to display on the fly from a list provided in the
   //database.
 }
-function shuffle_answer(unshuffled_str) {
-    var a = unshuffled_str.split(""),
+PUZZLES.Puzzle_2 = function(problem_number, question_id, text_id, problem_info){
+  PUZZLES.Puzzle.call(this,problem_number, question_id, text_id, problem_info);
+  //Generate 3 different shuffled words
+  var possible_answers = [problem_info.answer];
+  var problems_to_generate = problem_info.answer.length > 3 ? 3 : problem_info.answer.length;
+
+  while(problems_to_generate)
+  {
+    var shuffled = shuffle_string(problem_info.answer);
+    if($.inArray(shuffled, possible_answers) == -1)
+    {
+      possible_answers[possible_answers.length] = shuffled;
+      problems_to_generate--;
+    }
+  }
+  //Shuffle our array, to provide randomization for our words
+  shuffle_array(possible_answers);
+  this.shuffled = possible_answers;
+
+  //Generate our html string to replace the answer with
+  var replace_string = "<select id=\"problem\">"
+  for(var i = 0; i < possible_answers.length; i++)
+  {
+    replace_string += "<option value=\""+possible_answers[i]+"\">"+possible_answers[i]+"</option>";
+  }
+  replace_string += "</select>"
+  this.story_text = this.story_text.replace("#answer", replace_string);
+}
+
+PUZZLES.Puzzle_2.prototype.generate_puzzle = function (canvas_id){
+  this.display(canvas_id);
+}
+PUZZLES.Puzzle_2.prototype.display = function (canvas_id){
+  var canvas = $("#"+canvas_id)[0].getContext('2d');
+  //Need to figure out a decent way to load images
+  var image = $("#game_background")[0];
+
+  //Clear canvas and draw on the background and other images
+  canvas.clearRect(0,0,canvas.width,canvas.height);
+  canvas.drawImage(image,0,0);
+
+  //Assign the text for the puzzle to the page
+  this.question_id.innerHTML = this.problem;
+  this.text_id.innerHTML = this.story_text;
+}
+
+//Helper function to shuffle an array, particularly important for puzzle 2
+function shuffle_array(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+//Shuffles a string, used for shuffling answers received from the database
+function shuffle_string(unshuffled_str) {
+    var a = unshuffled_str.split("")
         n = a.length;
 
     for(var i = n - 1; i > 0; i--) {

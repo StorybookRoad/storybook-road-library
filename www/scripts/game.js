@@ -5,12 +5,12 @@ var puzzle;
 
 $(document).ready(function() {
   /* Will need to maintain basic data about the game here */
-  var user_data = {"puzzle_id": 1};
+  var user_data = {"puzzle_id": 2};
   socket.emit("game", user_data);
 
   /* Retrieve our game from the database */
   socket.on("game_info", function(game_info){
-    puzzle = new PUZZLES.Puzzle_1(1, "storytext", "user_answer", game_info);
+    puzzle = new PUZZLES.Puzzle_2(1, "storytext", "user_answer", game_info);
     puzzle.generate_puzzle("test_canvas");
     $("#problem").blur(function(){
       if($("#problem").val() == "" || $("#problem").val() == " "){
@@ -28,6 +28,8 @@ $(document).ready(function() {
     console.log("success");
     $("#success").text("Congrats on completing this puzzle");
     $("#errors").text("");
+    //TODO emit data back to the server regarding misses, and retrieve
+    //the next puzzle
     //Do something
   });
 
@@ -35,8 +37,8 @@ $(document).ready(function() {
     console.log("failure");
     $("#errors").text("Oops! Looks like you were a little off, try again!");
     $("#success").text("");
+    puzzle.failed_attempts++;
   });
-
 
 
   $("#puzzle_status").submit(function(event){
@@ -55,7 +57,5 @@ $(document).ready(function() {
     else {
       $("#errors")[0].innerHTML = "An answer has not been provided for the puzzle"
     }
-
   });
-
 });
