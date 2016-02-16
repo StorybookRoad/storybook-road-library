@@ -274,10 +274,7 @@ function get_students(db, args, callback) {
 	var class_name = args.class_name;
 	var email = args.email;
 	
-	var findTeacherName = db.collection('storybook_road_accounts').find({'type':'teacher', 'email':email},{'fname': 1, 'lname': 1}).next();
-	var teacherName = findTeacherName.fname + " " + findTeacherName.lname;
-	
-	var cursor = db.collection('storybook_road_accounts').find({'type':'student', 'teacher':teacherName, 'class':class_name},{'fname': 1, 'lname': 1, 'email': 1});
+	var cursor = db.collection('storybook_road_accounts').find({'type':'student', 'teacher':email, 'class':class_name},{'fname': 1, 'lname': 1, 'email': 1});
 	cursor.each(function(err, doc) {
 		assert.equal(err, null);
 		if (doc == null) {

@@ -14,7 +14,7 @@ $(document).ready(function() {
 		for (doc in students) {
 			console.log(JSON.stringify(doc));
 			var name = students[doc].fname + " " + students[doc].lname;
-			$('#students').append('<a class="student" id="' + students[doc].email + '">' + name + '</a');
+			$('#students').append('<a class="student" id="' + students[doc].email + '">' + name + '</a> <br>');
 		}
 	});
 });
