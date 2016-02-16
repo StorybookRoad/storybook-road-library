@@ -4,10 +4,9 @@
   "description": "A server for Storybook Road. https://www.github.com/jdormit/storybook-road-library.git",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.13.4",
-    "materialize-css": "^0.97.5",
+    "socket.io": "^1.4.5",
     "mongodb": "^2.1.4",
-    "socket.io": "^1.4.5"
+    "express": "^4.13.4"
   },
   "devDependencies": {},
   "scripts": {
