@@ -5,7 +5,9 @@ var puzzle;
 
 $(document).ready(function() {
   /* Will need to maintain basic data about the game here */
-  var user_data = {"puzzle_id": 2};
+  //Previously was {"puzzle_id": 2}
+  var user_data = JSON.parse(getCookie("storybook_road_data"));
+  console.log(user_data);
   socket.emit("game", user_data);
 
   /* Retrieve our game from the database */

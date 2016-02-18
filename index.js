@@ -29,17 +29,19 @@ io.on('connection', function(client) {
 				console.log("FAILED");
 				client.emit("game_failed");
 			}
+
 			generate_game(db, data, function(result){
+				console.log(result);
 				if(result != 0){
-					var puzzle_info = {
+					/*var puzzle_info = {
 						'puzzle_id': result.puzzle_id,
 						'question' : result.question,
 						'story_text' : result.story_text,
 						'answer' : result.answer,
 						'background' : result.background,
 						'character': result.character
-					};
-					client.emit("game_info", puzzle_info);
+					};*/
+					//client.emit("game_info", puzzle_info);
 					db.close();
 				}
 			});
@@ -141,8 +143,13 @@ function insert_teacher_account(db, data, callback) {
 	});
 }
 function generate_game(db, data, callback){
-	var cursor = db.collection('puzzle').find({"puzzle_id": data["puzzle_id"]});
-	cursor.count(function(err, count) {
+	console.log(data);
+	var cursor = db.collection('storybook_road_story_instance').find(
+		{
+			"student_email":data.email,
+			"story_instance_id":data.story_id
+		});
+		cursor.count(function(err, count) {
 		if(err){
 			console.log(err);
 		}
@@ -159,6 +166,26 @@ function generate_game(db, data, callback){
 		assert.equal(null, err);
 
 	});
+
+	//console.log(data.puzzle_id);
+	/*var cursor = db.collection('storybook_road_puzzles').find({"puzzle_id": data.puzzle_id});
+	cursor.count(function(err, count) {
+		if(err){
+			console.log(err);
+		}
+		if(count > 0){
+			cursor.next(function(err, result){
+					assert.equal(null, err);
+					callback(result);
+			});
+		}
+		else{
+			console.log("Puzzle not found");
+			callback(0);
+		}
+		assert.equal(null, err);
+
+	});*/
 }
 function confirm_puzzle(db, data, callback){
 	var cursor = db.collection('puzzle').find({"puzzle_id": data["puzzle_id"]});
