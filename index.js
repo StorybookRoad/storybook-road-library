@@ -21,20 +21,6 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function(client) {
-	client.on('create_account_teacher', function (data) {
-		MongoClient.connect(mongo_url, function(err, db) {
-			assert.equal(null,err);
-			insert_teacher_account(db, data, function(result) {
-				if (result == 0) {
-					client.emit('server_error', {'message':'email_already_taken'});
-				}
-				else {
-					client.emit('account_created');
-				}
-			});
-		});
-	});
-
 	/* Retrieve information regarding the puzzle and possibly the story */
 	//TODO Determine where to retrieve information from the story
 	client.on('game',function(data){
