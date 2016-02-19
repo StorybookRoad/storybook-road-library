@@ -36,8 +36,17 @@ $(document).ready(function() {
 				'grade':$('#grade').val(),
 				'email':email
 			};
-			socket.emit('create_class', data);
+			socket.emit('get_story_template', data);
 		}
+	});
+	
+	socket.on('story_template_received', function (data) {
+		var class_data = {
+			'email':data.teacher,
+			'class_name':data.class_name,
+			'grade':data.difficulty
+		};
+		socket.emit('create_class', class_data);
 	});
 	
 	socket.emit('get_classes', email);

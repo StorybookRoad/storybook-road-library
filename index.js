@@ -64,6 +64,16 @@ io.on('connection', function(client) {
 		});
 	});
 
+	client.on('get_story_template', function(data) {
+		MongoClient.connect(mongo_url, function(err, db) {
+			assert.equal(null, err);
+			generate_story_template(db, data, function(result) {
+				client.emit('story_template_received', result);
+				db.close();
+			});
+		});
+	});
+	
 	client.on('create_account_student', function (data) {
 		MongoClient.connect(mongo_url, function(err, db) {
 			assert.equal(null,err);
@@ -234,7 +244,6 @@ function insert_teacher_account(db, data, callback) {
 		}
 		else {
 			db.collection('storybook_road_accounts').insertOne(data, function(err, result) {
-				console.log('inserting account info');
 				assert.equal(null, err);
 				callback(result);
 			});
@@ -368,6 +377,25 @@ function confirm_puzzle(db, data, callback){
 			callback(0);
 		}
 		assert.equal(null, err);
+	});
+}
+
+function generate_story_template(db, data, callback) {
+	var template_data = {
+		'teacher':data.email,
+		'problem_ids': [1, 2], //to be pulled from db
+		'class_name': data.class_name,
+		'character': {'name':'Prickly Pete'}, //to be pulled from db
+		'difficulty': data.grade,
+		'phrases': [ //to be pulled from db
+			"#character needs to find the #answer",
+			"#character has to slay with the #answer"
+		],
+		'background':{'image':'ManInMoon.png'}
+	};
+	db.collection('storybook_road_story_templates').insertOne(template_data, function(err, result) {
+		assert.equal(null, err);
+		callback(template_data);
 	});
 }
 
