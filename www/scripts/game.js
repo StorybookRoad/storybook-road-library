@@ -12,6 +12,7 @@ $(document).ready(function() {
 
   /* Retrieve our game from the database */
   socket.on("game_info", function(game_info){
+    //TODO make function to parse puzzle type to determine which puzzle to use
     puzzle = new PUZZLES.Puzzle_2(1, "storytext", "user_answer", game_info);
     puzzle.generate_puzzle("test_canvas");
     $("#problem").blur(function(){
@@ -28,7 +29,6 @@ $(document).ready(function() {
 
   socket.on("user_correct", function(){
     console.log("success");
-    $("#success").text("Congrats on completing this puzzle");
     $("#errors").text("");
     //TODO emit data back to the server regarding misses, and retrieve
     //the next puzzle
@@ -48,12 +48,15 @@ $(document).ready(function() {
     event.preventDefault();
     var problem_value = $("#problem").val();
     if(problem_value != ""){
+      console.log(puzzle)
       var problem =  {
         "puzzle_id": puzzle.puzzle_id,
-        "story":1,
+        "story_id": user_data.story_id,
         "problem_number": puzzle.problem_number,
         "user_answer": problem_value,
+        "failed_attempts": puzzle.failed_attempts
       };
+      console.log(problem);
       socket.emit("puzzle_ending", problem);
     }
     else {
