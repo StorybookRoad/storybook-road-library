@@ -1,3 +1,8 @@
+body {
+  text-align: center;
+  font-family: Century Gothic, sans-serif; }
 
+#story_div {
+  display: flex; }
 
 /*# sourceMappingURL=student_home.css.map */

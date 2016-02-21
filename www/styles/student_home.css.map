@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAYA,IAAK;EACJ,UAAU,EAAE,MAAM;EAClB,WAAW,EAAE,0BAA0B;;AAGxC,UAAW;EACV,OAAO,EAAE,IAAI",
+"sources": ["sass/student_home.scss"],
 "names": [],
 "file": "student_home.css"
 }

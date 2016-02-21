@@ -1,0 +1,20 @@
+$main_color: #90FF3C;
+$second_color: #7F3CFF;
+$third_color: #FF3C65;
+
+@mixin hoverable($col1, $col2) {
+	background-color: $col1;
+	border-color: $col1;
+	&:hover {
+		border-color: $col2;
+	}
+}
+
+body {
+	text-align: center;
+	font-family: Century Gothic, sans-serif;
+}
+
+#story_div {
+	display: flex;
+}
