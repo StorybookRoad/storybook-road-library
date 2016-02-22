@@ -41,7 +41,8 @@ body {
   width: 200px;
   height: 200px; }
   .class_item:hover {
-    border-color: #7F3CFF; }
+    border-color: #7F3CFF;
+    cursor: pointer; }
 
 #class_details {
   background-color: #FF3C65;
@@ -81,7 +82,8 @@ body {
   font-size: 60px;
   line-height: 60px; }
   #new_class:hover {
-    border-color: #FF3C65; }
+    border-color: #FF3C65;
+    cursor: pointer; }
 
 .home_button {
   background-color: #7F3CFF;
@@ -93,7 +95,8 @@ body {
   border-radius: 5px;
   font-size: 20px; }
   .home_button:hover {
-    border-color: #90FF3C; }
+    border-color: #90FF3C;
+    cursor: pointer; }
   .home_button:focus {
     outline: none; }
 
