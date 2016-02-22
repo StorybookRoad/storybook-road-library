@@ -2,8 +2,8 @@
 A server for Storybook Road.
 @author Jeremy Dormitzer
 */
-
-var MongoClient = require('mongodb').MongoClient;
+var mongo = require("mongodb");
+var MongoClient = mongo.MongoClient;
 var assert = require('assert');
 var express = require('express');
 var app = express();
@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
 
 io.on('connection', function(client) {
 	/* Retrieve information regarding the puzzle and possibly the story */
-	//TODO Determine where to retrieve information from the story
+	
 	client.on('game',function(data){
 			MongoClient.connect(mongo_url, function(err,db){
 			if(err){
@@ -33,22 +33,32 @@ io.on('connection', function(client) {
 			var puzzle_data = {};
 			generate_game(db, data, function(result){
 				if(result != 0){
-					puzzle_data = {"puzzle_id": result.problems.ids[user_data.problem_number-1]}
-
-					retrieve_puzzle(db, puzzle_data,function(result){
-						console.log(result);
-						var puzzle_info = {
-							'puzzle_id': result.puzzle_id,
-							'question' : result.question,
-							'story_text' : result.story_text,
-							'answer' : result.answer,
-							'background' : result.background,
-							'character': result.character
-						};
-						console.log(puzzle_info);
-						client.emit("game_info", puzzle_info);
-						db.close();
+					puzzle_data.progress = result.progress;
+					puzzle_data.story_template_id = result.story_template_id;
+					puzzle_data.story_instance_id = user_data.story_instance_id;
+					generate_instance_data(db,puzzle_data,function(result)
+					{
+						if(result != 0)
+						{
+							puzzle_data.character = result.character;
+							puzzle_data.story_text = result.phrases[puzzle_data.progress];
+							puzzle_data.puzzle_id = result.problem_ids[puzzle_data.progress];
+							puzzle_data.background = result.background;
+							if(puzzle_data.progress == result.problem_ids.length)
+							{
+								client.emit("story_finished");
+								db.close();
+							}
+							retrieve_puzzle(db, puzzle_data,function(result){
+								puzzle_data.puzzle_id = result.puzzle_id;
+								puzzle_data.answer = result.answer;
+								puzzle_data.puzzle_type = result.puzzle_type;
+								client.emit("game_info", puzzle_data);
+								db.close();
+							});
+						}
 					});
+
 				}
 				else {
 					client.emit("game_failed");
@@ -67,13 +77,14 @@ io.on('connection', function(client) {
 				if(data.user_answer == result.answer)
 				{
 					client.emit("user_correct");
-					console.log(data);
-					update_story_status(db, data,function(result){
-
+					//update_user_error_counts();
+					update_story_status(db, data,function(){
+						client.emit("page_update");
 					});
 				}
 				else {
 					client.emit("user_incorrect");
+
 				}
 				db.close();
 			});
@@ -157,11 +168,8 @@ function insert_teacher_account(db, data, callback) {
 	});
 }
 function generate_game(db, data, callback){
-	var cursor = db.collection('storybook_road_story_instance').find(
-		{
-			"student_email":data.email,
-			"story_instance_id":data.story_id
-		});
+	var id = new mongo.ObjectID(data.story_instance_id);
+	var cursor = db.collection('storybook_road_story_instance').find({"_id":id});
 		cursor.count(function(err, count) {
 		if(err){
 			console.log(err);
@@ -177,6 +185,28 @@ function generate_game(db, data, callback){
 			callback(0);
 		}
 		assert.equal(null, err);
+	});
+}
+
+function generate_instance_data(db, data, callback)
+{
+	var id = new mongo.ObjectID(data.story_template_id);
+	var cursor = db.collection('storybook_road_story_templates').find({"_id": id});
+	cursor.count(function(err, count)
+	{
+		if (err) {
+			console.log(err);
+		}
+		if(count > 0){
+			cursor.next(function(err, result){
+				assert.equal(null, err);
+				callback(result);
+			});
+		}
+		else {
+			console.log("Puzzle could not be generated");
+			callback(0);
+		}
 	});
 }
 
@@ -223,10 +253,16 @@ function confirm_puzzle(db, data, callback){
 
 	});
 }
+
 function update_story_status(db, data, callback)
 {
-	console.log(data);
-	callback();
+	var id = new mongo.ObjectID(data.story_instance_id);
+	var cursor = db.collection('storybook_road_story_instance').update({"_id": id}, {$set : {"progress":data.problem_number+1}});
+	if(cursor.nModified)
+	{
+		callback(1);
+	}
+	callback(0);
 }
 
 server.listen(port);
