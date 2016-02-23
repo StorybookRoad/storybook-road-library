@@ -221,7 +221,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('request_templates', function(email) {
 		MongoClient.connect(mongo_url, function (err,db) {
 			assert.equal(null, err);
@@ -231,7 +231,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('start_story', function (data) {
 		MongoClient.connect(mongo_url, function (err, db) {
 			assert.equal(null, err);
@@ -241,7 +241,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('get_current_stories', function (email) {
 		MongoClient.connect(mongo_url, function(err, db) {
 			assert.equal(null, err);
@@ -440,7 +440,7 @@ function get_students(db, args, callback) {
 
 function generate_game(db, data, callback){
 	var id = new mongo.ObjectID(data.story_instance_id);
-	var cursor = db.collection('storybook_road_story_instance').find({"_id":id});
+	var cursor = db.collection('storybook_road_story_instances').find({"_id":id});
 		cursor.count(function(err, count) {
 		if(err){
 			console.log(err);
@@ -529,7 +529,10 @@ function generate_story_template(db, data, callback) {
 		'teacher':data.email,
 		'problem_ids': [1, 2], //to be pulled from db
 		'class_name': data.class_name,
-		'character': {'name':'Prickly Pete'}, //to be pulled from db
+		'character': {
+			'name':'Prickly Pete',
+			'image': 'pete.png'
+		}, //to be pulled from db
 		'difficulty': data.grade,
 		'phrases': [ //to be pulled from db
 			"#character needs to find the #answer",
@@ -546,7 +549,7 @@ function generate_story_template(db, data, callback) {
 function update_story_status(db, data, callback)
 {
 	var id = new mongo.ObjectID(data.story_instance_id);
-	var cursor = db.collection('storybook_road_story_instance').update({"_id": id}, {$set : {"progress":data.problem_number+1}});
+	var cursor = db.collection('storybook_road_story_instances').update({"_id": id}, {$set : {"progress":data.problem_number+1}});
 	if(cursor.nModified)
 	{
 		callback(1);

@@ -21,8 +21,7 @@ function parse_puzzle(puzzle_data)
 $(document).ready(function() {
   /* Will need to maintain basic data about the game here */
   //Previously was {"puzzle_id": 2}
-  var user_data = JSON.parse(getCookie("storybook_road_data"));
-
+  var user_data = {"story_instance_id": getCookie("story_instance_id")};
   socket.emit("game", user_data);
 
   /* Retrieve our game from the database */
@@ -38,7 +37,7 @@ $(document).ready(function() {
       else {
         $("#problem").css({"color":"black"})
       }
-  
+
     });
 
   });
