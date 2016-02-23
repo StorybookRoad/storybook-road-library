@@ -221,7 +221,77 @@ io.on('connection', function(client) {
 			});
 		});
 	});
+	
+	client.on('request_templates', function(email) {
+		MongoClient.connect(mongo_url, function (err,db) {
+			assert.equal(null, err);
+			get_templates(db, email, function(result) {
+				client.emit('template_list', result);
+				db.close();
+			});
+		});
+	});
+	
+	client.on('start_story', function (data) {
+		MongoClient.connect(mongo_url, function (err, db) {
+			assert.equal(null, err);
+			new_story(db, data, function(result) {
+				db.close();
+			});
+		});
+	});
+	
+	client.on('get_current_stories', function (email) {
+		MongoClient.connect(mongo_url, function(err, db) {
+			assert.equal(null, err);
+			get_stories(db, email, function(stories) {
+				client.emit('current_story_list', stories);
+				db.close();
+			});
+		});
+	});
 });
+
+function get_stories(db, email, callback) {
+	var stories = {};
+	var cursor = db.collection('storybook_road_story_instances').find({'student':email});
+	cursor.each(function (err, instance) {
+		assert.equal(null, err);
+		if (instance == null) {
+			callback(stories);
+		}
+		else {
+			stories[instance._id] = instance;
+		}
+	});
+}
+
+function new_story(db, data, callback) {
+	var story = {
+		'story_template_id': data.story_template_id,
+		'student':data.email,
+		'progress': 0
+	};
+	db.collection('storybook_road_story_instances').insertOne(story, function (err, result) {
+		assert.equal(null, err);
+		callback(story);
+	});
+}
+
+function get_templates(db, email, callback) {
+	db.collection('storybook_road_accounts').find({'email':email, 'type':'student'}).nextObject(function(err, student) {
+		var templates = {};
+		var cursor = db.collection('storybook_road_story_templates').find({'teacher':student.teacher, 'class_name':student['class']});
+		cursor.each(function(err, template) {
+			if (template == null) {
+				callback(templates);
+			}
+			else {
+				templates[template._id] = template;
+			}
+		});
+	});
+}
 
 function create_class(db, data, callback) {
 	var cursor = db.collection('storybook_road_classes').find( {$and:[{'email':data.email}, {'class_name':data.class_name} ] } );
@@ -462,7 +532,7 @@ function generate_story_template(db, data, callback) {
 		'difficulty': data.grade,
 		'phrases': [ //to be pulled from db
 			"#character needs to find the #answer",
-			"#character has to slay with the #answer"
+			"#character has to slay the dragon with the #answer"
 		],
 		'background':{'image':'ManInMoon.png'}
 	};
