@@ -2,8 +2,8 @@
   *A server for Storybook Road.
   *@author Jeremy Dormitzer
   */
-
-var MongoClient = require('mongodb').MongoClient;
+var mongo = require("mongodb");
+var MongoClient = mongo.MongoClient;
 var assert = require('assert');
 var express = require('express');
 var app = express();
@@ -22,24 +22,46 @@ app.get('/', function (req, res) {
 
 io.on('connection', function(client) {
 	/* Retrieve information regarding the puzzle and possibly the story */
-	//TODO Determine where to retrieve information from the story
+
 	client.on('game',function(data){
 			MongoClient.connect(mongo_url, function(err,db){
 			if(err){
 				console.log("FAILED");
 				client.emit("game_failed");
 			}
+			var user_data = data;
+			var puzzle_data = {};
 			generate_game(db, data, function(result){
 				if(result != 0){
-					var puzzle_info = {
-						'puzzle_id': result.puzzle_id,
-						'question' : result.question,
-						'story_text' : result.story_text,
-						'answer' : result.answer,
-						'background' : result.background,
-						'character': result.character
-					};
-					client.emit("game_info", puzzle_info);
+					puzzle_data.progress = result.progress;
+					puzzle_data.story_template_id = result.story_template_id;
+					puzzle_data.story_instance_id = user_data.story_instance_id;
+					generate_instance_data(db,puzzle_data,function(result)
+					{
+						if(result != 0)
+						{
+							puzzle_data.character = result.character;
+							puzzle_data.story_text = result.phrases[puzzle_data.progress];
+							puzzle_data.puzzle_id = result.problem_ids[puzzle_data.progress];
+							puzzle_data.background = result.background;
+							if(puzzle_data.progress == result.problem_ids.length)
+							{
+								client.emit("story_finished");
+								db.close();
+							}
+							retrieve_puzzle(db, puzzle_data,function(result){
+								puzzle_data.puzzle_id = result.puzzle_id;
+								puzzle_data.answer = result.answer;
+								puzzle_data.puzzle_type = result.puzzle_type;
+								client.emit("game_info", puzzle_data);
+								db.close();
+							});
+						}
+					});
+
+				}
+				else {
+					client.emit("game_failed");
 					db.close();
 				}
 			});
@@ -55,9 +77,14 @@ io.on('connection', function(client) {
 				if(data.user_answer == result.answer)
 				{
 					client.emit("user_correct");
+					//update_user_error_counts();
+					update_story_status(db, data,function(){
+						client.emit("page_update");
+					});
 				}
 				else {
 					client.emit("user_incorrect");
+
 				}
 				db.close();
 			});
@@ -73,7 +100,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('create_account_student', function (data) {
 		MongoClient.connect(mongo_url, function(err, db) {
 			assert.equal(null,err);
@@ -104,7 +131,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('get_school_list', function() {
 		MongoClient.connect(mongo_url, function(err, db) {
 			assert.equal(null,err);
@@ -114,7 +141,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('get_teacher_list', function(school) {
 		MongoClient.connect(mongo_url, function(err, db) {
 			assert.equal(null, err);
@@ -124,7 +151,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('get_student_classes', function(teacher_email) {
 		MongoClient.connect(mongo_url, function(err, db) {
 			assert.equal(null, err);
@@ -134,7 +161,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('get_students', function(args) {
 		MongoClient.connect(mongo_url, function(err, db) {
 			assert.equal(null, err);
@@ -144,7 +171,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('login', function(credentials) {
 		MongoClient.connect(mongo_url, function (err,db) {
 			assert.equal(null, err);
@@ -166,7 +193,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('create_class', function (data) {
 		MongoClient.connect(mongo_url, function (err, db) {
 			assert.equal(null, err);
@@ -184,7 +211,7 @@ io.on('connection', function(client) {
 			});
 		});
 	});
-	
+
 	client.on('get_classes', function (email) {
 		MongoClient.connect(mongo_url, function (err, db) {
 			assert.equal(null, err);
@@ -300,7 +327,7 @@ function login (db, credentials, callback) {
 				else {
 					callback(1);
 				}
-			});	
+			});
 		}
 	});
 }
@@ -363,7 +390,7 @@ function get_schools(db, callback) {
 		else {
 			schools[doc.school] = doc.school;
 		}
-	});	
+	});
 }
 
 function get_teachers(db, school, callback) {
@@ -398,7 +425,7 @@ function get_students(db, args, callback) {
 	var students = {};
 	var class_name = args.class_name;
 	var email = args.email;
-	
+
 	var cursor = db.collection('storybook_road_accounts').find({'type':'student', 'teacher':email, 'class':class_name},{'fname': 1, 'lname': 1, 'email': 1});
 	cursor.each(function(err, doc) {
 		assert.equal(err, null);
@@ -410,9 +437,53 @@ function get_students(db, args, callback) {
 		}
 	});
 }
-		
+
 function generate_game(db, data, callback){
-	var cursor = db.collection('puzzle').find({"puzzle_id": data["puzzle_id"]});
+	var id = new mongo.ObjectID(data.story_instance_id);
+	var cursor = db.collection('storybook_road_story_instance').find({"_id":id});
+		cursor.count(function(err, count) {
+		if(err){
+			console.log(err);
+		}
+		if(count > 0){
+			cursor.next(function(err, result){
+					assert.equal(null, err);
+					callback(result);
+			});
+		}
+		else{
+			console.log("Story could not be found");
+			callback(0);
+		}
+		assert.equal(null, err);
+	});
+}
+
+function generate_instance_data(db, data, callback)
+{
+	var id = new mongo.ObjectID(data.story_template_id);
+	var cursor = db.collection('storybook_road_story_templates').find({"_id": id});
+	cursor.count(function(err, count)
+	{
+		if (err) {
+			console.log(err);
+		}
+		if(count > 0){
+			cursor.next(function(err, result){
+				assert.equal(null, err);
+				callback(result);
+			});
+		}
+		else {
+			console.log("Puzzle could not be generated");
+			callback(0);
+		}
+	});
+}
+
+function retrieve_puzzle(db, data, callback)
+{
+	var cursor = db.collection('storybook_road_puzzles').find({"puzzle_id": data.puzzle_id});
 	cursor.count(function(err, count) {
 		if(err){
 			console.log(err);
@@ -430,9 +501,11 @@ function generate_game(db, data, callback){
 		assert.equal(null, err);
 
 	});
+
 }
+
 function confirm_puzzle(db, data, callback){
-	var cursor = db.collection('puzzle').find({"puzzle_id": data["puzzle_id"]});
+	var cursor = db.collection('storybook_road_puzzles').find({"puzzle_id": data.puzzle_id});
 	cursor.count(function(err, count) {
 		if(err){
 			console.log(err);
@@ -468,6 +541,17 @@ function generate_story_template(db, data, callback) {
 		assert.equal(null, err);
 		callback(template_data);
 	});
+}
+
+function update_story_status(db, data, callback)
+{
+	var id = new mongo.ObjectID(data.story_instance_id);
+	var cursor = db.collection('storybook_road_story_instance').update({"_id": id}, {$set : {"progress":data.problem_number+1}});
+	if(cursor.nModified)
+	{
+		callback(1);
+	}
+	callback(0);
 }
 
 server.listen(port);

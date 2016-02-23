@@ -8,9 +8,13 @@ PUZZLES.Puzzle = function(problem_number, question_id, text_id, problem_info){
   this.story_text = problem_info.story_text;
   this.failed_attempts = 0;
   this.puzzle_id = problem_info.puzzle_id;
+  this.story_instance_id = problem_info.story_instance_id;
   this.problem_number = problem_number;
   this.question_id = $("#" + question_id)[0];
   this.text_id = $("#" + text_id)[0];
+  this.character = problem_info.character;
+  this.background = problem_info.background;
+  console.log(this.character);
 }
 /* Displays the problem and the Puzzle to the user through a canvas*/
 PUZZLES.Puzzle.prototype.display = function (canvas_id){
@@ -26,7 +30,7 @@ PUZZLES.Puzzle.prototype.generate_puzzle = function(canvas_id)
 
 PUZZLES.Puzzle_1 = function(problem_number, question_id, text_id, problem_info)
 {
-  //Make Puzzle_1 inherit from Puzzlef
+  //Make Puzzle_1 inherit from Puzzle
   PUZZLES.Puzzle.call(this, problem_number, question_id, text_id, problem_info);
   var shuffled_answer = shuffle_string(problem_info.answer);
   /* make sure the string is actually shuffled */
@@ -35,19 +39,28 @@ PUZZLES.Puzzle_1 = function(problem_number, question_id, text_id, problem_info)
   }
   this.shuffled = shuffled_answer;
   this.story_text = this.story_text.replace("#answer", "<input id=\"problem\" name=\"problem\" value=\""+shuffled_answer+"\"></input>");
+  this.story_text = this.story_text.replace("#character", this.character.name);
 }
 /* Displays the problem and the Puzzle to the user through a canvas*/
 PUZZLES.Puzzle_1.prototype.display = function (canvas_id){
     var canvas = $("#"+canvas_id)[0].getContext('2d');
     //Need to figure out a decent way to load images
-    var image = $("#game_background")[0];
+    var image = new Image(500,500);
+    var character = new Image(350,350);
+    image.src = "./assets/" + this.background.image;
 
     //Clear canvas and draw on the background and other images
     canvas.clearRect(0,0,canvas.width,canvas.height);
-    canvas.drawImage(image,0,0);
+    image.onload = function(){
+      canvas.drawImage(image,0,0);
+    }
+    character.src = "./assets/" + this.character.image;
 
+    character.onload = function(){
+      canvas.drawImage(character, 200, 0);
+    }
     //Assign the text for the puzzle to the page
-    this.question_id.innerHTML = this.problem;
+    //this.question_id.innerHTML = this.problem;
     this.text_id.innerHTML = this.story_text;
 
 }
@@ -86,6 +99,7 @@ PUZZLES.Puzzle_2 = function(problem_number, question_id, text_id, problem_info){
   }
   replace_string += "</select>"
   this.story_text = this.story_text.replace("#answer", replace_string);
+  this.story_text = this.story_text.replace("#character", this.character.name);
 }
 
 PUZZLES.Puzzle_2.prototype.generate_puzzle = function (canvas_id){
@@ -94,14 +108,21 @@ PUZZLES.Puzzle_2.prototype.generate_puzzle = function (canvas_id){
 PUZZLES.Puzzle_2.prototype.display = function (canvas_id){
   var canvas = $("#"+canvas_id)[0].getContext('2d');
   //Need to figure out a decent way to load images
-  var image = $("#game_background")[0];
-
+  var image = new Image(500,500);
+  var character = new Image(350,350);
+  image.src = "./assets/" + this.background.image;
+  character.src="./assets/" + this.character.image;
   //Clear canvas and draw on the background and other images
   canvas.clearRect(0,0,canvas.width,canvas.height);
-  canvas.drawImage(image,0,0);
+  image.onload = function(){
+    canvas.drawImage(image,0,0);
+  }
+  character.onload = function(){
+    canvas.drawImage(character, 200, 0);
+  }
 
   //Assign the text for the puzzle to the page
-  this.question_id.innerHTML = this.problem;
+  //this.question_id.innerHTML = this.problem;
   this.text_id.innerHTML = this.story_text;
 }
 
@@ -110,7 +131,7 @@ function shuffle_array(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+  while (currentIndex !== 0) {
 
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
