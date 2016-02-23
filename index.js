@@ -209,6 +209,7 @@ io.on('connection', function(client) {
 		MongoClient.connect(mongo_url, function (err, db) {
 			assert.equal(null, err);
 			new_story(db, data, function(result) {
+				client.emit('story_started', result);
 				db.close();
 			});
 		});

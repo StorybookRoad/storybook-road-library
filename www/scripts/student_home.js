@@ -40,8 +40,12 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click', '.story_template_box', function(event) {
-		document.cookie = 'story_template_id=' + event.target.id;
+	//	document.cookie = 'story_template_id=' + event.target.id;
 		socket.emit('start_story', {'email':email, 'story_template_id':event.target.id});
+	});
+	
+	socket.on('story_started', function(story) {
+		document.cookie = 'story_instance_id=' + story.story_template_id;
 		window.location.href = './user_story.html';
 	});
 	
