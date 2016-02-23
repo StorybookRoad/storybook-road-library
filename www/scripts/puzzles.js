@@ -14,6 +14,7 @@ PUZZLES.Puzzle = function(problem_number, question_id, text_id, problem_info){
   this.text_id = $("#" + text_id)[0];
   this.character = problem_info.character;
   this.background = problem_info.background;
+  console.log(this.character);
 }
 /* Displays the problem and the Puzzle to the user through a canvas*/
 PUZZLES.Puzzle.prototype.display = function (canvas_id){
@@ -29,7 +30,7 @@ PUZZLES.Puzzle.prototype.generate_puzzle = function(canvas_id)
 
 PUZZLES.Puzzle_1 = function(problem_number, question_id, text_id, problem_info)
 {
-  //Make Puzzle_1 inherit from Puzzlef
+  //Make Puzzle_1 inherit from Puzzle
   PUZZLES.Puzzle.call(this, problem_number, question_id, text_id, problem_info);
   var shuffled_answer = shuffle_string(problem_info.answer);
   /* make sure the string is actually shuffled */
@@ -45,12 +46,18 @@ PUZZLES.Puzzle_1.prototype.display = function (canvas_id){
     var canvas = $("#"+canvas_id)[0].getContext('2d');
     //Need to figure out a decent way to load images
     var image = new Image(500,500);
+    var character = new Image(350,350);
     image.src = "./assets/" + this.background.image;
 
     //Clear canvas and draw on the background and other images
     canvas.clearRect(0,0,canvas.width,canvas.height);
     image.onload = function(){
       canvas.drawImage(image,0,0);
+    }
+    character.src = "./assets/" + this.character.image;
+
+    character.onload = function(){
+      canvas.drawImage(character, 200, 0);
     }
     //Assign the text for the puzzle to the page
     //this.question_id.innerHTML = this.problem;
@@ -102,11 +109,16 @@ PUZZLES.Puzzle_2.prototype.display = function (canvas_id){
   var canvas = $("#"+canvas_id)[0].getContext('2d');
   //Need to figure out a decent way to load images
   var image = new Image(500,500);
+  var character = new Image(350,350);
   image.src = "./assets/" + this.background.image;
+  character.src="./assets/" + this.character.image;
   //Clear canvas and draw on the background and other images
   canvas.clearRect(0,0,canvas.width,canvas.height);
   image.onload = function(){
     canvas.drawImage(image,0,0);
+  }
+  character.onload = function(){
+    canvas.drawImage(character, 200, 0);
   }
 
   //Assign the text for the puzzle to the page
