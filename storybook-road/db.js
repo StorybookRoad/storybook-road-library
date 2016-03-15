@@ -36,8 +36,8 @@ exports.save = function(collection, item, done) {
 //If a query or projection is not needed, they must be declared as 'undefined' in the function call
 exports.find = function(collection, query, projection, done) {
 	state.db.collection(collection).find(query, projection, function(err, docs) {
-		if (err) return done(err);
-		done(docs);
+		if (err) return done(err, undefined); //callback in the format done(err, docs)
+		done(undefined, docs);
 	});
 }
 
