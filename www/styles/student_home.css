@@ -1,0 +1,53 @@
+body {
+  text-align: center;
+  font-family: Century Gothic, sans-serif; }
+
+#story_div {
+  display: flex;
+  align-content: center;
+  justify-content: center; }
+
+.story_instance_box {
+  background-color: #90FF3C;
+  border-color: #90FF3C;
+  margin-top: 20px;
+  margin-left: 10px;
+  border-style: solid;
+  border-radius: 15px;
+  width: 200px;
+  height: 200px; }
+  .story_instance_box:hover {
+    border-color: #7F3CFF;
+    cursor: pointer; }
+
+#template_div {
+  margin: auto;
+  margin-top: 15px;
+  border-style: solid;
+  border-radius: 15px;
+  width: 15%; }
+  #template_div .story_template_box:hover {
+    border-style: hidden;
+    border-width: 1px;
+    padding-top: 3px;
+    border-color: #FF3C65;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: #FF3C65; }
+
+button {
+  background-color: #7F3CFF;
+  border-color: #7F3CFF;
+  margin-top: 15px;
+  height: 40px;
+  width: 200px;
+  border-style: solid;
+  border-radius: 5px;
+  font-size: 20px; }
+  button:hover {
+    border-color: #FF3C65;
+    cursor: pointer; }
+  button:focus {
+    outline: none; }
+
+/*# sourceMappingURL=student_home.css.map */

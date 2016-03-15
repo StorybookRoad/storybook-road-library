@@ -1,0 +1,112 @@
+body {
+  text-align: center;
+  font-family: Century Gothic, sans-serif; }
+
+#classes {
+  margin: auto;
+  display: flex;
+  width: 70%;
+  justify-content: center;
+  align-content: center; }
+
+#side_bar {
+  width: auto;
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; }
+
+#main {
+  margin: auto;
+  order: 2;
+  flex-grow: 2;
+  display: flex;
+  width: 40%;
+  max-width: 1000px;
+  flex-direction: row; }
+
+#class_div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: auto; }
+
+.class_item {
+  background-color: #90FF3C;
+  border-color: #90FF3C;
+  margin-top: 20px;
+  margin-left: 10px;
+  border-style: solid;
+  border-radius: 15px;
+  width: 200px;
+  height: 200px; }
+  .class_item:hover {
+    border-color: #7F3CFF;
+    cursor: pointer; }
+
+#class_details {
+  background-color: #FF3C65;
+  border-color: #7F3CFF;
+  border-style: solid;
+  border-radius: 15px 0px 15px 15px;
+  font-size: 24px;
+  width: 60%;
+  margin-top: 5px;
+  padding: 5px; }
+  #class_details input[type='text'] {
+    height: 24px;
+    padding: 2px;
+    font-size: 18px;
+    border-radius: 5px;
+    border-style: solid;
+    background-color: #F8F8F8;
+    border-color: #F8F8F8; }
+    #class_details input[type='text']:focus {
+      outline: none;
+      border-color: #7F3CFF; }
+  #class_details select {
+    border-radius: 25%;
+    height: 24px;
+    font-size: 18px; }
+    #class_details select:focus {
+      outline: none; }
+
+#new_class {
+  background-color: #7F3CFF;
+  border-color: #7F3CFF;
+  position: relative;
+  bottom: 50%;
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  font-size: 60px;
+  line-height: 60px; }
+  #new_class:hover {
+    border-color: #FF3C65;
+    cursor: pointer; }
+
+.home_button {
+  background-color: #7F3CFF;
+  border-color: #7F3CFF;
+  margin-top: 5px;
+  height: 40px;
+  width: 50%;
+  border-style: solid;
+  border-radius: 5px;
+  font-size: 20px; }
+  .home_button:hover {
+    border-color: #90FF3C;
+    cursor: pointer; }
+  .home_button:focus {
+    outline: none; }
+
+.selected {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%; }
+
+.unselected {
+  border-radius: 100%; }
+
+/*# sourceMappingURL=teacher_home.css.map */

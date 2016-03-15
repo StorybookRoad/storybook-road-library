@@ -1,0 +1,132 @@
+$main_color: #90FF3C;
+$second_color: #7F3CFF;
+$third_color: #FF3C65;
+
+@mixin hoverable($col1, $col2) {
+	background-color: $col1;
+	border-color: $col1;
+	&:hover {
+		border-color: $col2;
+		cursor: pointer;
+	}
+}
+
+@mixin focusable($col1, $col2) {
+	background-color: $col1;
+	border-color: $col1;
+	&:focus {
+		outline: none;
+		border-color: $col2;
+	}
+}
+
+body {
+	text-align: center;
+	font-family: Century Gothic, sans-serif;
+}
+
+#classes {
+	margin: auto;
+	display: flex;
+	width: 70%;
+	justify-content: center;
+	align-content: center;
+}
+
+#side_bar {
+	width: auto;
+	order: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+#main {
+	margin: auto;
+	order: 2;
+	flex-grow: 2;
+	display: flex;
+	width: 40%;
+	max-width: 1000px;
+	flex-direction: row;
+}
+
+#class_div {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	margin: auto;
+	
+}
+
+.class_item {
+	@include hoverable($main_color, $second_color);
+	margin-top: 20px;
+	margin-left: 10px;
+	border-style: solid;
+	border-radius: 15px;
+	width: 200px;
+	height: 200px;
+}
+
+#class_details {
+	background-color: $third_color;
+	border-color: $second_color;
+	input[type='text'] {
+		height: 24px;
+		padding: 2px;
+		font-size: 18px;
+		border-radius: 5px;
+		border-style: solid;
+		@include focusable(#F8F8F8, $second_color);
+	}
+	select {
+		border-radius: 25%;
+		height: 24px;
+		font-size: 18px;
+		&:focus {
+			outline: none;
+		}
+	}
+	border-style: solid;
+	border-radius: 15px 0px 15px 15px;
+	font-size: 24px;
+	width: 60%;
+	margin-top: 5px;
+	padding: 5px;
+}
+
+#new_class {
+	@include hoverable($second_color, $third_color);
+	position: relative;
+	bottom: 50%;
+	padding: 0;
+	width: 60px;
+	height: 60px;
+	font-size: 60px;
+	line-height: 60px;
+}
+
+.home_button {
+	@include hoverable($second_color, $main_color);
+	margin-top: 5px;
+	height: 40px;
+	width: 50%;
+	border-style: solid;
+	border-radius: 5px;
+	font-size: 20px;
+	&:focus {
+		outline: none;
+	}
+}
+
+.selected {
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-top-right-radius: 100%;
+	border-bottom-right-radius: 100%;
+}
+
+.unselected {
+	border-radius: 100%;
+}
