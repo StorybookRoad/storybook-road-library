@@ -2,7 +2,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var URL = 'mongodb://localhost:27017/storybook_road';
 
-//this stores the state of the database
+//this stores the state of the database - currently only the database object but we may want to change that later
 var state = {
 	db: null
 };
@@ -21,6 +21,14 @@ exports.connect = function (done) {
 //function that returns the database object
 exports.get = function() {
 	return state.db;
+}
+
+//function to put something into the database
+exports.save = function(collection, item, done) {
+	state.db.collection(collection).insertOne(item, function(err, result) {
+		if (err) return done(err);
+		done(result);
+	});
 }
 
 //function to close the database connection
