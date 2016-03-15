@@ -27,6 +27,11 @@ PUZZLES.Puzzle.prototype.generate_puzzle = function(canvas_id)
   //Develops the Puzzle to display on the fly from a list provided in the
   //database.
 }
+/*Parses the tags it finds in the puzzle text */
+
+PUZZLES.Puzzle.prototype.parse_tags = function(){
+  this.story_text = this.story_text.replace("#character", this.character.name);
+}
 
 PUZZLES.Puzzle_1 = function(problem_number, question_id, text_id, problem_info)
 {
@@ -62,7 +67,6 @@ PUZZLES.Puzzle_1.prototype.display = function (canvas_id){
     //Assign the text for the puzzle to the page
     //this.question_id.innerHTML = this.problem;
     this.text_id.innerHTML = this.story_text;
-
 }
 
 /* Generates a Puzzle from a list of words specified in the database */
@@ -120,7 +124,91 @@ PUZZLES.Puzzle_2.prototype.display = function (canvas_id){
   character.onload = function(){
     canvas.drawImage(character, 200, 0);
   }
+  //Assign the text for the puzzle to the page
+  //this.question_id.innerHTML = this.problem;
+  this.text_id.innerHTML = this.story_text;
+}
 
+PUZZLES.Puzzle_3 = function(problem_number, question_id, text_id, problem_info){
+  PUZZLES.Puzzle.call(this,problem_number, question_id, text_id, problem_info);
+  this.shuffled = generate_random_chars(10);
+  var str = problem_info.answer.split('');
+  this.answer_length = str.length;
+  var replace_string = "<span id=\"problem\">";
+  for(var i = 0; i < str.length; i++)
+  {
+    this.shuffled[this.shuffled.length] = str[i]
+    replace_string += "_";
+  }
+  this.shuffled = shuffle_array(this.shuffled);
+  replace_string.trim();
+  replace_string += "</span>"
+  //Loop through and add the characters onto the canvas, will need to be gridded at some point
+  //break up the answer and add characters to the array
+  this.story_text = this.story_text.replace("#character", this.character.name);
+  this.story_text = this.story_text.replace("#answer", replace_string)
+
+}
+
+PUZZLES.Puzzle_3.prototype.generate_puzzle = function(canvas_id){
+  for(var i = 0; i < this.shuffled.length; i++)
+  {
+    var button = document.createElement("BUTTON");
+    var text = document.createTextNode(this.shuffled[i]);
+    button.className = "puzzle_answer"
+    button.value = this.shuffled[i];
+    button.appendChild(text);
+    button.onclick = function(){
+      var answer = $("#problem").html();
+      var j = 0;
+      while(answer[j] != "_" && j <= answer.length)
+      {
+        j++;
+      }
+      if(j > answer.length)
+        return;
+      answer = answer.substr(0,j) + this.value + answer.substr(j+1, answer.length);
+      $("#problem").html(answer);
+    }
+
+    document.body.appendChild(button);
+  }
+
+  var button = document.createElement("BUTTON");
+  button.onclick = function(){
+    var answer = $("#problem").html();
+    var j = answer.length-1;
+    while ((answer[j] == " " || answer[j] == "_") && j >= 0)
+    {
+      j--;
+    }
+    if (j < 0)
+      return;
+    answer = answer.substr(0,j) + "_" + answer.substr(j+1,answer.length);
+    $("#problem").html(answer);
+  }
+  var text = document.createTextNode("<=");
+  button.className = "backspace";
+  button.appendChild(text);
+  document.body.appendChild(button);
+  this.display(canvas_id);
+}
+
+PUZZLES.Puzzle_3.prototype.display = function(canvas_id){
+  var canvas = $("#"+canvas_id)[0].getContext('2d');
+  //Need to figure out a decent way to load images
+  var image = new Image(500,500);
+  var character = new Image(350,350);
+  image.src = "./assets/" + this.background.image;
+  character.src = "./assets/" + this.character.image;
+  //Clear canvas and draw on the background and other images
+  canvas.clearRect(0,0,canvas.width,canvas.height);
+  image.onload = function(){
+    canvas.drawImage(image,0,0);
+  }
+  character.onload = function(){
+    canvas.drawImage(character, 200, 0);
+  }
   //Assign the text for the puzzle to the page
   //this.question_id.innerHTML = this.problem;
   this.text_id.innerHTML = this.story_text;
@@ -158,4 +246,16 @@ function shuffle_string(unshuffled_str) {
         a[j] = tmp;
     }
     return a.join("");
+}
+
+function generate_random_chars(size){
+  var toReturn = [];
+  //Generate a character a-z and add to array.
+  for(var i = 0; i < size; i++)
+  {
+    var value = Math.random();
+    toReturn[i] = String.fromCharCode(value * (122-97) + 97);
+  }
+
+  return toReturn;
 }

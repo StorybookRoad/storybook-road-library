@@ -14,6 +14,9 @@ function parse_puzzle(puzzle_data)
     case 2:
       puzzle = new PUZZLES.Puzzle_2(puzzle_data.progress, "storytext", "user_answer", puzzle_data);
       break;
+    case 3:
+      puzzle = new PUZZLES.Puzzle_3(puzzle_data.progress, "storytext", "user_answer", puzzle_data);
+      break;
   }
   return puzzle;
 }
@@ -26,9 +29,8 @@ $(document).ready(function() {
 
   /* Retrieve our game from the database */
   socket.on("game_info", function(game_info){
-
     puzzle = parse_puzzle(game_info);
-    puzzle.generate_puzzle("test_canvas");
+    puzzle.generate_puzzle("story_canvas");
     $("#problem").blur(function(){
       if($("#problem").val() == "" || $("#problem").val() == " "){
         $("#problem").val(puzzle.shuffled);
@@ -61,7 +63,7 @@ $(document).ready(function() {
 
   socket.on("story_finished",function()
   {
-    var canvas = $("#test_canvas")[0].getContext("2d");
+    var canvas = $("#story_canvas")[0].getContext("2d");
     canvas.clearRect(0,0,500,500);
     canvas.font = "50px sans-serif";
     canvas.fillText("You Finished!",100,100);
@@ -70,9 +72,8 @@ $(document).ready(function() {
   $("#puzzle_status").submit(function(event){
     //Stop our form from being fully submitted
     event.preventDefault();
-    var problem_value = $("#problem").val();
+    var problem_value = $("#problem").val() || $("#problem").html();
     if(problem_value != ""){
-
       var problem =  {
         "puzzle_id": puzzle.puzzle_id,
         "story_instance_id": puzzle.story_instance_id,

@@ -10,9 +10,11 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var path = require('path');
+var os = require('os');
+var ip = os.networkInterfaces()['Wi-Fi'][1].address;
 
 var port = process.env.PORT || 8080;
-var mongo_url = 'mongodb://localhost:27017/storybook_road';
+var mongo_url = 'mongodb://'+ ip +':27017/storybook_road';
 
 app.use(express.static(path.join(__dirname, '/www')));
 
@@ -50,9 +52,13 @@ io.on('connection', function(client) {
 								db.close();
 							}
 							retrieve_puzzle(db, puzzle_data,function(result){
-								puzzle_data.puzzle_id = result.puzzle_id;
-								puzzle_data.answer = result.answer;
-								puzzle_data.puzzle_type = result.puzzle_type;
+								console.log(puzzle_data);
+								if(result != 0){
+									puzzle_data.puzzle_id = result.puzzle_id;
+									puzzle_data.answer = result.answer;
+									puzzle_data.puzzle_type = result.puzzle_type;
+									console.log(result);
+								}
 								client.emit("game_info", puzzle_data);
 								db.close();
 							});
@@ -527,7 +533,7 @@ function confirm_puzzle(db, data, callback){
 function generate_story_template(db, data, callback) {
 	var template_data = {
 		'teacher':data.email,
-		'problem_ids': [1, 2], //to be pulled from db
+		'problem_ids': [1, 2, 3], //to be pulled from db
 		'class_name': data.class_name,
 		'character': {
 			'name':'Prickly Pete',
@@ -536,7 +542,8 @@ function generate_story_template(db, data, callback) {
 		'difficulty': data.grade,
 		'phrases': [ //to be pulled from db
 			"#character needs to find the #answer",
-			"#character has to slay the dragon with the #answer"
+			"#character has to slay the dragon with the #answer",
+			"#character ran into a #answer near the pond in the garden."
 		],
 		'background':{'image':'ManInMoon.png'}
 	};
