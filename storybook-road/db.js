@@ -31,6 +31,16 @@ exports.save = function(collection, item, done) {
 	});
 }
 
+//Overload of exports.find that finds documents in the db using find(query, projection)
+//Returns a cursor to the found objects, if any
+//If a query or projection is not needed, they must be declared as 'undefined' in the function call
+exports.find = function(collection, query, projection, done) {
+	state.db.collection(collection).find(query, projection, function(err, docs) {
+		if (err) return done(err);
+		done(docs);
+	});
+}
+
 //function to close the database connection
 exports.close = function(done) {
 	if (state.db) {
