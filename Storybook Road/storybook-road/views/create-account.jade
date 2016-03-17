@@ -1,0 +1,41 @@
+extends layout
+
+head
+	block append scripts
+		script(type='text/javascript' src='javascripts/jquery.maskedinput.js')
+		script(type='text/javascript' src='javascripts/create_account.js')
+block content
+	form#create_form
+		#header
+			h1#header_text New Account
+			img#prof_pic(src='images/profile-photo-placeholder.jpg', alt='placeholder image')
+		#username_password_input
+			|Last Name: 
+			input#lname.right(type='text', name='lname', required='')
+			br
+			|Password:
+			input#password.right(type='password', name='password', required='')
+			br
+			|Confirm Password: 
+			input#confirm_password.right(type='password', name='confirm_password', required='')
+			br
+		#contact_input
+			|Email Address: 
+			input#email.right(type='text', name='email', required='')
+			br
+			#warning
+			br
+			|Phone Number: 
+			input#phone_num.right(type='text', name='phone_num', required='')
+			br
+			|School: 
+			input#school.right(type='text', name='school', required='')
+			br
+		#statement_box
+			|Personal Statement:
+			br
+			textarea#statement
+			br
+		#footer
+			input#create_account.buttons(type='submit', name='create_account', value='Create Account')
+			button#cancel.buttons(type='button') Cancel
