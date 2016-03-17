@@ -26,18 +26,35 @@ exports.get = function() {
 //function to put something into the database
 exports.save = function(collection, item, done) {
 	state.db.collection(collection).insertOne(item, function(err, result) {
-		if (err) return done(err);
-		done(result);
+		if (err) return done(err, undefined);
+		done(undefined, result);
 	});
 }
 
 //Overload of exports.find that finds documents in the db using find(query, projection)
-//Returns a cursor to the found objects, if any
+//Returns an array of the found objects, if any
 //If a query or projection is not needed, they must be declared as 'undefined' in the function call
 exports.find = function(collection, query, projection, done) {
 	state.db.collection(collection).find(query, projection, function(err, docs) {
 		if (err) return done(err, undefined); //callback in the format done(err, docs)
-		done(undefined, docs);
+		docs.count(function(countErr, count) {
+			if (countErr) return done(countErr, undefined);
+			if (count <= 0) {
+				done(undefined, 'EMPTY_RESULT');
+			}
+			else {
+				var result = {};
+				docs.each(function(error, doc) {
+					if (error) return done(error, undefined);
+					if (doc == null) {//we've reached the end of the cursor
+						
+						done(undefined, result);
+					}
+					else
+						result[doc] = doc;
+				});
+			}
+		});
 	});
 }
 
