@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,WAAU;EACR,MAAM,EAAE,IAAI",
+"sources": ["sass/game.scss"],
+"names": [],
+"file": "game.css"
+}

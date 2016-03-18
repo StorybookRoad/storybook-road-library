@@ -1,0 +1,39 @@
+@import "palette";
+
+$story_background: #F1F1D4;
+$canvas-width: 500px;
+$canvas-height: 280px ;
+
+$story-font: Tahoma, Geneva, sans-serif;
+
+/* Basic HTML Elements */
+html, body{
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* IDs */
+#story_canvas{
+  height: $canvas-height;
+  width: $canvas-width;
+}
+#canvas_background{
+  background-color: $story_background;
+  width: 100%;
+}
+
+#user_answer{
+  font-family: $story-font;
+}
+
+#errors{
+  color: $red;
+}
+
+/* Classes */
+.center_element{
+  width: 50%;
+  margin: auto;
+  padding-left: 50px;
+}

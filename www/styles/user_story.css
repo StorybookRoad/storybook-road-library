@@ -1,0 +1,29 @@
+/* Coolors Exported Palette - coolors.co/f9e11c-7bbf47-dd664c-33b891-3b4d3c */
+/* Basic HTML Elements */
+html, body {
+  width: 100%;
+  padding: 0px;
+  margin: 0px; }
+
+/* IDs */
+#story_canvas {
+  height: 280px;
+  width: 500px; }
+
+#canvas_background {
+  background-color: #F1F1D4;
+  width: 100%; }
+
+#user_answer {
+  font-family: Tahoma, Geneva, sans-serif; }
+
+#errors {
+  color: #dd664c; }
+
+/* Classes */
+.center_element {
+  width: 50%;
+  margin: auto;
+  padding-left: 50px; }
+
+/*# sourceMappingURL=user_story.css.map */
