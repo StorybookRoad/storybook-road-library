@@ -3,7 +3,7 @@ $(document).ready(function() {
 	//fill in student select fields
 	if (type == 'student') {
 		//fill in school field
-		$.post('create-account/school-req', function(response) {
+		$.post('./school-req', function(response) {
 			$('#school').empty();
 			for (item in response) {
 				var school = response[item];
@@ -13,7 +13,7 @@ $(document).ready(function() {
 		});
 		//fill in teacher field
 		$('#school').change(function() {
-			$.post('create-account/teacher-req', {school: $('#school').val()}, function(response) {
+			$.post('./teacher-req', {school: $('#school').val()}, function(response) {
 				$('#teacher').empty();
 				for (item in response) {
 					var teacher = response[item];
@@ -26,7 +26,7 @@ $(document).ready(function() {
 		});
 		//fill in class field
 		$('#teacher').change(function() {
-			$.post('create-account/class-req', {teacher: $('#teacher').val()}, function(response) {
+			$.post('./class-req', {teacher: $('#teacher').val()}, function(response) {
 				$('#class').empty();
 				$('#class').prop('disabled', false); //in case the field was disabled from an empty result
 				if (response == 'EMPTY_RESULT') { //make sure teacher has created some classes

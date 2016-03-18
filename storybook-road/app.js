@@ -23,6 +23,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//ensure that create-account/:type gets served static files
+app.use('/create-account', express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 

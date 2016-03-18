@@ -7,8 +7,8 @@ var classModel = require('../models/class');
 var teacher = require('../models/teacher');
 var student = require('../models/student');
 
-router.get('/', function(req, res, next) {
-	var type = req.query.type;
+router.get('/:type', function(req, res, next) {
+	var type = req.params.type;
 	res.render('create-account', {type: type});
 });
 

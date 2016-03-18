@@ -8,8 +8,8 @@ router.get('/', function(req, res, next) {
 
 //handle requests to create accounts
 router.post('/login-request', function(req, res, next) {
-	var type = req.query.type;
-	res.send({redirect: '/create-account?type=' + type});
+	var type = req.body.type;
+	res.send({redirect: '/create-account/' + type});
 });
 
 module.exports = router;

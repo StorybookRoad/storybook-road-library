@@ -21,7 +21,7 @@ $(document).ready(function () {
 			type = 'teacher';
 		
 		//result should be the url of the create-account page with the correct type query
-		$.post('login/login-request?type=' + type, function(res) {
+	$.post('login/login-request', {type: type}, function(res) {
 			document.location.href = res.redirect;
 		});
 	});
