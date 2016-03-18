@@ -2,7 +2,6 @@ extends layout
 
 head
 	block append scripts
-		script(type='text/javascript' src='javascripts/jquery.maskedinput.js')
 		script.
 			var type = '#{type}' //pass type variable to client-side javascript
 		script(type='text/javascript' src='javascripts/create_account.js')
@@ -14,8 +13,7 @@ block content
 		#contact_input
 			|Email Address: 
 			input#email(type='text', name='email', required=true)
-			br
-			#warning
+			#email_warning
 		#username_password_input
 			|First Name:
 			input#fname(type='text', name='fname', required=true)
@@ -28,6 +26,7 @@ block content
 			br
 			|Confirm Password: 
 			input#confirm_password(type='password', required=true)
+			#password_warning
 		#role_input
 			input#role(type='hidden', name='role', value=type)
 			if type == "teacher"

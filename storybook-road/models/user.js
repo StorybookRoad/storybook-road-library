@@ -20,3 +20,9 @@ exports.create = function(userData, done) {
 		});
 	}
 };
+
+exports.find = function(query, projection, done) {
+	db.find(collection, query, projection, function(err, result) {
+		done(err, result);
+	});
+};
