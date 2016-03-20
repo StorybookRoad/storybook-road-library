@@ -50,7 +50,7 @@ $(document).ready(function() {
 		//check that passwords match
 		if ($('#password').val() == $('#confirm_password').val()) {
 			var body = $('#create_form').serialize();
-			$.ajax('create-account/submit', {
+			$.ajax('./submit', {
 				type: 'POST',
 				data: body,
 				success: function(response) {

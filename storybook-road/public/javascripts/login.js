@@ -21,8 +21,21 @@ $(document).ready(function () {
 			type = 'teacher';
 		
 		//result should be the url of the create-account page with the correct type query
-	$.post('login/login-request', {type: type}, function(res) {
+		$.post('login/create-request', {type: type}, function(res) {
 			document.location.href = res.redirect;
+		});
+	});
+	$('#login_form').submit(function(e) {
+		e.preventDefault();
+		$.post('login/login-request', {email: $('#email').val(), password: $('#password').val()}, function(response) {
+			if (response.message == 'DOES_NOT_MATCH') {
+				$('#warning').html('Username and password do not match');
+			}
+			else if (response.message == 'SUCCESS') {
+				document.location.href = response.redirect;
+			}
+			else //log response if error
+				console.log(response);
 		});
 	});
 });

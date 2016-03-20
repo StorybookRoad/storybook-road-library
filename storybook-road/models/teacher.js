@@ -16,8 +16,14 @@ exports.get = function(email, done) {
 
 exports.getBySchool = function(school, done) {
 	user.find({role: 'teacher', school: school}, undefined, function(err, result) {
-		console.log(result);
 		done(err, result);
+	});
+};
+
+exports.getById = function(id, done) {
+	user.findById(id, undefined, function(err, result) {
+		if (result.role != 'teacher') result = 'NOT_A_TEACHER';
+		done (err, result);
 	});
 };
 

@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 var assert = require('assert');
 
@@ -22,6 +23,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({secret: 'f4sBqkHDnX4xkRJBysiip1n4Fb6JqL', resave: false, saveUninitialized: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 //ensure that create-account/:type gets served static files
 app.use('/create-account', express.static(path.join(__dirname, 'public')));

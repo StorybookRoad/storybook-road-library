@@ -1,5 +1,6 @@
 //the MongoDB client
 var MongoClient = require('mongodb').MongoClient;
+var ObjectID = require('mongodb').ObjectID; //for finding an object by id
 var URL = 'mongodb://localhost:27017/storybook_road';
 
 //this stores the state of the database - currently only the database object but we may want to change that later
@@ -53,6 +54,14 @@ exports.find = function(collection, query, projection, done) {
 				});
 			}
 		});
+	});
+}
+
+//function to find database objects by id
+exports.findById = function(collection, id, projection, done) {
+	var o_id = new ObjectID(id);
+	exports.find(collection, {_id: o_id}, projection, function(err, docs) {
+		done(err, docs);
 	});
 }
 
