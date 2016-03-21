@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var assert = require('assert')
 
-var crypto = require('../crypto');
+var crypto = require('../helpers/crypto');
 var user = require('../models/user');
 
 router.get('/', function(req, res, next) {

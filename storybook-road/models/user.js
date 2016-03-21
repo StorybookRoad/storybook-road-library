@@ -1,5 +1,5 @@
 var db = require('../db');
-var crypto = require('../crypto');
+var crypto = require('../helpers/crypto');
 var collection = "user";
 
 //user data object: {email, password, fname, lname, school, role}
