@@ -10,7 +10,6 @@ router.get('/', auth, function(req, res, next) {
 	var email = req.session.user.email;
 	teacher.get(email, function(err, result) {
 		assert.equal(null, err);
-		console.log(result);
 		res.render('teacher', {user: result});
 	});
 });
