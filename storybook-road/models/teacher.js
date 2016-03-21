@@ -9,7 +9,7 @@ exports.all = function(done) {
 };
 
 exports.get = function(email, done) {
-	user.find({role: 'teacher', email: email}, undefined, function(err, result) {
+	user.get(email, function(err, result) {
 		done(err, result);
 	});
 };

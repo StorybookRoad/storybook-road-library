@@ -1,4 +1,18 @@
 extends layout
 
+head
+	block append scripts
+		script(type='text/javascript', src='/javascripts/teacher-home.js')
+
 block content
-	p #{name}'s home page
+	div#classes
+		button#new_class(type='button') New Class
+		form#new_class_form(action='teacher/new-class', method='post')
+			input(type='text', name='class_name', placeholder='Enter class name')
+			input(type='submit', value='Create Class')
+			button#hide_class_form(type='button') Hide
+		#warning
+		h3 #{user.fname} #{user.lname}'s Classes:
+		ul#class_list
+	div#class_content
+	div#student_info

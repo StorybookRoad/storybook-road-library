@@ -28,8 +28,8 @@ router.post('/login-request', function(req, res, next) {
 				assert.equal(null, error);
 				if (!same) res.send({message: 'DOES_NOT_MATCH'});
 				else {
-					req.session.user = result.email;
-					var redirect = '/' + result.role + '?id=' + result._id;
+					req.session.user = result;
+					var redirect = '/' + result.role// + '?id=' + result._id;
 					res.send({message: 'SUCCESS', redirect: redirect});
 				}
 			});

@@ -27,8 +27,7 @@ exports.get = function() {
 //function to put something into the database
 exports.save = function(collection, item, done) {
 	state.db.collection(collection).insertOne(item, function(err, result) {
-		if (err) return done(err, undefined);
-		done(undefined, result);
+		done(err, result);
 	});
 }
 
