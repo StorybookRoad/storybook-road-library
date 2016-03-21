@@ -1,5 +1,6 @@
-<<<<<<< HEAD
 /node_modules
-=======
-*/node_modules
->>>>>>> Puzzles
+/obj
+*.njsproj
+*.suo
+/bin/*.dll
+*.dat
