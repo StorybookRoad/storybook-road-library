@@ -1,0 +1,87 @@
+{
+	"fairytale": {
+		"phrases": {
+			"beginning": [
+
+			],
+			"middle": [
+
+			],
+			"end": [ 
+
+			]
+		},
+		"characters": [
+
+		],
+		"supporting": [
+
+		],
+		"places": [
+
+		],
+		"adjectives": [
+
+		],
+		"answers": {
+			"level_1": [
+
+			],
+			"level_2": [
+
+			],
+			"level_3": [
+
+			],
+			"level_4": [
+
+			],
+			"level_5": [
+
+			]
+		}
+	},
+
+	"science": { 
+		"phrases": {
+			"beginning": [
+
+			],
+			"middle": [
+
+			],
+			"end": [ 
+
+			]
+		},
+		"characters": [
+
+		],
+		"supporting": [
+
+		],
+		"places": [
+
+		],
+		"adjectives": [
+
+		],
+		"answers": {
+			"level_1": [
+
+			],
+			"level_2": [
+
+			],
+			"level_3": [
+
+			],
+			"level_4": [
+
+			],
+			"level_5": [
+
+			]
+		}
+	}
+}
