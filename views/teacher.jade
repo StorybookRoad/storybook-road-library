@@ -12,7 +12,10 @@ block content
 			input(type='submit', value='Create Class')
 			button#hide_class_form(type='button') Hide
 		#warning
+		//- user is a user object from the db
 		h3 #{user.fname} #{user.lname}'s Classes:
 		ul#class_list
 	div#class_content
+		div#class_stats
+		ul#student_list
 	div#student_info

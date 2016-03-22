@@ -8,14 +8,14 @@ exports.all = function(done) {
 	});
 };
 
-exports.get = function(email, done) {
-	user.get(email, function(err, result) {
+exports.get = function (email, done) {
+	user.get(email, function (err, result) {
 		done(err, result);
 	});
 };
 
-exports.getByClass = function(class_name, done) {
-	user.find({role: 'student', class: class_name}, function(err, result) {
+exports.getByClass = function(class_name, teacher, done) {
+	user.find({role: 'student', class: class_name, teacher: teacher}, undefined, function(err, result) {
 		done(err, result);
 	});
 };

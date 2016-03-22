@@ -1,7 +1,6 @@
 $(document).ready(function() {
-	
 	//fill in student select fields
-	if (type == 'student') {
+    if (type == 'student') {
 		//fill in school field
 		$.post('./school-req', function(response) {
 			$('#school').empty();

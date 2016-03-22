@@ -1,6 +1,5 @@
 /node_modules
+/Visual Studio
 /obj
-*.njsproj
-*.suo
-/bin/*.dll
 *.dat
+*.dll
