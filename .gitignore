@@ -3,3 +3,5 @@
 /obj
 *.dat
 *.dll
+*.suo
+*.tmp
