@@ -11,7 +11,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var path = require('path');
 var os = require('os');
-var ip = os.networkInterfaces()['Wi-Fi'][1].address;
+var ip = "localhost";
 
 var port = process.env.PORT || 8080;
 var mongo_url = 'mongodb://'+ ip +':27017/storybook_road';
@@ -52,12 +52,10 @@ io.on('connection', function(client) {
 								db.close();
 							}
 							retrieve_puzzle(db, puzzle_data,function(result){
-								console.log(puzzle_data);
 								if(result != 0){
 									puzzle_data.puzzle_id = result.puzzle_id;
 									puzzle_data.answer = result.answer;
-									puzzle_data.puzzle_type = result.puzzle_type;
-									console.log(result);
+									puzzle_data.puzzle_type = result.puzzle_type; 
 								}
 								client.emit("game_info", puzzle_data);
 								db.close();
@@ -124,6 +122,7 @@ io.on('connection', function(client) {
 
 
 	client.on('create_account_teacher', function (data) {
+		console.log(mongo_url)
 		MongoClient.connect(mongo_url, function(err, db) {
 			assert.equal(null,err);
 			insert_teacher_account(db, data, function(result) {

@@ -6,16 +6,33 @@ html, body {
   margin: 0px; }
 
 /* IDs */
+#header {
+  font-family: Century Gothic, sans-serif; }
+
+#header h1 {
+  text-align: center; }
+
 #story_canvas {
   height: 280px;
-  width: 500px; }
+  width: 500px;
+  float: left; }
 
 #canvas_background {
   background-color: #F1F1D4;
   width: 100%; }
 
+#canvas_grid {
+  width: 500px;
+  max-height: 280px;
+  margin: 0px;
+  float: left;
+  position: absolute; }
+
+#story_parts {
+  clear: both; }
+
 #user_answer {
-  font-family: Tahoma, Geneva, sans-serif; }
+  font-family: Century Gothic, sans-serif; }
 
 #errors {
   color: #dd664c; }
@@ -25,5 +42,18 @@ html, body {
   width: 50%;
   margin: auto;
   padding-left: 50px; }
+
+.grid_square {
+  max-height: 28px; }
+
+.grid_square button {
+  font-size: 20px;
+  color: #dd664c;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none; }
 
 /*# sourceMappingURL=user_story.css.map */

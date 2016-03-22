@@ -70,7 +70,7 @@ PUZZLES.Puzzle_1.prototype.display = function (canvas_id){
 }
 
 /* Generates a Puzzle from a list of words specified in the database */
-PUZZLES.Puzzle_1.prototype.generate_puzzle = function(canvas_id)
+PUZZLES.Puzzle_1.prototype.generate_puzzle = function(canvas_id, grid)
 {
   this.display(canvas_id);
   //Develops the Puzzle to display on the fly from a list provided in the
@@ -106,7 +106,7 @@ PUZZLES.Puzzle_2 = function(problem_number, question_id, text_id, problem_info){
   this.story_text = this.story_text.replace("#character", this.character.name);
 }
 
-PUZZLES.Puzzle_2.prototype.generate_puzzle = function (canvas_id){
+PUZZLES.Puzzle_2.prototype.generate_puzzle = function (canvas_id, grid){
   this.display(canvas_id);
 }
 PUZZLES.Puzzle_2.prototype.display = function (canvas_id){
@@ -150,7 +150,10 @@ PUZZLES.Puzzle_3 = function(problem_number, question_id, text_id, problem_info){
 
 }
 
-PUZZLES.Puzzle_3.prototype.generate_puzzle = function(canvas_id){
+PUZZLES.Puzzle_3.prototype.generate_puzzle = function(canvas_id, grid){
+
+  var calculated_points = generate_points(this.shuffled.length, grid.length);
+  console.log(calculated_points)
   for(var i = 0; i < this.shuffled.length; i++)
   {
     var button = document.createElement("BUTTON");
@@ -170,8 +173,9 @@ PUZZLES.Puzzle_3.prototype.generate_puzzle = function(canvas_id){
       answer = answer.substr(0,j) + this.value + answer.substr(j+1, answer.length);
       $("#problem").html(answer);
     }
+    button.submit = null;
 
-    document.body.appendChild(button);
+    grid[calculated_points[i][0]][calculated_points[i][1]].html(button);
   }
 
   var button = document.createElement("BUTTON");
@@ -190,7 +194,8 @@ PUZZLES.Puzzle_3.prototype.generate_puzzle = function(canvas_id){
   var text = document.createTextNode("<=");
   button.className = "backspace";
   button.appendChild(text);
-  document.body.appendChild(button);
+
+  $("#story_parts").append(button);
   this.display(canvas_id);
 }
 
@@ -258,4 +263,31 @@ function generate_random_chars(size){
   }
 
   return toReturn;
+}
+
+function generate_points(number_of_items, size_of_grid){
+  var points = [];
+  var hashed = {};
+  for(var i = 0; i < number_of_items; i++)
+  {
+    hashed = hash_array(points);
+    var point = [Math.floor((Math.random() * size_of_grid)), Math.floor((Math.random() * size_of_grid))];
+    while(hashed.hasOwnProperty(point))
+    {
+      point = [Math.floor((Math.random() * size_of_grid)), Math.floor((Math.random() * size_of_grid))];
+    }
+
+    points[i] = point;
+  }
+  return points;
+}
+
+function hash_array(array)
+{
+  var hash = {};
+  for(var i = 0 ; i < array.length; i += 1) {
+      hash[array[i]] = i;
+  }
+
+  return hash;
 }

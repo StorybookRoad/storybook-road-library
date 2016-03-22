@@ -5,6 +5,7 @@ $canvas-width: 500px;
 $canvas-height: 280px ;
 
 $story-font: Tahoma, Geneva, sans-serif;
+$primary-font: Century Gothic, sans-serif;
 
 /* Basic HTML Elements */
 html, body{
@@ -14,19 +15,34 @@ html, body{
 }
 
 /* IDs */
+#header{
+  font-family: $primary-font;
+}
+#header h1{
+  text-align: center;
+}
 #story_canvas{
   height: $canvas-height;
   width: $canvas-width;
+  float: left;
 }
 #canvas_background{
   background-color: $story_background;
   width: 100%;
 }
-
-#user_answer{
-  font-family: $story-font;
+#canvas_grid{
+  width: $canvas-width;
+  max-height: $canvas-height;
+  margin: 0px;
+  float:left;
+  position:absolute;
 }
-
+#story_parts{
+  clear:both;
+}
+#user_answer{
+  font-family: $primary-font;
+}
 #errors{
   color: $red;
 }
@@ -36,4 +52,19 @@ html, body{
   width: 50%;
   margin: auto;
   padding-left: 50px;
+}
+
+.grid_square{
+  max-height: $canvas-height / 10;
+}
+
+.grid_square button{
+  font-size: 20px;
+  color: $red;
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
 }

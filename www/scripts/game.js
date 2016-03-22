@@ -1,7 +1,9 @@
 /* Create our globals */
+/*TO GET RID OF */
 var url = "http://localhost:8080";
 var socket = io.connect(url);
 var puzzle;
+var grid_size = 10;
 
 function parse_puzzle(puzzle_data)
 {
@@ -29,8 +31,24 @@ $(document).ready(function() {
 
   /* Retrieve our game from the database */
   socket.on("game_info", function(game_info){
+    var grid = [];
+
+    for(var i = 0; i < grid_size; i++)
+    {
+      if(!grid[i]){
+        grid[i] = [];
+        $("#canvas_grid").append("<tr class=\"table_"+i+"\">");
+      }
+      for(var j = 0; j < grid_size; j++){
+        grid[i][j] = $("<td class=\"grid_square\"></td>");
+        $(".table_"+i).append(grid[i][j]);
+      }
+
+      $("#canvas_grid").append("</tr>");
+    }
+
     puzzle = parse_puzzle(game_info);
-    puzzle.generate_puzzle("story_canvas");
+    puzzle.generate_puzzle("story_canvas", grid);
     $("#problem").blur(function(){
       if($("#problem").val() == "" || $("#problem").val() == " "){
         $("#problem").val(puzzle.shuffled);
@@ -53,7 +71,6 @@ $(document).ready(function() {
   socket.on("user_incorrect", function(){
     console.log("failure");
     $("#errors").text("Oops! Looks like you were a little off, try again!");
-    $("#success").text("");
     puzzle.failed_attempts++;
   });
 
