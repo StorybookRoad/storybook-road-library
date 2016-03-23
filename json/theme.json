@@ -2,42 +2,54 @@
 	"fairytale": {
 		"phrases": {
 			"beginning": [
-
+				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
+				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
 			],
 			"middle": [
-
+				"#character needs to cross a river! Help them use the #answer to get across.",
+				"A dragon is blocking the path! #character can only slay it with #answer."
 			],
-			"end": [ 
-
+			"end": [
+				"#character is almost at #place! But the king won't let #character through the gate. #character must give the king the #answer to be allowed in.",
+				"#character has found #supporting! But the troll won't let #supporting go. #character has to scare away the troll with the #answer."
 			]
 		},
 		"characters": [
-
+			"Knight Lancealot",
+			"Princess Pollyanna"
 		],
 		"supporting": [
-
+			"Queen Margot",
+			"Jordan the Jester"
 		],
 		"places": [
-
+			"the Lonely Mountain",
+			"Castle Black"
 		],
 		"adjectives": [
-
+			"poor",
+			"brave"
 		],
 		"answers": {
 			"level_1": [
-
+				"sword",
+				"coin"
 			],
 			"level_2": [
-
+				"monster",
+				"diamond"
 			],
 			"level_3": [
-
+				"scarecrow",
+				"throne"
 			],
 			"level_4": [
-
+				"cannon",
+				"voyage"
 			],
 			"level_5": [
-
+				"mountain",
+				"plantation"
 			]
 		}
 	},
