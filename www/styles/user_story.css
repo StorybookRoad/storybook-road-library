@@ -13,8 +13,8 @@ html, body {
   text-align: center; }
 
 #story_canvas {
-  height: 280px;
-  width: 500px;
+  height: 768px;
+  width: 1024px;
   float: left; }
 
 #canvas_background {
@@ -22,13 +22,18 @@ html, body {
   width: 100%; }
 
 #canvas_grid {
-  width: 500px;
-  max-height: 280px;
+  width: 1024px;
+  max-height: 768px;
   margin: 0px;
+  font-size: 18px;
   float: left;
   position: absolute; }
 
+#canvas_grid table tr {
+  height: 76.8px; }
+
 #story_parts {
+  position: relative;
   clear: both; }
 
 #user_answer {
@@ -40,14 +45,13 @@ html, body {
 /* Classes */
 .center_element {
   width: 50%;
-  margin: auto;
-  padding-left: 50px; }
+  margin: auto; }
 
 .grid_square {
-  max-height: 28px; }
+  height: 76.8px; }
 
 .grid_square button {
-  font-size: 20px;
+  font-size: 30.72px;
   color: #dd664c;
   background-color: transparent;
   background-repeat: no-repeat;
