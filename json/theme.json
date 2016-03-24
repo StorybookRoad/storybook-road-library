@@ -1,5 +1,6 @@
 {
 	"fairytale": {
+		"name": "Fairytale",
 		"phrases": {
 			"beginning": [
 				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
@@ -54,7 +55,8 @@
 		}
 	},
 
-	"science": { 
+	"science": {
+		"name": "Science",
 		"phrases": {
 			"beginning": [
 				"#character is looking for a mate, and really likes #supporting. Help #character find the #answer to win the heart of #supporting",

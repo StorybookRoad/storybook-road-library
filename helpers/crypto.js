@@ -1,11 +1,11 @@
 var bcrypt = require('bcryptjs');
 
 //hash a password
-exports.encrypt = function(password, callback) {
-	bcrypt.genSalt(12, function(err, salt) {
+exports.encrypt = function (password, callback) {
+	bcrypt.genSalt(12, function (err, salt) {
 		if (err) return callback(err, undefined);
-		bcrypt.hash(password, salt, null, function(err, hash) {
-			callback(err, hash);
+		bcrypt.hash(password, salt, function (error, hash) {
+			callback(error, hash);
 		});
 	});
 }

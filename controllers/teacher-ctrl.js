@@ -5,6 +5,7 @@ var assert = require('assert');
 var teacher = require('../models/teacher');
 var student = require('../models/student');
 var classModel = require('../models/class');
+var theme = require('../models/theme');
 var auth = require('../middlewares/auth');
 
 router.get('/', auth.authTeacher, function(req, res, next) {
@@ -20,12 +21,15 @@ router.post('/classes-request', function(req, res, next) {
 	var email = req.session.user.email;
 	classModel.getByTeacher(email, function(err, result) {
 		assert.equal(null, err);
-		var response = {};
-		for (item in result) {
-			var classObj = result[item];
-			response[classObj._id] = classObj.name;
+		if (result === 'EMPTY_RESULT') res.send(result);
+		else {
+			var response = {};
+			for (item in result) {
+				var classObj = result[item];
+				response[classObj._id] = classObj;
+			}
+			res.send(response);
 		}
-		res.send(response);
 	});
 });
 
@@ -48,11 +52,26 @@ router.post('/student-info-request', function (req, res, next) {
 	});
 });
 
+//handle requests for theme list
+router.post('/themes-request', function (req, res, next) {
+	theme.all(function (err, response) {
+		assert.equal(err, null);
+		var themeRes = {};
+		for (item in response) {
+			var theme = response[item];
+			themeRes[item] = { 'name': theme.name }; //only send name to avoid sending huge amounts of data
+		}
+		res.send(themeRes);
+	});
+});
+
 //handle requests to add a class
 router.post('/new-class', function(req, res, next) {
 	var email = req.session.user.email;
+	var themes = JSON.parse(req.body.themes); //themes have been stringified to ensure correct request
 	var class_name = req.body.class_name;
-	classModel.create(class_name, email, function(err, result) {
+	var difficulty = req.body.difficulty;
+	classModel.create(class_name, email, difficulty, themes, function(err, result) {
 		assert.equal(null, err);
 		res.send(result); //'SUCCESS' or 'CLASS_ALREADY_EXISTS'
 	});

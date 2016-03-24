@@ -8,6 +8,7 @@ $(document).ready(function() {
 				var school = response[item];
 				$('#school').append('<option value="' + school.name + '">' + school.name + '</option>');
 			}
+			$('#school').prop('disabled', false);
 			$('#school').prop('selectedIndex', -1); //make default selected blank
 		});
 		//fill in teacher field
@@ -20,6 +21,7 @@ $(document).ready(function() {
 					var email = teacher.email;
 					$('#teacher').append('<option value="' + email + '">' + name + '</option>');
 				}
+				$('#teacher').prop('disabled', false);
 				$('#teacher').prop('selectedIndex', -1);
 			});	
 		});
@@ -38,6 +40,7 @@ $(document).ready(function() {
 						var name = classObj.name;
 						$('#class').append('<option value="' + name + '">' + name + '</option>');
 					}
+					$('#class').prop('disabled', false);
 					$('#class').prop('selectedIndex', -1);
 				}
 			});

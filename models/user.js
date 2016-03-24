@@ -17,7 +17,7 @@ exports.create = function(userData, done) {
 	//helper function to avoid excessive callbacks
 	function insertUser(userData, done) {
 		//hash the password
-		crypto.encrypt(userData.password, function(err, hash) {
+		crypto.encrypt(userData.password, function (err, hash) {
 			if (err) return done(err, undefined);
 			userData.password = hash;
 			db.save(collection, userData, function(result) {
