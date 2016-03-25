@@ -1,10 +1,9 @@
 @import "palette";
 
 $story_background: #F1F1D4;
-$canvas-width: 500px;
-$canvas-height: 280px ;
+$canvas-width: 1024px;
+$canvas-height: 768px ;
 
-$story-font: Tahoma, Geneva, sans-serif;
 $primary-font: Century Gothic, sans-serif;
 
 /* Basic HTML Elements */
@@ -34,10 +33,16 @@ html, body{
   width: $canvas-width;
   max-height: $canvas-height;
   margin: 0px;
+  font-size: 18px;
   float:left;
   position:absolute;
 }
+#canvas_grid table tr{
+  height: $canvas-height/10;
+}
+
 #story_parts{
+  position: relative;
   clear:both;
 }
 #user_answer{
@@ -51,15 +56,15 @@ html, body{
 .center_element{
   width: 50%;
   margin: auto;
-  padding-left: 50px;
+  //padding-left: 50px;
 }
 
 .grid_square{
-  max-height: $canvas-height / 10;
+  height: $canvas-height/10;
 }
 
 .grid_square button{
-  font-size: 20px;
+  font-size: $canvas-height/25;
   color: $red;
   background-color: transparent;
   background-repeat:no-repeat;

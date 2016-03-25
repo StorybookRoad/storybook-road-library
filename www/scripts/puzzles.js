@@ -14,7 +14,6 @@ PUZZLES.Puzzle = function(problem_number, question_id, text_id, problem_info){
   this.text_id = $("#" + text_id)[0];
   this.character = problem_info.character;
   this.background = problem_info.background;
-  console.log(this.character);
 }
 /* Displays the problem and the Puzzle to the user through a canvas*/
 PUZZLES.Puzzle.prototype.display = function (canvas_id){
@@ -27,6 +26,44 @@ PUZZLES.Puzzle.prototype.generate_puzzle = function(canvas_id)
   //Develops the Puzzle to display on the fly from a list provided in the
   //database.
 }
+
+/* Redraws the entire canvas */
+PUZZLES.Puzzle.prototype.drawBackground = function(canvas_id,background, assets){
+  var canvas = $("#"+canvas_id)[0].getContext('2d');
+  var image = new Image(500,500);
+  console.log(background);
+  image.src = "./assets/" + background.image;
+  var event = new Event("build_canvas");
+
+  document.addEventListener("build_canvas", function(e){
+    for(var i = 0;  i < assets.length; i++){
+      window.puzzle.prototype.update(canvas_id, assets[i]);
+    }
+
+  }, false);
+
+  //Clear canvas and draw on the background and other images
+  canvas.clearRect(0,0,canvas.width,canvas.height);
+  image.onload = function(){
+    canvas.drawImage(image,0,0);
+    document.dispatchEvent(event);
+  }
+
+
+
+}
+
+/* Draw new assets over the background */
+PUZZLES.Puzzle.prototype.update = function(canvas_id, asset){
+  /* TODO: Need to support drawing based upon the grid provided to the system */
+  var canvas = $("#"+canvas_id)[0].getContext('2d');
+  var new_asset = new Image(350,350);
+  new_asset.src="./assets/" + asset.image;
+  new_asset.onload = function(){
+    canvas.drawImage(new_asset, 200, 0);
+    console.log("Drawing asset");
+  }
+}
 /*Parses the tags it finds in the puzzle text */
 
 PUZZLES.Puzzle.prototype.parse_tags = function(){
@@ -37,6 +74,7 @@ PUZZLES.Puzzle_1 = function(problem_number, question_id, text_id, problem_info)
 {
   //Make Puzzle_1 inherit from Puzzle
   PUZZLES.Puzzle.call(this, problem_number, question_id, text_id, problem_info);
+  this.prototype= PUZZLES.Puzzle.prototype;
   var shuffled_answer = shuffle_string(problem_info.answer);
   /* make sure the string is actually shuffled */
   while(shuffled_answer == problem_info.answer){
@@ -48,25 +86,11 @@ PUZZLES.Puzzle_1 = function(problem_number, question_id, text_id, problem_info)
 }
 /* Displays the problem and the Puzzle to the user through a canvas*/
 PUZZLES.Puzzle_1.prototype.display = function (canvas_id){
-    var canvas = $("#"+canvas_id)[0].getContext('2d');
-    //Need to figure out a decent way to load images
-    var image = new Image(500,500);
-    var character = new Image(350,350);
-    image.src = "./assets/" + this.background.image;
-
-    //Clear canvas and draw on the background and other images
-    canvas.clearRect(0,0,canvas.width,canvas.height);
-    image.onload = function(){
-      canvas.drawImage(image,0,0);
-    }
-    character.src = "./assets/" + this.character.image;
-
-    character.onload = function(){
-      canvas.drawImage(character, 200, 0);
-    }
-    //Assign the text for the puzzle to the page
-    //this.question_id.innerHTML = this.problem;
-    this.text_id.innerHTML = this.story_text;
+  var canvas = $("#"+canvas_id)[0].getContext('2d');
+  canvas.clearRect(0,0,canvas.width,canvas.height);
+  var assets = [this.character]
+  this.prototype.drawBackground(canvas_id, this.background, assets);
+  this.text_id.innerHTML = this.story_text;
 }
 
 /* Generates a Puzzle from a list of words specified in the database */
@@ -78,6 +102,7 @@ PUZZLES.Puzzle_1.prototype.generate_puzzle = function(canvas_id, grid)
 }
 PUZZLES.Puzzle_2 = function(problem_number, question_id, text_id, problem_info){
   PUZZLES.Puzzle.call(this,problem_number, question_id, text_id, problem_info);
+  this.prototype= PUZZLES.Puzzle.prototype;
   //Generate 3 different shuffled words
   var possible_answers = [problem_info.answer];
   var problems_to_generate = problem_info.answer.length > 3 ? 3 : problem_info.answer.length;
@@ -111,26 +136,15 @@ PUZZLES.Puzzle_2.prototype.generate_puzzle = function (canvas_id, grid){
 }
 PUZZLES.Puzzle_2.prototype.display = function (canvas_id){
   var canvas = $("#"+canvas_id)[0].getContext('2d');
-  //Need to figure out a decent way to load images
-  var image = new Image(500,500);
-  var character = new Image(350,350);
-  image.src = "./assets/" + this.background.image;
-  character.src="./assets/" + this.character.image;
-  //Clear canvas and draw on the background and other images
   canvas.clearRect(0,0,canvas.width,canvas.height);
-  image.onload = function(){
-    canvas.drawImage(image,0,0);
-  }
-  character.onload = function(){
-    canvas.drawImage(character, 200, 0);
-  }
-  //Assign the text for the puzzle to the page
-  //this.question_id.innerHTML = this.problem;
+  var assets = [this.character]
+  this.prototype.drawBackground(canvas_id, this.background, assets);
   this.text_id.innerHTML = this.story_text;
 }
 
 PUZZLES.Puzzle_3 = function(problem_number, question_id, text_id, problem_info){
   PUZZLES.Puzzle.call(this,problem_number, question_id, text_id, problem_info);
+  this.prototype= PUZZLES.Puzzle.prototype;
   this.shuffled = generate_random_chars(10);
   var str = problem_info.answer.split('');
   this.answer_length = str.length;
@@ -201,23 +215,16 @@ PUZZLES.Puzzle_3.prototype.generate_puzzle = function(canvas_id, grid){
 
 PUZZLES.Puzzle_3.prototype.display = function(canvas_id){
   var canvas = $("#"+canvas_id)[0].getContext('2d');
-  //Need to figure out a decent way to load images
-  var image = new Image(500,500);
-  var character = new Image(350,350);
-  image.src = "./assets/" + this.background.image;
-  character.src = "./assets/" + this.character.image;
-  //Clear canvas and draw on the background and other images
   canvas.clearRect(0,0,canvas.width,canvas.height);
-  image.onload = function(){
-    canvas.drawImage(image,0,0);
-  }
-  character.onload = function(){
-    canvas.drawImage(character, 200, 0);
-  }
+  var assets = [this.character]
+  this.prototype.drawBackground(canvas_id, this.background, assets);
+
   //Assign the text for the puzzle to the page
   //this.question_id.innerHTML = this.problem;
   this.text_id.innerHTML = this.story_text;
 }
+
+
 
 //Helper function to shuffle an array, particularly important for puzzle 2
 function shuffle_array(array) {

@@ -31,6 +31,8 @@ $(document).ready(function() {
 
   /* Retrieve our game from the database */
   socket.on("game_info", function(game_info){
+    //Reset the grid after each puzzle.
+    $("#canvas_grid").html("");
     var grid = [];
 
     for(var i = 0; i < grid_size; i++)
