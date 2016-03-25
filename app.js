@@ -5,10 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
-var fs = require('fs');
 var assert = require('assert');
 
 var db = require('./db'); //the database
+var version = require('./middlewares/version.js'); //middleware to get the version number
 
 var routes = require('./controllers/index');
 
@@ -30,15 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/create-account', express.static(path.join(__dirname, 'public')));
 
 //add version number as global middleware
-app.use(function (req, res, next) {
-	console.log("getting version number")
-	fs.readFile('./json/version.json', function (err, data) {
-		assert.equal(err, null);
-		var version = JSON.parse(data)["version-string"];
-		res.locals.version = version;
-		next()
-	});
-});
+app.use(version);
 
 app.use('/', routes);
 
