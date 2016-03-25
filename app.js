@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var fs = require('fs');
 var assert = require('assert');
 
 var db = require('./db'); //the database
@@ -27,6 +28,17 @@ app.use(session({secret: 'f4sBqkHDnX4xkRJBysiip1n4Fb6JqL', resave: false, saveUn
 app.use(express.static(path.join(__dirname, 'public')));
 //ensure that create-account/:type gets served static files
 app.use('/create-account', express.static(path.join(__dirname, 'public')));
+
+//add version number as global middleware
+app.use(function (req, res, next) {
+	console.log("getting version number")
+	fs.readFile('./json/version.json', function (err, data) {
+		assert.equal(err, null);
+		var version = JSON.parse(data)["version-string"];
+		res.locals.version = version;
+		next()
+	});
+});
 
 app.use('/', routes);
 
