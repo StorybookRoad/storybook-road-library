@@ -1,0 +1,51 @@
+extends layout
+
+head
+	block append scripts
+		script.
+			var type = '#{type}' //pass type variable to client-side javascript
+		script(type='text/javascript' src='javascripts/create_account.js')
+block content
+	form#create_form(action='create-account/submit' method='post')
+		#header
+			h1#header_text New Account
+			img#prof_pic(src='images/profile-photo-placeholder.jpg', alt='placeholder image')
+		#contact_input
+			|Email Address: 
+			input#email(type='text', name='email', required=true)
+			#email_warning
+		#username_password_input
+			|First Name:
+			input#fname(type='text', name='fname', required=true)
+			br
+			|Last Name: 
+			input#lname(type='text', name='lname', required=true)
+			br
+			|Password:
+			input#password(type='password', name='password', required=true)
+			br
+			|Confirm Password: 
+			input#confirm_password(type='password', required=true)
+			#password_warning
+		#role_input
+			input#role(type='hidden', name='role', value=type)
+			if type == "teacher"
+				|School: 
+				input#school(type='text', name='school', required=true)
+				br
+			if type == "student"
+				|School:
+				select#school(name='school' required=true)
+				br
+				|Teacher:
+				select#teacher(name='teacher' required=true)
+				br
+				|Class:
+				select#class(name='class' required=true)
+		#statement_box
+			|Personal Statement:
+			br
+			textarea#statement
+		#button_div
+			input#create_account(type='submit', value='Create Account')
+			button#cancel(type='button') Cancel
