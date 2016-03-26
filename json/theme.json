@@ -3,14 +3,8 @@
 		"name": "Fairytale",
 		"phrases": {
 			"beginning": [
-				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
-<<<<<<< HEAD
-				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place.",
-			"beginning"
-				""
-=======
+				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer.",
 				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
->>>>>>> 655f8093ccb881d06bf041c99a67db2d8042f38b
 			],
 			"middle": [
 				"#character needs to cross a river! Help them use the #answer to get across.",
