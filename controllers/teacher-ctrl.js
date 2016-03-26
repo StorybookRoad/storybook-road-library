@@ -6,6 +6,7 @@ var teacher = require('../models/teacher');
 var student = require('../models/student');
 var classModel = require('../models/class');
 var theme = require('../models/theme');
+
 var auth = require('../middlewares/auth');
 
 router.get('/', auth.authTeacher, function(req, res, next) {
@@ -74,6 +75,16 @@ router.post('/new-class', function(req, res, next) {
 	classModel.create(class_name, email, difficulty, themes, function(err, result) {
 		assert.equal(null, err);
 		res.send(result); //'SUCCESS' or 'CLASS_ALREADY_EXISTS'
+	});
+});
+
+//handle requests to update student difficulty
+router.post('/update-student-difficulty', function (req, res, next) {
+	var email = req.body.student;
+	var new_difficulty = req.body.difficulty;
+	student.updateDifficulty(email, new_difficulty, function (err, status) {
+		assert.equal(err, null);
+		res.send(status);
 	});
 });
 
