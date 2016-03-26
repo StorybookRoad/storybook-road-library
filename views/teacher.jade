@@ -8,7 +8,15 @@ block content
 	div#classes
 		button#new_class(type='button') New Class
 		form#new_class_form(action='teacher/new-class', method='post')
-			input(type='text', name='class_name', placeholder='Enter class name')
+			input(type='text', name='class_name', id='class_name', placeholder='Enter class name' required)
+			select(name='difficulty', id='difficulty')
+				option(value=1) Level One
+				option(value=2) Level Two
+				option(value=3) Level Three
+				option(value=4) Level Four
+				option(value=5) Level Five
+			h4 Choose available stories:
+			ul#themes_available
 			input(type='submit', value='Create Class')
 			button#hide_class_form(type='button') Hide
 		#warning

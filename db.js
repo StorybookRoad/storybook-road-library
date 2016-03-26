@@ -31,6 +31,19 @@ exports.save = function(collection, item, done) {
 	});
 }
 
+//function to update all database object defined by 'criteria'
+exports.update = function (collection, criteria, update_fields, done) {
+	var update = {
+		$set: update_fields //ensure that the document is not overwritten
+	};
+	var options = {
+		multi: true
+	};
+	state.db.collection(collection).update(criteria, update, options, function (err, count, status) {
+		done(err, status, count); //count is the last field to make it an optional parameter
+	});
+};
+
 //Function to find database objects
 //If a query or projection is not needed, they must be declared as 'undefined' in the function call
 exports.find = function(collection, query, projection, done) {

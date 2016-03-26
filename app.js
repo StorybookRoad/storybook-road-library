@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var assert = require('assert');
 
 var db = require('./db'); //the database
+var version = require('./middlewares/version.js'); //middleware to get the version number
 
 var routes = require('./controllers/index');
 
@@ -27,6 +28,9 @@ app.use(session({secret: 'f4sBqkHDnX4xkRJBysiip1n4Fb6JqL', resave: false, saveUn
 app.use(express.static(path.join(__dirname, 'public')));
 //ensure that create-account/:type gets served static files
 app.use('/create-account', express.static(path.join(__dirname, 'public')));
+
+//add version number as global middleware
+app.use(version);
 
 app.use('/', routes);
 
