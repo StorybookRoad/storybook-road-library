@@ -5,4 +5,8 @@ head
 		script(type='text/javascript', src='/javascripts/student-home.js')
 		
 block content
-	p #{user.fname} #{user.lname}'s home page.
+	div#story_div
+		p #{user.fname} #{user.lname}'s Stories:
+		ul#story_list
+		button#continue_button(type='button') Continue
+		button#new_story(type='button') New Story
