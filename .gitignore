@@ -1,5 +1,10 @@
-<<<<<<< HEAD
 /node_modules
-=======
-*/node_modules
->>>>>>> Puzzles
+/Visual Studio
+/obj
+*.dat
+*.dll
+*.suo
+*.tmp
+*.sln
+*.njsproj
+.gitattributes

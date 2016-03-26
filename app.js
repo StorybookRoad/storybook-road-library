@@ -3,10 +3,12 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 var assert = require('assert');
 
 var db = require('./db'); //the database
+var version = require('./middlewares/version.js'); //middleware to get the version number
 
 var routes = require('./controllers/index');
 
@@ -22,9 +24,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+//Might want to update our secret to use a file instead of being hard coded for git safety.
+app.use(session({secret: 'f4sBqkHDnX4xkRJBysiip1n4Fb6JqL', resave: false, saveUninitialized: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 //ensure that create-account/:type gets served static files
 app.use('/create-account', express.static(path.join(__dirname, 'public')));
+
+//add version number as global middleware
+app.use(version);
 
 app.use('/', routes);
 
