@@ -29,7 +29,7 @@ exports.getById = function(id, done) {
 
 exports.create = function(userData, done) {
 	if (userData.role !== 'teacher') return done(undefined, 'NOT_A_TEACHER');
-	user.create(userData, function(err, result) {
-		done(err, result);
+	user.create(userData, function(err, teacher, result) {
+		done(err, teacher);
 	});
 };

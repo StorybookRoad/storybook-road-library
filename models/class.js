@@ -13,8 +13,8 @@ exports.create = function(name, teacher, difficulty, themes, done) {
 				themes: themes
 			};
 			console.log(classObj);
-			db.save(collection, classObj, function(err, result) {
-				done(err, result);
+			db.save(collection, classObj, function(err, saved_class, result) {
+				done(err, saved_class);
 			});
 		}
 		else {

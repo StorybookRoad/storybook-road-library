@@ -56,12 +56,11 @@ $(document).ready(function() {
 				type: 'POST',
 				data: body,
 				success: function(response) {
-					if (response == 'SUCCESS') {
-						document.location.href = '/login';
-					}
-					else if (response == 'USER_ALREADY_EXISTS') {
+					if (response == 'USER_ALREADY_EXISTS') {
 						$('#email_warning').html("This email address is already in use.");
 					}
+					else
+						document.location.href = '/login';
 				}
 			});
 		}

@@ -47,8 +47,8 @@ exports.create = function(userData, done) {
 	classModel.get(userData.class, userData.teacher, function (err, result) {
 		if (err) return done(err, undefined);
 		userData.difficulty = result.difficulty;
-		user.create(userData, function (err, result) {
-			done(err, result);
+		user.create(userData, function (err, student, result) {
+			done(err, student);
 		});	
 	});
 };

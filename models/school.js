@@ -10,9 +10,8 @@ exports.create = function(name, done) {
 				name: name
 			};
 			
-			db.save(collection, school, function(err, result) {
-				if (err) return done(err, undefined);
-				done(undefined, 'SUCCESS');
+			db.save(collection, school, function(err, school, result) {
+				done(err, school);
 			});
 		}
 		else {
