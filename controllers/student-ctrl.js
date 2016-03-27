@@ -28,6 +28,16 @@ router.post('/new-story-request', function (req, res, next) {
 	});
 });
 
+//handle continue story request
+router.post('/continue-story', function (req, res, next) {
+	var story_id = req.body.story_id;
+	story.get(story_id, function (err, result) {
+		assert.equal(err, null);
+		req.session.story = result;
+		res.send('/game');
+	});
+});
+
 //handle request for themes
 router.post('/themes-request', function (req, res, next) {
 	var class_name = req.session.user.class;

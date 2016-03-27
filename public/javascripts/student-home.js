@@ -1,6 +1,20 @@
+var selected_story = null;
+
 $(document).ready(function () {
 	$('#new_story_form').hide();
 	update_story_list();
+
+	//handle story selection
+	$(document).on('click', '.story_item', function (event) {
+		selected_story = $(this).data('id');
+		$('#continue_button').prop('disabled', false);
+	});
+
+	$('#continue_button').click(function (event) {
+		$.post('/student/continue-story', { story_id: selected_story }, function (result) {
+			document.location.href = result;
+		});
+	});
 
 	//construct and reveal the new story form
 	$('#new_story').click(function (event) {
@@ -32,7 +46,7 @@ function update_story_list() {
 			for (item in result) {
 				var story = result[item];
 				$('#story_list').append($('<li>', {
-					text: story.words.character + "'s Story",
+					text: story.words.character + "'s Story - Progress: " + story.progress,
 					class: "story_item",
 					"data-id": story._id
 				}));

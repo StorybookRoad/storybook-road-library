@@ -20,6 +20,13 @@ exports.create = function (student, theme_name, difficulty, done) {
 	});
 };
 
+//function to get a story by id
+exports.get = function (id, done) {
+	db.findById(collection, id, undefined, function (err, story) { 
+		done(err, story);
+	});
+}
+
 //function to get all stories for a given student
 exports.getByStudent = function (student, done) {
 	db.find(collection, { student: student }, undefined, function (err, stories) { 

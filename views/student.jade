@@ -8,7 +8,7 @@ block content
 	div#story_div
 		p #{user.fname} #{user.lname}'s Stories:
 		ul#story_list
-		button#continue_button(type='button') Continue
+		button#continue_button(type='button' disabled) Continue
 		button#new_story(type='button') New Story
 	form#new_story_form(action='/student/new-story-request', method='post')
 		label(for='themes') Choose a story theme:
