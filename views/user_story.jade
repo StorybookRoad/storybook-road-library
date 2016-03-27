@@ -7,11 +7,11 @@ head
   block content
     p #{user.fname} #{user.lname}'s Story.
 
-    canvas(id="story_canvas", width=1024, length= 768)
+    canvas(id="story_canvas", width=1024, height= 768)
     table(id="canvas_grid")
 
     div(id="story_parts")
-      form(id="puzzle_status", method="post", action="/update_story")
+      form(id="puzzle_status")
         div(id="user_answer")
         input(type="submit", name="game_submit")
 

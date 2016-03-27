@@ -13,8 +13,8 @@ exports.create = function(name, teacher, difficulty, themes, done) {
 				themes: themes
 			};
 			console.log(classObj);
-			db.save(collection, classObj, function(err, result) {
-				done(err, result);
+			db.save(collection, classObj, function(err, saved_class, result) {
+				done(err, saved_class);
 			});
 		}
 		else {
@@ -25,7 +25,9 @@ exports.create = function(name, teacher, difficulty, themes, done) {
 
 exports.get = function(name, teacher, done) {
 	db.find(collection, {name: name, teacher: teacher}, undefined, function(err, result) {
-		done(err, result);
+		if (result == 'EMPTY_RESULT') return done(err, result);
+		for (class_obj in result) break; //there will only be one result, which is stored in result[class_obj]
+		done(err, result[class_obj]);
 	});
 };
 

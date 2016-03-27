@@ -20,8 +20,8 @@ exports.create = function(userData, done) {
 		crypto.encrypt(userData.password, function (err, hash) {
 			if (err) return done(err, undefined);
 			userData.password = hash;
-			db.save(collection, userData, function(result) {
-				done(undefined, 'SUCCESS');
+			db.save(collection, userData, function(err, user, result) {
+				done(err, user, result);
 			});	
 		});
 	}

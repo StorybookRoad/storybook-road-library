@@ -26,16 +26,16 @@ exports.get = function() {
 
 //function to put something into the database
 exports.save = function(collection, item, done) {
-	state.db.collection(collection).insertOne(item, function(err, result) {
-		done(err, result);
+	state.db.collection(collection).insertOne(item, function(err, item, result) {
+		done(err, item, result);
 	});
 }
 
 //Function to update something in the database
 //update info should be structured to use $set for standard data or $push for arrays
 exports.updateOne = function(collection, to_update, update_info, done){
-	state.db.collection(collection).updateOne(to_update, update_info, function(err, result){
-		done(err,result);
+	state.db.collection(collection).updateOne(to_update, update_info, function(err, item, result){
+		done(err, item, result);
 	});
 }
 //Handles updating by ID

@@ -9,14 +9,13 @@ exports.create = function(name, done) {
 			var school = {
 				name: name
 			};
-			
-			db.save(collection, school, function(err, result) {
-				if (err) return done(err, undefined);
-				done(undefined, 'SUCCESS');
+
+			db.save(collection, school, function(err, school, result) {
+				done(err, school);
 			});
 		}
 		else {
-			done(undefined, "SCHOOL_ALREADY_EXISTS");
+			done(undefined, "SCHOOL_ALREADY_EXISTS");	
 		}
 	});
 }

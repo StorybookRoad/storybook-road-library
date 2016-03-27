@@ -1,37 +1,14 @@
 var db = require('../db');
-var collection = 'story';
+var theme = require('./theme');
 
-//Retrieve all stories
-exports.all = function(done) {
-	db.find(collection, undefined, undefined, function(err, result) {
-		done(err, result);
-	});
+var STORY_LENGTH = 2 //the number of 'middle' phrases used to create the story
+
+//function to create a new story - the heavy lifting is done by generate_story()
+exports.create = function (student, theme, difficulty) {
+	var story = generate_story(student, theme, difficulty);
 };
 
-//Retrives all stories for a single user
-exports.get = function(user, done){
-  db.find(collection, {"user": user}, undefined, function(err, result){
-    done(err, result);
-  });
-}
+//helper function to generate a story
+function generate_story(student, theme, difficulty) {
 
-//Retrieves a single story by its story id
-exports.getById = function(id, done) {
-	db.findById(collection, id, undefined, function(err, result) {
-    for(story in result) break;
-		done(err, result[story]);
-	});
-};
-//May be possible to create a story using this model
-/*exports.create = function(userData, done) {
-	if (!userData.role == 'student') return done(undefined, 'NOT_A_STUDENT');
-	user.create(userData, function(err, result) {
-		done(err, result);
-	});
-};*/
-//Update a single stories status
-exports.updateById = function(id, to_update, done){
-  db.updateById(collection, id, to_update, done,function(err, result){
-    done(err, result)
-  });
 }

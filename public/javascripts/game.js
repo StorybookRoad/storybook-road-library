@@ -6,24 +6,87 @@ var grid_size = 10;
 function parse_puzzle(puzzle_data)
 {
   var puzzle;
-  switch (puzzle_data.puzzle_type)
+  switch (puzzle_data.puzzles)
   {
     case 1:
-      puzzle = new PUZZLES.Puzzle_1(puzzle_data.progress, "storytext", "user_answer", puzzle_data);
+      puzzle = new PUZZLES.Puzzle_1("storytext", "user_answer", puzzle_data);
       break;
     case 2:
-      puzzle = new PUZZLES.Puzzle_2(puzzle_data.progress, "storytext", "user_answer", puzzle_data);
+      puzzle = new PUZZLES.Puzzle_2("storytext", "user_answer", puzzle_data);
       break;
     case 3:
-      puzzle = new PUZZLES.Puzzle_3(puzzle_data.progress, "storytext", "user_answer", puzzle_data);
+      puzzle = new PUZZLES.Puzzle_3("storytext", "user_answer", puzzle_data);
       break;
   }
   return puzzle;
 }
 
-$(document).ready(function() {
+function load_puzzle(){
+  $.post('/user_story/retrieve_story', function(result){
 
-  //TODO: Update script to retrieve data from sessions
+    $("#canvas_grid").html("");
+    var grid = [];
+
+    for(var i = 0; i < grid_size; i++)
+    {
+      if(!grid[i]){
+        grid[i] = [];
+        $("#canvas_grid").append("<tr class=\"table_"+i+"\">");
+      }
+      for(var j = 0; j < grid_size; j++){
+        grid[i][j] = $("<td class=\"grid_square\"></td>");
+        $(".table_"+i).append(grid[i][j]);
+      }
+
+      $("#canvas_grid").append("</tr>");
+    }
+
+
+    $("#problem").blur(function(){
+      if($("#problem").val() == "" || $("#problem").val() == " "){
+        $("#problem").val(puzzle.shuffled);
+        $("#problem").css({"color": "gray"});
+      }
+      else {
+        $("#problem").css({"color":"black"})
+      }
+
+    });
+
+    console.log(result);
+    if(result == 'EMPTY_RESULT')
+      $("#user_answer").append("<p>There is nothing</p>");
+    //if(result ==)
+    else{
+      puzzle = parse_puzzle(result);
+      puzzle.generate_puzzle("story_canvas", grid);
+    }
+  });
+}
+
+$(document).ready(function() {
+  load_puzzle();
+
+  $("#puzzle_status").submit(function(event){
+    //Stop our form from being fully submitted
+    event.preventDefault();
+    $("#errors").html("");
+    var problem_value = $("#problem").val() || $("#problem").html();
+    if(problem_value != ""){
+      var problem =  {
+        "story_id": puzzle.story_instance_id,
+        "user_answer": problem_value
+      };
+
+      $.post("/user_story/update_story", problem, function(result){
+        if(result.message == "reload")
+          load_puzzle();
+      });
+    }
+    else{
+      $("#errors").html("THERE IS AN ERROR");
+    }
+  });
   /* Will need to maintain basic data about the game here */
   //Previously was {"puzzle_id": 2}
 
