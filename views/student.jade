@@ -10,3 +10,8 @@ block content
 		ul#story_list
 		button#continue_button(type='button') Continue
 		button#new_story(type='button') New Story
+	form#new_story_form(action='/student/new-story-request', method='post')
+		label(for='themes') Choose a story theme:
+		select#themes(name='theme')
+		input#new_story_submit(type='submit' value='Start This Story!')
+		button#cancel_new_story(type='button') Cancel

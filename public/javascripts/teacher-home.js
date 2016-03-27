@@ -61,7 +61,6 @@ $(document).ready(function() {
 					params.themes.push($(this).val());
 			});
 			params.themes = JSON.stringify(params.themes) //stringify to ensure correct post request
-			console.log(params);
 			$.post('teacher/new-class', params, function (result) {
 				if (result == 'CLASS_ALREADY_EXISTS') {
 					$('#warning').html('<p>A class with that name already exists</p>');
