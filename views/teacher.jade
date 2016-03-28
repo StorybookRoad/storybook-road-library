@@ -5,9 +5,9 @@ head
 		script(type='text/javascript', src='/javascripts/teacher-home.js')
 
 block content
-	div#classes
+	div#new_class_div
 		button#new_class(type='button') New Class
-		form#new_class_form(action='teacher/new-class', method='post')
+		form#new_class_form.option-collapsible(action='teacher/new-class', method='post')
 			input(type='text', name='class_name', id='class_name', placeholder='Enter class name' required)
 			select(name='difficulty', id='difficulty')
 				option(value=1) Level One
@@ -20,10 +20,16 @@ block content
 			input(type='submit', value='Create Class')
 			button#hide_class_form(type='button') Hide
 		#warning
-		//- user is a user object from the db
-		h3 #{user.fname} #{user.lname}'s Classes:
-		ul#class_list
-	div#class_content
-		div#class_stats
-		ul#student_list
-	div#student_info
+	div.row
+		div.col-md-4#classes
+			div.panel.panel-default
+				//- user is a user object from the db
+				div.panel-heading
+					h1.panel-title #{user.fname} #{user.lname}'s Classes:
+				ul#class_list.list-group
+		div.col-md-4#class_content
+			div.panel.panel-default
+				div#class_stats
+				ul#student_list.list-group
+		div.col-md-4
+			#student_info

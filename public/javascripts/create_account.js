@@ -1,4 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
+	//handle cancel button
+	$('#cancel').click(function (event) {
+		document.location.href = '/login';
+	});
+
 	//fill in student select fields
     if (type == 'student') {
 		//fill in school field

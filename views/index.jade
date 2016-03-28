@@ -1,5 +1,7 @@
 extends layout
 
 block content
-	h1 Welcome to Storybook Road!
-	button(type='button' onclick='window.location.href="./login"') Enter
+	h1.title.text-center 
+		strong Welcome to Storybook Road!
+	img.img-responsive.img-rounded.center-block(src='/images/storybook.jpg', alt='Storybook Road')
+	button.center-block.btn-lg.btn-primary(type='button' onclick='window.location.href="./login"') Enter

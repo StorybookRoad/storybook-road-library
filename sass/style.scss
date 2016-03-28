@@ -1,0 +1,107 @@
+@import "palette";
+@import "fonts";
+
+@mixin button-color($color, $border) {
+	background-color: $color;
+	border-color: $border;
+	&:hover {
+		background-color: darken($color, 5%);
+	}
+	&:focus {
+		outline:none;
+	}
+}
+
+@mixin drop-shadow {
+	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+}
+
+body, html {
+	height: 100%;
+}
+
+body {
+	display: table;
+	width: 100%;
+}
+
+.page-row {
+	display: table-row;
+	height: 1px;
+}
+
+.page-row-expanded {
+	height: 100%;
+}
+
+.footer-wrap {
+	position:static;
+	display: block;
+	margin-top: 5%;
+}
+
+.footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+}
+
+.btn-primary {
+	@include button-color($green, $grey);
+	border-radius: 5px;
+	border-style: solid;
+	border-width: thin;
+	margin: 5px;
+}
+
+.btn-large {
+	border-radius: 7px;
+}
+
+.form-primary {
+	@include drop-shadow;
+	margin-top: 3%;
+	padding-bottom: 5px;
+	border-radius: 12px;
+	font-size: 16px;
+	button, input {
+		margin-bottom: 8px;
+		padding: 2px;
+		border-radius: 5px;
+		font-size: 18px;
+		&:focus {
+			outline: none;
+		}
+	}
+	button, input[type=submit] {
+		@include button-color($teal, $grey);
+		width: 100%;
+		border-style: solid;
+		border-width: thin;
+	}
+	textarea {
+		resize: vertical;
+	}
+}
+
+.title {
+	margin-top: 4%;
+}
+
+.option-collapsible {
+	@include drop-shadow;
+	margin-top: 5px;
+	border-radius: 12px;
+	padding-bottom: 5px;
+	button {
+		font-size: 18px;
+		padding: 5px;
+	}
+	.close {
+		position: relative;
+		font-size: 30px;
+		&:focus {
+			outline: none;
+		}
+	}
+}

@@ -85,7 +85,7 @@ function update_class_list() {
 		else {
 			for (item in result) {
 				var class_name = result[item].name;
-				$('#class_list').append($('<li>').prop('class', 'class-li').html(class_name));
+				$('#class_list').append($('<li>').addClass('class-li list-group-item').html(class_name));
 			}
 		}
 	});	
@@ -110,7 +110,7 @@ function load_class_info(class_name) {
 				var student = result.student_list[item];
 				var name = student.fname + " " + student.lname;
 				var email = student.email;
-				$('#student_list').append($('<li>').data('email', email).prop('class', 'student').html(name));
+				$('#student_list').append($('<li>').data('email', email).addClass('student list-group-item').html(name));
 			}
 		}
 	});
@@ -124,7 +124,7 @@ function load_student_info(student_email) {
 			$('<div>', {
 				id: 'student_details',
 				text: result.fname + " " + result.lname + "'s information:"
-			}).append($('<ul>', {id: 'student_detail_list'})),
+			}).append($('<ul>', {id: 'student_detail_list'})).addClass('list-group'),
 			$('<div>', {
 				id: 'student_stats',
 				text: result.fname + "'s statistics will go here."
@@ -132,7 +132,7 @@ function load_student_info(student_email) {
 		);
 		//fill student details list
 		$('#student_detail_list').append(
-			$('<li>', { 'text': 'Puzzle difficulty level: ' + result.difficulty }).append(
+			$('<li>', { 'text': 'Puzzle difficulty level: ' + result.difficulty }).addClass('list-group-item').append(
 				$('<button>', {'class': 'plus_difficulty', 'data-student': result.email, 'data-difficulty': result.difficulty, 'text': '+'}),
 				$('<button>', {'class': 'minus_difficulty', 'data-student': result.email, 'data-difficulty': result.difficulty, 'text': '-'})
 			));

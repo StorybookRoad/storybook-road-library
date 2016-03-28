@@ -5,23 +5,20 @@ head
 		script(type='text/javascript', src='./javascripts/login.js')
 		
 block content
-	#title
-		h1 Storybook Road
-	#login
-		form#login_form
+	div.title
+		h1.text-center Storybook Road
+	div.row#login
+		form.col-md-4.col-md-offset-4.text-center.form-primary#login_form
 			h2 Login
-			input#email.login_input(type='text', name='email', placeholder='Email Address')
-			br
-			input#password.login_input(type='password', name='password', placeholder='Password', autocomplete='off')
-			br
+			input.form-control#email.login_input(type='text', name='email', placeholder='Email Address')
+			input.form-control#password.login_input(type='password', name='password', placeholder='Password', autocomplete='off')
 			#warning
-			br
 			input#login_button.login_input_button(type='submit', name='login', value='Login')
-			br
 			button#create_account_button.login_input_button(type='button') Create New Account
-		#account_type.type_div
-			#account_text.type_div
-				h3 Account Type:
-			#type_buttons.type_div
-				button#student.type_button(type='button') Student
-				button#teacher.type_button(type='button') Teacher
+	div.row
+		#account_type.col-md-4.col-md-offset-4.text-center.option-collapsible.type_div
+			button.close(type='button', aria-label="Close")
+				span(aria-hidden='true') &times;
+			h3.text-center Account Type:
+			button#student.btn-primary.type_button(type='button') Student
+			button#teacher.btn-primary.type_button(type='button') Teacher

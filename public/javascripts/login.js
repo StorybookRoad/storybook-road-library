@@ -1,17 +1,18 @@
 $(document).ready(function () {
 	$('#account_type').hide();
-	var typeIsShowing = false;
+
+	//show type div when new account button clicked
 	$('#create_account_button').click(function(e) {
-		e.preventDefault();
-		if (typeIsShowing) {
-			$('#account_type').hide();
-			typeIsShowing = false;
-		}
-		else {
-			$('#account_type').show();
-			typeIsShowing = true;
-		}
+		$('#account_type').show();
+		typeIsShowing = true;
 	});
+
+	//hid type div when 'x' is clicked
+	$('.close').click(function (event) {
+		$(this).parent().hide();
+	});
+
+	//handle new account request
 	$('.type_button').click(function(e) {
 		e.preventDefault();
 		var type = undefined;
