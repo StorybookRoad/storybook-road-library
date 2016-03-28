@@ -25,6 +25,9 @@ button, input[type=submit] {
   .option-collapsible .close {
     color: #FFFFFF; }
 
+.list-content .active {
+  background-color: #dd664c !important; }
+
 body {
   font-family: "Lato", sans-serif;
   font-weight: normal; }
@@ -65,17 +68,28 @@ body {
   bottom: 0;
   width: 100%; }
 
+.btn-inline {
+  margin-left: 3px;
+  margin-right: 3px; }
+
+.btn:focus {
+  outline: none !important; }
+
 .btn-primary {
   background-color: #7bbf47;
   border-color: #3b4d3c;
   border-radius: 5px;
   border-style: solid;
-  border-width: thin;
-  margin: 5px; }
+  border-width: thin; }
   .btn-primary:hover {
     background-color: #6faf3d; }
   .btn-primary:focus {
+    background-color: #639d36;
     outline: none; }
+  .btn-primary:disabled {
+    background-color: #3b4d3c; }
+    .btn-primary:disabled:hover {
+      background-color: #3b4d3c; }
 
 .btn-large {
   border-radius: 7px; }
@@ -102,12 +116,20 @@ body {
     .form-primary button:hover, .form-primary input[type=submit]:hover {
       background-color: #2da481; }
     .form-primary button:focus, .form-primary input[type=submit]:focus {
+      background-color: #289072;
       outline: none; }
+    .form-primary button:disabled, .form-primary input[type=submit]:disabled {
+      background-color: #3b4d3c; }
+      .form-primary button:disabled:hover, .form-primary input[type=submit]:disabled:hover {
+        background-color: #3b4d3c; }
   .form-primary textarea {
     resize: vertical; }
 
 .title {
   margin-top: 4%; }
+
+.list-content {
+  margin-top: 8%; }
 
 .option-collapsible {
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -116,11 +138,16 @@ body {
   padding-bottom: 5px; }
   .option-collapsible button {
     font-size: 18px;
-    padding: 5px; }
+    padding: 5px;
+    margin: 5px; }
   .option-collapsible .close {
     position: relative;
     font-size: 30px; }
-    .option-collapsible .close:focus {
-      outline: none; }
+
+.close:focus {
+  outline: none; }
+
+.tooltip {
+  min-width: 128px; }
 
 /*# sourceMappingURL=style.css.map */

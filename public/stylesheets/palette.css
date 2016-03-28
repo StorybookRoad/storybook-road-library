@@ -24,4 +24,7 @@ button, input[type=submit] {
   .option-collapsible .close {
     color: #FFFFFF; }
 
+.list-content .active {
+  background-color: #dd664c !important; }
+
 /*# sourceMappingURL=palette.css.map */

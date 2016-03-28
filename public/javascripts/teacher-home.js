@@ -1,29 +1,37 @@
-$(document).ready(function() {
-	$('#new_class_form').hide();
+$(document).ready(function () {
+	//initialize tooltip
+	$('[data-toggle="tooltip"]').tooltip();
+
+	//hide necessary elements
+	$('#class_panel').hide();
+	$('#student_info').hide();
+
 	//load class list
 	update_class_list();
 	
 	//load student list for selected class
 	$(document).on('click', '.class-li', function (e) {
+		$('.class-li').removeClass('active');
+		$(this).addClass('active');
 		load_class_info($(this).html());
 	});
 
 	//load student info for selected student
 	$(document).on('click', '.student', function (e) {
+		$('.student').removeClass('active');
+		$(this).addClass('active');
 		load_student_info($(this).data('email'));
 	});
 
 	//show class creation form
-	$('#new_class').click(function(e) {
-		$('#new_class_form').show();
+	$('#new_class').click(function (e) {
+		$('#warning').empty(); //clear out warning if necessary
+
 		//load available themes
 		load_themes();
-	});
-	
-	//hide class creation form
-	$('#hide_class_form').click(function(e) {
-		$('#warning').html(""); //clear out warning if necessary
-		$('#new_class_form').hide();		
+
+		//show modal
+		$('#new_class_modal').modal();
 	});
 
 	//handle incrementing student puzzle difficulty
@@ -48,7 +56,7 @@ $(document).ready(function() {
 	$('#new_class_form').submit(function(e) {
 		e.preventDefault();
 		if (!validate_checked($('#themes_available'))) {
-			$('#warning').html('<p>You must make at least one story available.</p>')
+			$('#warning').html('<h5>You must make at least one story available.</h5>')
 		}
 		else {
 			var params = {
@@ -63,11 +71,11 @@ $(document).ready(function() {
 			params.themes = JSON.stringify(params.themes) //stringify to ensure correct post request
 			$.post('teacher/new-class', params, function (result) {
 				if (result == 'CLASS_ALREADY_EXISTS') {
-					$('#warning').html('<p>A class with that name already exists</p>');
+					$('#warning').html('<h5>A class with that name already exists</h5>');
 				}
 				else {
 					update_class_list();
-					$('#new_class_form').hide();
+					$('#new_class_modal').hide();
 				}
 			});
 		}
@@ -85,7 +93,7 @@ function update_class_list() {
 		else {
 			for (item in result) {
 				var class_name = result[item].name;
-				$('#class_list').append($('<li>').addClass('class-li list-group-item').html(class_name));
+				$('#class_list').append($('<a>', {href: '#'}).addClass('class-li list-group-item').html(class_name));
 			}
 		}
 	});	
@@ -94,47 +102,75 @@ function update_class_list() {
 //helper function to load and display information about a class
 function load_class_info(class_name) {
 	if ($('#enrolled_header')) $('#enrolled_header').remove();
+	if ($('.class-panel-remove')) $('.class-panel-remove').remove();
 	$('#class_stats').empty();
 	$('#student_list').empty();
+	$('#student_info').hide();
 	$('#student_info').empty();
 	$.post('teacher/class-info-request', { class_name: class_name }, function (result) {
-		//load class stats
-		$('#class_stats').html(result.class_stats);
+		//load panel
+		$('#class_panel').show();
 		//load student list
 		if (result.student_list == 'EMPTY_RESULT') {
-			$('#student_list').append('No students are enrolled in this class');
+			$('#student_list').before($('<div>', { id: 'enrolled_header' }).addClass('panel-heading').append($(
+				'<h3>', { text: 'Enrolled Students:' }).addClass('panel-title')));
+			$('#student_list').before($('<div>').addClass('panel-body class-panel-remove').html('No students are enrolled in this class.'));
 		}
 		else {
-			$('#student_list').before($('<h4>', { id: 'enrolled_header',text: 'Enrolled Students:' }));
+			$('#student_list').before($('<div>', { id: 'enrolled_header'}).addClass('panel-heading').append($(
+				'<h3>', {text: 'Enrolled Students:' }).addClass('panel-title')));
 			for (item in result.student_list) {
 				var student = result.student_list[item];
 				var name = student.fname + " " + student.lname;
 				var email = student.email;
-				$('#student_list').append($('<li>').data('email', email).addClass('student list-group-item').html(name));
+				$('#student_list').append($('<a>', { href: '#' }).data('email', email).addClass('student list-group-item').html(name));
 			}
 		}
+		//load class stats
+		$('#class_panel').append(($('<div>').addClass('panel-heading class-panel-remove').html(
+			$('<h3>', { text: "Class Statistics" }).addClass('panel-title'))));
+		$('#class_panel').append($('<div>',{text: result.class_stats}).addClass('panel-body class-panel-remove'));
 	});
 }
 
 //helper function to load student info
 function load_student_info(student_email) {
 	$('#student_info').empty();
-	$.post('/teacher/student-info-request', {email: student_email}, function (result) {
+	$('#student_info').show();
+	$.post('/teacher/student-info-request', { email: student_email }, function (result) {
 		$('#student_info').append(
-			$('<div>', {
+			$('<div>').addClass('panel-heading').html(
+			$('<h3>', {
 				id: 'student_details',
-				text: result.fname + " " + result.lname + "'s information:"
-			}).append($('<ul>', {id: 'student_detail_list'})).addClass('list-group'),
-			$('<div>', {
-				id: 'student_stats',
-				text: result.fname + "'s statistics will go here."
-			})
-		);
+				text: result.fname + " " + result.lname + "'s Information:"
+			}).addClass('panel-title')));
+		$('#student_info').append(
+			$('<ul>', { id: 'student_detail_list' }).addClass('list-group'));
+		$('#student_info').append($('<div>').addClass('panel-heading').append(
+			$('<h3>', {text: result.fname + ' ' + result.lname + "'s Statistics"}).addClass('panel-title')));
+		$('#student_info').append($('<div>', {
+			id: 'student_stats',
+			text: result.fname + "'s statistics will go here."
+		}).addClass('panel-body'));
 		//fill student details list
 		$('#student_detail_list').append(
 			$('<li>', { 'text': 'Puzzle difficulty level: ' + result.difficulty }).addClass('list-group-item').append(
-				$('<button>', {'class': 'plus_difficulty', 'data-student': result.email, 'data-difficulty': result.difficulty, 'text': '+'}),
-				$('<button>', {'class': 'minus_difficulty', 'data-student': result.email, 'data-difficulty': result.difficulty, 'text': '-'})
+				$('<button>', {
+					'class': 'btn btn-primary btn-xs btn-inline pull-right minus_difficulty',
+					'data-student': result.email, 'data-difficulty': result.difficulty
+				}).append(
+					$('<span>', {
+						'class': 'glyphicon glyphicon-minus',
+						'aria-label': 'Decrement Difficulty', 'aria-hidden': 'true'
+					})),
+				$('<button>', {
+					'class': 'btn btn-primary btn-xs btn-inline pull-right plus_difficulty',
+					'data-student': result.email, 'data-difficulty': result.difficulty
+				}).append(
+					$('<span>', {
+						'class': 'glyphicon glyphicon-plus',
+						'aria-label': 'Increment Difficulty', 'aria-hidden': 'true'
+				}))
 			));
 		//disable difficulty buttons when appropriate
 		if (result.difficulty === '1') {
@@ -156,10 +192,11 @@ function load_themes() {
 			var theme_key = item;
 			$('#themes_available').append(
 				$('<li>').html(
+					$('<div>').addClass('checkbox').append(
 					$('<label>').html(
 						($('<input />').prop({ 'type': 'checkbox', 'name': theme_key, 'value': theme_key }))
 					).append(theme_name)
-				)
+				))
 			);
 		}
 	});

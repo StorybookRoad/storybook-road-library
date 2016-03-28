@@ -5,31 +5,44 @@ head
 		script(type='text/javascript', src='/javascripts/teacher-home.js')
 
 block content
-	div#new_class_div
-		button#new_class(type='button') New Class
-		form#new_class_form.option-collapsible(action='teacher/new-class', method='post')
-			input(type='text', name='class_name', id='class_name', placeholder='Enter class name' required)
-			select(name='difficulty', id='difficulty')
-				option(value=1) Level One
-				option(value=2) Level Two
-				option(value=3) Level Three
-				option(value=4) Level Four
-				option(value=5) Level Five
-			h4 Choose available stories:
-			ul#themes_available
-			input(type='submit', value='Create Class')
-			button#hide_class_form(type='button') Hide
-		#warning
+	div.modal.fade#new_class_modal
+		div.modal-dialog
+			div.modal-content
+				div.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true') &times;
+					h4.modal-title Add A Class
+				div.modal-body
+					form#new_class_form(action='teacher/new-class', method='post')
+						div.form-group
+							label(for='class_name') Class Name
+							input.form-control(type='text', name='class_name', id='class_name', placeholder='Enter class name' required)
+							label(for='difficulty') Default Puzzle Difficulty
+							select.form-control(name='difficulty', id='difficulty')
+								option(value=1) Level 1
+								option(value=2) Level 2
+								option(value=3) Level 3
+								option(value=4) Level 4
+								option(value=5) Level 5
+						hr
+						div.form-group
+							label(for='themes_available') Choose available stories:
+							ul.list-unstyled#themes_available
+						div.modal-footer
+							input.btn.btn-primary(type='submit', value='Create Class')
+					#warning
 	div.row
-		div.col-md-4#classes
+		div.col-md-4.list-content#classes
 			div.panel.panel-default
 				//- user is a user object from the db
 				div.panel-heading
-					h1.panel-title #{user.fname} #{user.lname}'s Classes:
-				ul#class_list.list-group
-		div.col-md-4#class_content
-			div.panel.panel-default
+					button.btn.btn-default.btn-xs.pull-right#new_class(type='button', aria-label='New Class', data-toggle='tooltip', data-trigger='hover', data-placement='right', title='Add New Class')
+						span.glyphicon.glyphicon-plus(aria-hidden='true')
+					h3.panel-title #{user.fname} #{user.lname}'s Classes:
+				div#class_list.list-group
+		div.col-md-4.list-content#class_content
+			div.panel.panel-default#class_panel
+				div#student_list.list-group
 				div#class_stats
-				ul#student_list.list-group
-		div.col-md-4
-			#student_info
+		div.col-md-4.list-content
+			div.panel.panel-default#student_info

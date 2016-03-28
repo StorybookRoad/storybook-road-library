@@ -1,17 +1,6 @@
 @import "palette";
 @import "fonts";
 
-@mixin button-color($color, $border) {
-	background-color: $color;
-	border-color: $border;
-	&:hover {
-		background-color: darken($color, 5%);
-	}
-	&:focus {
-		outline:none;
-	}
-}
-
 @mixin drop-shadow {
 	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 }
@@ -46,12 +35,22 @@ body {
 	width: 100%;
 }
 
+.btn-inline {
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.btn {
+	&:focus {
+		outline: none !important;
+	}
+}
+
 .btn-primary {
 	@include button-color($green, $grey);
 	border-radius: 5px;
 	border-style: solid;
 	border-width: thin;
-	margin: 5px;
 }
 
 .btn-large {
@@ -88,6 +87,10 @@ body {
 	margin-top: 4%;
 }
 
+.list-content {
+	margin-top: 8%;
+}
+
 .option-collapsible {
 	@include drop-shadow;
 	margin-top: 5px;
@@ -96,12 +99,20 @@ body {
 	button {
 		font-size: 18px;
 		padding: 5px;
+		margin: 5px;
 	}
 	.close {
 		position: relative;
 		font-size: 30px;
-		&:focus {
-			outline: none;
-		}
 	}
+}
+
+.close {
+	&:focus {
+		outline: none;
+	}
+}
+
+.tooltip {
+	min-width: 128px;
 }
