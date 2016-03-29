@@ -1,6 +1,9 @@
 $(document).ready(function () {
 	//initialize tooltip
 	$('[data-toggle="tooltip"]').tooltip();
+	
+	//initialize modal
+	$('#new_class_modal').modal({ show: false });
 
 	//hide necessary elements
 	$('#class_panel').hide();
@@ -30,7 +33,7 @@ $(document).ready(function () {
 		load_themes();
 
 		//show modal
-		$('#new_class_modal').modal();
+		$('#new_class_modal').modal('show');
 	});
 
 	//handle incrementing student puzzle difficulty
@@ -73,8 +76,8 @@ $(document).ready(function () {
 					$('#warning').html('<h5>A class with that name already exists</h5>');
 				}
 				else {
-					update_class_list();
-					$('#new_class_modal').hide();
+					update_class_list();					
+					$('#new_class_modal').modal('hide');
 				}
 			});
 		}

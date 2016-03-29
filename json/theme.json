@@ -12,7 +12,7 @@
 			"middle": [
 				"#character needs to cross a river! Help them use the #answer to get across.",
 				"A dragon is blocking the path! #character can only slay it with #answer.",
-				"The sun is down! #character can't see in the dark. Spell #answer"
+				"The sun is down! #character can't see in the dark. Spell #answer",
 				"A dragon is blocking the path! #character can only slay it with #answer."
 			],
 			"end": [
@@ -102,7 +102,6 @@
 				"nest",
 				"clover",
 				"tree"
-				"clover"
 			],
 			"level_2": [
 				"grass",
@@ -124,20 +123,20 @@
 	},
 
 	"western": {
-		"name": "Westward Expanation",
+		"name": "Westward Expansion",
 		"phrase": {
 			"beginning": [
-				"#character is moving toward the Pacific ocean with #supporting. Help #character find their way to their new home so they can build a #answer",
+				"#character is moving toward the Pacific ocean with #supporting. Help #character find their way to their new home so they can build a #answer"
 			],
 			"middle": [
 				"#supporting is looking for things to eat in the #place. Help #supporting find the #object and the base of the tree",
 				"#character is lost. Help them by through the wilderness by spelling #answer.",
 				"A tree has fallen! Spell #answer to move it out of the way!",
-				"The wagon is stuck, spell the #answer to get it moving!"
+				"The wagon is stuck, spell the #answer to get it moving!",
 				"The sun has gone down, spell #answer to help the explorers!"
 			],
 			"end": [
-				"#character and #supporting are almost there, but they need your help to find the #answer. They need a #answer to go in the right direction.",
+				"#character and #supporting are almost there, but they need your help to find the #answer. They need a #answer to go in the right direction."
 
 			]
 
@@ -179,7 +178,7 @@
 				"food",
 				"berries",
 				"mushrooms",
-				"corn,"
+				"corn",
 				"carrots",
 				"seeds"
 			],
