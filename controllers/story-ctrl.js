@@ -10,6 +10,7 @@ router.get('/', auth.authStudent, function(req, res, next) {
 });
 
 router.post('/retrieve_story', function(req, res, next){
+  console.log(req.session); 
   story.getById(req.session.story._id, function(err, result){
     var response = {};
     if(result == 'EMPTY_RESULT')

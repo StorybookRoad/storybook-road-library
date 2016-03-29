@@ -4,16 +4,12 @@
 		"phrases": {
 			"beginning": [
 				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
-				
 				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place.",
-				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer.",
-				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
 			],
 			"middle": [
 				"#character needs to cross a river! Help them use the #answer to get across.",
 				"A dragon is blocking the path! #character can only slay it with #answer.",
 				"The sun is down! #character can't see in the dark. Spell #answer"
-				"A dragon is blocking the path! #character can only slay it with #answer."
 			],
 			"end": [
 				"#character is almost at #place! But the king won't let #character through the gate. #character must give the king the #answer to be allowed in.",
@@ -102,7 +98,6 @@
 				"nest",
 				"clover",
 				"tree"
-				"clover"
 			],
 			"level_2": [
 				"grass",
@@ -133,7 +128,7 @@
 				"#supporting is looking for things to eat in the #place. Help #supporting find the #object and the base of the tree",
 				"#character is lost. Help them by through the wilderness by spelling #answer.",
 				"A tree has fallen! Spell #answer to move it out of the way!",
-				"The wagon is stuck, spell the #answer to get it moving!"
+				"The wagon is stuck, spell the #answer to get it moving!",
 				"The sun has gone down, spell #answer to help the explorers!"
 			],
 			"end": [
@@ -179,7 +174,7 @@
 				"food",
 				"berries",
 				"mushrooms",
-				"corn,"
+				"corn",
 				"carrots",
 				"seeds"
 			],
