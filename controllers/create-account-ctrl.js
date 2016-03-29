@@ -49,13 +49,13 @@ router.post('/submit', function(req, res, next) {
 	//check whether student or teacher
 	if (userData.role == 'teacher') {
 		teacher.create(userData, function(err, result) {
-			assert.equal(null, err);
+			assert.equal(err, null);
 			res.send(result); //SUCCESS or USER_ALREADY_EXISTS
 		});
 	}
 	else if (userData.role == 'student') {
 		student.create(userData, function(err, result) {
-			assert.equal(null, err);
+			assert.equal(err, null);
 			res.send(result); //SUCCESS or USER_ALREADY_EXISTS
 		});
 	}
