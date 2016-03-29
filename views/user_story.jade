@@ -2,6 +2,8 @@ extends layout
 
 head
   block append scripts
+    script.
+      var story = !{JSON.stringify(story)}
     script(type="text/javascript", src="/javascripts/puzzles.js")
     script(type="text/javascript", src="/javascripts/game.js")
   block content

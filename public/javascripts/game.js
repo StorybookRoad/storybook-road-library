@@ -1,12 +1,11 @@
-/* Create our globals */
-/*TO GET RID OF */
 var puzzle;
 var grid_size = 10;
 
 function parse_puzzle(puzzle_data)
 {
   var puzzle;
-  switch (puzzle_data.puzzles)
+  console.log(puzzle_data)
+  switch (puzzle_data.puzzles[puzzle_data.progress])
   {
     case 1:
       puzzle = new PUZZLES.Puzzle_1("storytext", "user_answer", puzzle_data);
@@ -22,46 +21,36 @@ function parse_puzzle(puzzle_data)
 }
 
 function load_puzzle(){
-  $.post('/user_story/retrieve_story', function(result){
+  $("#canvas_grid").html("");
+  var grid = [];
 
-    $("#canvas_grid").html("");
-    var grid = [];
-
-    for(var i = 0; i < grid_size; i++)
-    {
-      if(!grid[i]){
-        grid[i] = [];
-        $("#canvas_grid").append("<tr class=\"table_"+i+"\">");
-      }
-      for(var j = 0; j < grid_size; j++){
-        grid[i][j] = $("<td class=\"grid_square\"></td>");
-        $(".table_"+i).append(grid[i][j]);
-      }
-
-      $("#canvas_grid").append("</tr>");
+  for(var i = 0; i < grid_size; i++)
+  {
+    if(!grid[i]){
+      grid[i] = [];
+      $("#canvas_grid").append("<tr class=\"table_"+i+"\">");
+    }
+    for(var j = 0; j < grid_size; j++){
+      grid[i][j] = $("<td class=\"grid_square\"></td>");
+      $(".table_"+i).append(grid[i][j]);
     }
 
+    $("#canvas_grid").append("</tr>");
+  }
 
-    $("#problem").blur(function(){
-      if($("#problem").val() == "" || $("#problem").val() == " "){
-        $("#problem").val(puzzle.shuffled);
-        $("#problem").css({"color": "gray"});
-      }
-      else {
-        $("#problem").css({"color":"black"})
-      }
 
-    });
-
-    console.log(result);
-    if(result == 'EMPTY_RESULT')
-      $("#user_answer").append("<p>There is nothing</p>");
-    //if(result ==)
-    else{
-      puzzle = parse_puzzle(result);
-      puzzle.generate_puzzle("story_canvas", grid);
+  $("#problem").blur(function(){
+    if($("#problem").val() == "" || $("#problem").val() == " "){
+      $("#problem").val(puzzle.shuffled);
+      $("#problem").css({"color": "gray"});
     }
+    else {
+      $("#problem").css({"color":"black"})
+    }
+
   });
+  puzzle = parse_puzzle(story);
+  puzzle.generate_puzzle("story_canvas", grid);
 }
 
 $(document).ready(function() {

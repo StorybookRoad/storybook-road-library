@@ -6,20 +6,7 @@ var story = require('../models/user_story');
 var auth = require('../middlewares/auth');
 
 router.get('/', auth.authStudent, function(req, res, next) {
-    res.render('user_story', {user: req.session.user});
-});
-
-router.post('/retrieve_story', function(req, res, next){
-  story.getById(req.session.story._id, function(err, result){
-    var response = {};
-    if(result == 'EMPTY_RESULT')
-      response = {"ERROR": result};
-    else{
-      var current_problem = result.progress;
-      determine_problem_phrase(result, response);
-    }
-    res.send(response);
-  });
+    res.render('user_story', {user: req.session.user, story: req.session.story});
 });
 
 router.post('/update_story', function(req, res, next){
@@ -60,6 +47,8 @@ router.post('/update_story', function(req, res, next){
 });
 
 function determine_problem_phrase(result, response){
+  console.log("RESULT");
+  console.log(result);
   var progress = result.progress;
   console.log(result.phrases);
   if(progress >= result.phrases.answer.length)
