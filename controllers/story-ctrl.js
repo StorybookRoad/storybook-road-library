@@ -13,14 +13,15 @@ router.post('/update_story', function(req, res, next){
   //Process User information from the form, and then update the puzzle if needed
   var user_story = req.session.story;
   var story_id = user_story._id;
-  //WILL NEED TO BE READ FROM THE REQUEST DAMN IT
   var user_answer = req.body.user_answer;
+  console.log(story_id);
   //Retrieve the story from the database to check the answer.
   story.getById(story_id, function(err, result){
     assert.equal(null,err);
     //User correctly answered
+    console.log(result);
     var progress = result.progress;
-    if(user_answer == result.phrases.answer[progress]){
+    if(user_answer == result.words.answers[progress]){
       var update = {"$set": {"progress": progress + 1}};
 
       story.updateById(story_id, update, function(err, results){
@@ -47,10 +48,7 @@ router.post('/update_story', function(req, res, next){
 });
 
 function determine_problem_phrase(result, response){
-  console.log("RESULT");
-  console.log(result);
   var progress = result.progress;
-  console.log(result.phrases);
   if(progress >= result.phrases.answer.length)
   {
     response["finished"] = "Congratulations! You finished the story.";

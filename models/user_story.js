@@ -18,9 +18,7 @@ exports.get = function(user, done){
 //Retrieves a single story by its story id
 exports.getById = function(id, done) {
 	db.findById(collection, id, undefined, function(err, result) {
-		console.log(result);
-    for(story in result) break;
-		done(err, result[story]);
+		done(err, result);
 	});
 }
 

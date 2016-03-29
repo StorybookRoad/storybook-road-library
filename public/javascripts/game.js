@@ -1,10 +1,14 @@
-var puzzle;
+var puzzle = undefined;
 var grid_size = 10;
 
 function parse_puzzle(puzzle_data)
 {
   var puzzle;
-  console.log(puzzle_data)
+  if(puzzle_data.progress >= puzzle_data.phrases.length){
+    console.log("DONE");
+    $("#user_answer").html("Congratulations! You completed the story!");
+    return ;
+  }
   switch (puzzle_data.puzzles[puzzle_data.progress])
   {
     case 1:
@@ -22,6 +26,7 @@ function parse_puzzle(puzzle_data)
 
 function load_puzzle(){
   $("#canvas_grid").html("");
+  $(".backspace").remove();
   var grid = [];
 
   for(var i = 0; i < grid_size; i++)
@@ -50,7 +55,8 @@ function load_puzzle(){
 
   });
   puzzle = parse_puzzle(story);
-  puzzle.generate_puzzle("story_canvas", grid);
+  if(puzzle)
+    puzzle.generate_puzzle("story_canvas", grid);
 }
 
 $(document).ready(function() {
@@ -68,12 +74,18 @@ $(document).ready(function() {
       };
 
       $.post("/user_story/update_story", problem, function(result){
-        if(result.message == "reload")
+        if(result.message == "reload"){
+          story.progress++;
           load_puzzle();
+          console.log("RELOAD");
+        }
+        else{
+          $("#errors").html("Oops, it appears you have something wrong in your answer.");
+        }
       });
     }
     else{
-      $("#errors").html("THERE IS AN ERROR");
+      $("#errors").html("An error has occurred in the database");
     }
   });
   /* Will need to maintain basic data about the game here */

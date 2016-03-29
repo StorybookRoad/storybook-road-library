@@ -150,3 +150,68 @@ body {
 
 .tooltip {
   min-width: 128px; }
+
+  /* Coolors Exported Palette - coolors.co/f9e11c-7bbf47-dd664c-33b891-3b4d3c */
+/* Basic HTML Elements *
+
+/* IDs */
+#story_submit{
+  color: black;
+}
+#header {
+  font-family: Century Gothic, sans-serif; }
+
+#header h1 {
+  text-align: center; }
+
+#story_canvas {
+  height: 768px;
+  width: 1024px;
+  float: left; }
+
+#canvas_background {
+  background-color: #F1F1D4;
+  width: 100%; }
+
+#canvas_grid {
+  width: 1024px;
+  max-height: 768px;
+  margin: 0px;
+  font-size: 18px;
+  float: left;
+  position: absolute; }
+
+#canvas_grid table tr {
+  height: 76.8px; }
+
+#story_parts {
+  position: relative;
+  clear: both; }
+
+#user_answer {
+  font-family: Century Gothic, sans-serif; }
+
+#errors {
+  color: #dd664c; }
+
+/* Classes */
+.center_element {
+  width: 50%;
+  margin: auto; }
+
+.grid_square {
+  height: 76.8px; }
+
+.grid_square button {
+  font-size: 30.72px;
+  color: #DB24D0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none; }
+.backspace{
+  color:black;
+}
+/*# sourceMappingURL=user_story.css.map */
