@@ -12,9 +12,9 @@ for (var i = 1; i <= NUM_PUZZLES; i++)
 
 //function to create a new story - the heavy lifting is done by generate_story()
 exports.create = function (student, theme_name, difficulty, done) {
-	generate_story(student, theme_name, difficulty, function (err, story) { 
+	generate_story(student, theme_name, difficulty, function (err, story) {
 		if (err) return done(err, undefined);
-		db.save(collection, story, function (err, result) { 
+		db.save(collection, story, function (err, result) {
 			done(err, result);
 		});
 	});
@@ -22,14 +22,14 @@ exports.create = function (student, theme_name, difficulty, done) {
 
 //function to get a story by id
 exports.get = function (id, done) {
-	db.findById(collection, id, undefined, function (err, story) { 
+	db.findById(collection, id, undefined, function (err, story) {
 		done(err, story);
 	});
 }
 
 //function to get all stories for a given student
 exports.getByStudent = function (student, done) {
-	db.find(collection, { student: student }, undefined, function (err, stories) { 
+	db.find(collection, { student: student }, undefined, function (err, stories) {
 		done(err, stories);
 	});
 };
@@ -37,7 +37,7 @@ exports.getByStudent = function (student, done) {
 //helper function to generate a story
 function generate_story(student, theme_name, difficulty, done) {
 	var difficulty_str = "level_" + difficulty; //difficulty are stored in the format level_1, etc. in theme.json
-	
+
 	//story object
 	var story = {
 		student: student, //email of student
@@ -53,7 +53,7 @@ function generate_story(student, theme_name, difficulty, done) {
 		puzzles: [], //array of puzzle ids (must be in same order as phrases)
 		statistics: {} //to store statistics such as # of wrong answers, etc.
 	};
-	
+
 	//get the theme to populate the story object
 	theme.get(theme_name, function (err, theme_obj) {
 		if (err) return done(err, undefined);

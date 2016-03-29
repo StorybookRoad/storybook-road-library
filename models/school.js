@@ -9,7 +9,7 @@ exports.create = function(name, done) {
 			var school = {
 				name: name
 			};
-			
+
 			db.save(collection, school, function(err, school, result) {
 				done(err, school);
 			});

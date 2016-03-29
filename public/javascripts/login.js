@@ -13,6 +13,7 @@ $(document).ready(function () {
 	});
 
 	//handle new account request
+
 	$('.type_button').click(function(e) {
 		e.preventDefault();
 		var type = undefined;
@@ -20,7 +21,7 @@ $(document).ready(function () {
 			type = 'student';
 		else
 			type = 'teacher';
-		
+
 		//result should be the url of the create-account page with the correct type query
 		$.post('login/create-request', {type: type}, function(res) {
 			document.location.href = res.redirect;

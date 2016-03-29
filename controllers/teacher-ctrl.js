@@ -6,7 +6,6 @@ var teacher = require('../models/teacher');
 var student = require('../models/student');
 var classModel = require('../models/class');
 var theme = require('../models/theme');
-
 var auth = require('../middlewares/auth');
 
 router.get('/', auth.authTeacher, function(req, res, next) {

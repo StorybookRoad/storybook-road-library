@@ -5,10 +5,9 @@ $(document).ready(function () {
 	//hide necessary elements
 	$('#class_panel').hide();
 	$('#student_info').hide();
-
 	//load class list
 	update_class_list();
-	
+
 	//load student list for selected class
 	$(document).on('click', '.class-li', function (e) {
 		$('.class-li').removeClass('active');
@@ -51,11 +50,11 @@ $(document).ready(function () {
 			load_student_info(student);
 		});
 	});
-
 	//handle class creation form submission
 	$('#new_class_form').submit(function(e) {
 		e.preventDefault();
 		if (!validate_checked($('#themes_available'))) {
+
 			$('#warning').html('<h5>You must make at least one story available.</h5>')
 		}
 		else {
@@ -94,9 +93,10 @@ function update_class_list() {
 			for (item in result) {
 				var class_name = result[item].name;
 				$('#class_list').append($('<a>', {href: '#'}).addClass('class-li list-group-item').html(class_name));
+
 			}
 		}
-	});	
+	});
 }
 
 //helper function to load and display information about a class
@@ -119,6 +119,7 @@ function load_class_info(class_name) {
 		else {
 			$('#student_list').before($('<div>', { id: 'enrolled_header'}).addClass('panel-heading').append($(
 				'<h3>', {text: 'Enrolled Students:' }).addClass('panel-title')));
+
 			for (item in result.student_list) {
 				var student = result.student_list[item];
 				var name = student.fname + " " + student.lname;
@@ -197,6 +198,7 @@ function load_themes() {
 						($('<input />').prop({ 'type': 'checkbox', 'name': theme_key, 'value': theme_key }))
 					).append(theme_name)
 				))
+
 			);
 		}
 	});

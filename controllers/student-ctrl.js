@@ -55,8 +55,8 @@ router.post('/themes-request', function (req, res, next) {
 router.post('/stories-request', function (req, res, next) {
 	var student = req.session.user.email;
 	story.getByStudent(student, function (err, result) {
-		assert.equal(err, null);
 		res.send(result);
+		assert.equal(err, null);
 	});
 });
 

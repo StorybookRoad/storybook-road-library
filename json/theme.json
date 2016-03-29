@@ -3,11 +3,16 @@
 		"name": "Fairytale",
 		"phrases": {
 			"beginning": [
+				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
+				
+				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place.",
 				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer.",
 				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
 			],
 			"middle": [
 				"#character needs to cross a river! Help them use the #answer to get across.",
+				"A dragon is blocking the path! #character can only slay it with #answer.",
+				"The sun is down! #character can't see in the dark. Spell #answer"
 				"A dragon is blocking the path! #character can only slay it with #answer."
 			],
 			"end": [
@@ -21,6 +26,7 @@
 			"Queen Margot"
 		],
 		"supporting": [
+			"Tim the Toad",
 			"Time the Toad",
 			"Jordan the Jester"
 		],
@@ -35,7 +41,8 @@
 		"answers": {
 			"level_1": [
 				"sword",
-				"coin"
+				"coin",
+				"torch"
 			],
 			"level_2": [
 				"monster",
@@ -65,6 +72,8 @@
 			],
 			"middle": [
 				"At #place, #character finds a vicious predator! #character can only defeat the predator with the #answer.",
+				"#character and #supporting need to find something to eat. Help them find the #answer so they can continue their adventure!",
+				"It's time to go to sleep. Where should #character and #supporting sleep?",
 				"#character and #supporting need to find something to eat. Help them find the #answer so they can continue their adventure!"
 			],
 			"end": [
@@ -91,6 +100,8 @@
 		"answers": {
 			"level_1": [
 				"nest",
+				"clover",
+				"tree"
 				"clover"
 			],
 			"level_2": [
@@ -108,6 +119,79 @@
 			"level_5": [
 				"creature",
 				"mountain"
+			]
+		}
+	},
+
+	"western": {
+		"name": "Westward Expanation",
+		"phrase": {
+			"beginning": [
+				"#character is moving toward the Pacific ocean with #supporting. Help #character find their way to their new home so they can build a #answer",
+			],
+			"middle": [
+				"#supporting is looking for things to eat in the #place. Help #supporting find the #object and the base of the tree",
+				"#character is lost. Help them by through the wilderness by spelling #answer.",
+				"A tree has fallen! Spell #answer to move it out of the way!",
+				"The wagon is stuck, spell the #answer to get it moving!"
+				"The sun has gone down, spell #answer to help the explorers!"
+			],
+			"end": [
+				"#character and #supporting are almost there, but they need your help to find the #answer. They need a #answer to go in the right direction.",
+
+			]
+
+		},
+		"characters": [
+			"Charlo of the Salish",
+			"Elan of the Apache ",
+			"Jaya of the Cheyenne"
+		],
+		"supporting": [
+			"Rocky Raccoon",
+			"Oliver Otter",
+			"Claw Crow"
+		],
+		"places": [
+			"Grand Canyon",
+			"forest",
+			"marsh",
+			"Oregon Trail",
+			"Flathead Lake",
+			"Redrock Formations",
+			"Mississippi River"
+		],
+		"adjectives": [
+			"sloppy",
+			"messy",
+			"slimy",
+			"grimy",
+			"careless",
+			"clumsy"
+		],
+		"answers": {
+			"level_1": [
+				"cabin",
+				"lodge",
+				"teepee"
+			],
+			"level_2": [
+				"food",
+				"berries",
+				"mushrooms",
+				"corn,"
+				"carrots",
+				"seeds"
+			],
+			"level_3": [
+				"wheel",
+				"shovel",
+				"pickaxe",
+				"saw",
+				"rope",
+				"lattern",
+				"canvas",
+				"blanket"
 			]
 		}
 	}
