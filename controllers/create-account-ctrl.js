@@ -51,12 +51,14 @@ router.post('/submit', function(req, res, next) {
 		teacher.create(userData, function(err, result) {
 			assert.equal(err, null);
 			res.send(result); //SUCCESS or USER_ALREADY_EXISTS
+
 		});
 	}
 	else if (userData.role == 'student') {
 		student.create(userData, function(err, result) {
 			assert.equal(err, null);
 			res.send(result); //SUCCESS or USER_ALREADY_EXISTS
+
 		});
 	}
 });

@@ -11,7 +11,6 @@ var state = {
 //function to connect to the db
 exports.connect = function (done) {
 	if (state.db) return done(); //if the connection is already open return
-	
 	MongoClient.connect(URL, function(err, db) {
 		if (err) return done(err);
 		state.db = db;
@@ -44,6 +43,27 @@ exports.update = function (collection, criteria, update_fields, done) {
 	});
 };
 
+
+//Function to update something in the database
+//update info should be structured to use $set for standard data or $push for arrays
+exports.updateOne = function(collection, to_update, update_info, done){
+	state.db.collection(collection).updateOne(to_update, update_info, function(err, item, result){
+		done(err, item, result);
+	});
+}
+//Handles updating by ID
+exports.updateById = function(collection, id, update_info, done) {
+	var o_id = new ObjectID(id);
+	exports.updateOne(collection, {_id: o_id}, update_info, function(err, docs) {
+		done(err, docs);
+	});
+}
+//Mass update by to_update
+exports.update = function(collection, to_update, update_info, done){
+	state.db.collection(collection).update(to_update, update_info, function(err, result){
+		done(err,result);
+	});
+}
 //Function to find database objects
 //If a query or projection is not needed, they must be declared as 'undefined' in the function call
 exports.find = function(collection, query, projection, done) {

@@ -4,6 +4,7 @@ $(document).ready(function () {
 		document.location.href = '/login';
 	});
 
+$(document).ready(function() {
 	//fill in student select fields
     if (type == 'student') {
 		//fill in school field
@@ -28,7 +29,7 @@ $(document).ready(function () {
 				}
 				$('#teacher').prop('disabled', false);
 				$('#teacher').prop('selectedIndex', -1);
-			});	
+			});
 		});
 		//fill in class field
 		$('#teacher').change(function() {
@@ -51,7 +52,7 @@ $(document).ready(function () {
 			});
 		});
 	}
-	
+
 	//handle form submission
 	$('#create_form').submit(function(e) {
 		//check that passwords match
@@ -66,6 +67,7 @@ $(document).ready(function () {
 					}
 					else
 						document.location.href = '/login';
+
 				}
 			});
 		}

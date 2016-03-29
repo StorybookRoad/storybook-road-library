@@ -1,5 +1,6 @@
 $(document).ready(function () {
 	$('#account_type').hide();
+<<<<<<< HEAD
 
 	//show type div when new account button clicked
 	$('#create_account_button').click(function(e) {
@@ -13,6 +14,20 @@ $(document).ready(function () {
 	});
 
 	//handle new account request
+=======
+	var typeIsShowing = false;
+	$('#create_account_button').click(function(e) {
+		e.preventDefault();
+		if (typeIsShowing) {
+			$('#account_type').hide();
+			typeIsShowing = false;
+		}
+		else {
+			$('#account_type').show();
+			typeIsShowing = true;
+		}
+	});
+>>>>>>> puzzles
 	$('.type_button').click(function(e) {
 		e.preventDefault();
 		var type = undefined;

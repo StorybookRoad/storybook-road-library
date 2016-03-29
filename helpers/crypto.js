@@ -17,4 +17,3 @@ exports.compare = function(userPassword, password, callback) {
 		callback(undefined, same);
 	});
 }
-
