@@ -1,0 +1,30 @@
+extends layout
+
+head
+	block append scripts
+		script(type='text/javascript', src='/javascripts/student-home.js')
+		
+block content
+	div.row
+		div.col-md-4.col-md-offset-4.list-content
+			div#story_div.panel.panel-default
+				div.panel-heading
+					h3.panel-title #{user.fname} #{user.lname}'s Stories:
+				div#story_list.list-group
+				div.panel-footer
+					button.btn.btn-primary.btn-block#continue_button(type='button' disabled) Continue
+					button.btn.btn-primary.btn-block#new_story(type='button') New Story
+	div.modal.fade#new_story_modal
+		div.modal-dialog
+			div.modal-content
+				div.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true') &times;
+					h4.modal-title New Story
+				div.modal-body
+					form#new_story_form(action='/student/new-story-request', method='post')
+						div.form-group
+							label(for='themes') Choose a story theme:
+							select.form-control#themes(name='theme')
+						div.modal-footer
+							input.btn.btn-primary#new_story_submit(type='submit' value='Start This Story!')

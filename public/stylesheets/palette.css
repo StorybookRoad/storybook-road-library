@@ -1,0 +1,30 @@
+/* Coolors Exported Palette - coolors.co/f9e11c-7bbf47-dd664c-33b891-3b4d3c */
+body {
+  color: #3b4d3c; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #3b4d3c; }
+
+button, input[type=submit] {
+  color: #FFFFFF; }
+
+.form-primary {
+  background-color: #dd664c;
+  color: #FFFFFF; }
+  .form-primary h1, .form-primary h2, .form-primary h3, .form-primary h4, .form-primary h5, .form-primary h6 {
+    color: #FFFFFF; }
+  .form-primary input[type=text], .form-primary input[type=password] {
+    color: #3b4d3c; }
+
+.option-collapsible {
+  color: #FFFFFF;
+  background-color: #3b4d3c; }
+  .option-collapsible h1, .option-collapsible h2, .option-collapsible h3, .option-collapsible h4, .option-collapsible h5, .option-collapsible h6 {
+    color: #FFFFFF; }
+  .option-collapsible .close {
+    color: #FFFFFF; }
+
+.list-content .active {
+  background-color: #dd664c !important; }
+
+/*# sourceMappingURL=palette.css.map */

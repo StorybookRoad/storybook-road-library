@@ -1,0 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic|Lato:400,700,400italic|Open+Sans:400,400italic,700);
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: normal; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lora", serif;
+  font-weight: normal; }
+
+footer {
+  font-family: "Lato", sans-serif;
+  font-weight: normal; }
+
+button, input[type=submit] {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold; }
+
+/*# sourceMappingURL=fonts.css.map */

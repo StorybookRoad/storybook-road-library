@@ -1,0 +1,46 @@
+extends layout
+
+head
+	block append scripts
+		script.
+			var type = '#{type}' //pass type variable to client-side javascript
+		script(type='text/javascript' src='javascripts/create_account.js')
+block content
+	div.row
+		form.col-sm-12.col-md-8.col-md-offset-2.form-primary#create_form(action='create-account/submit' method='post')
+			div.form-group#header
+				h1.text-center#header_text New Account
+			div.form-group#username_password_input
+				|Email Address: 
+				input.form-control#email(type='text', name='email', required=true)
+				#email_warning
+				|Password:
+				input.form-control#password(type='password', name='password', required=true)
+				|Confirm Password: 
+				input.form-control#confirm_password(type='password', required=true)
+				#password_warning
+				|First Name:
+				input.form-control#fname(type='text', name='fname', required=true)
+				|Last Name: 
+				input.form-control#lname(type='text', name='lname', required=true)
+			hr
+			div.form-group#role_input
+				input#role(type='hidden', name='role', value=type)
+				if type == "teacher"
+					|School: 
+					input.form-control#school(type='text', name='school', required=true)
+				if type == "student"
+					|School:
+					select.form-control#school(name='school' required=true disabled)
+					|Teacher:
+					select.form-control#teacher(name='teacher' required=true disabled)
+					|Class:
+					select.form-control#class(name='class' required=true disabled)
+			hr
+			div.form-group#statement_box
+				|Personal Statement:
+				textarea.form-control#statement
+			hr
+			div.form-group.text-center#button_div
+				input#create_account(type='submit', value='Create Account')
+				button#cancel(type='button') Cancel

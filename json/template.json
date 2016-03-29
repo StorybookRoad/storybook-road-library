@@ -1,0 +1,52 @@
+{
+	"fairytale-1": {
+		"theme": "fairytale",
+		"difficulty": "level_1",
+		"description": "Fairytale - Level One"
+	},
+	"fairytale-2": {
+		"theme": "fairytale",
+		"difficulty": "level_2",
+		"description": "Fairytale - Level Two"
+	},
+	"fairytale-3": {
+		"theme": "fairytale",
+		"difficulty": "level_3",
+		"description": "Fairytale - Level Three"
+	},
+	"fairytale-4": {
+		"theme": "fairytale",
+		"difficulty": "level_4",
+		"description": "Fairytale - Level Four"
+	},
+	"fairytale-5": {
+		"theme": "fairytale",
+		"difficulty": "level_5",
+		"description": "Fairytale - Level Five"
+	},
+	"science-1": {
+		"theme": "science",
+		"difficulty": "level_1",
+		"description": "Science - Level One"
+	},
+	"science-2": {
+		"theme": "science",
+		"difficulty": "level_2",
+		"description": "Science - Level Two"
+	},
+	"science-3": {
+		"theme": "science",
+		"difficulty": "level_3",
+		"description": "Science - Level Three"
+	},
+	"science-4": {
+		"theme": "science",
+		"difficulty": "level_4",
+		"description": "Science - Level Four"
+	},
+	"science-5": {
+		"theme": "science",
+		"difficulty": "level_5",
+		"description": "Science - Level Five"
+	}
+}
