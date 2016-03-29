@@ -1,0 +1,11 @@
+var os = require('os');
+var cp = require('child_process');
+
+var platform = os.platform();
+
+if (platform == 'win32')
+	cp.exec('start mongod');
+else if (platform == 'darwin')
+	cp.exec('open -a Terminal.app $mongod');
+
+return;
