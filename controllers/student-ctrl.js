@@ -24,6 +24,7 @@ router.post('/new-story-request', function (req, res, next) {
 	story.create(email, theme, difficulty, function (err, result) {
 		assert.equal(err, null);
 		req.session.story = result;
+		console.log(req.session.story);
 		res.redirect('/user_story');
 	});
 });

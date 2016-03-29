@@ -2,8 +2,8 @@ var db = require('../db');
 var theme = require('./theme');
 var collection = 'story'
 
-var STORY_LENGTH = 2; //the number of 'middle' phrases used to create the story
-var NUM_PUZZLES = 4; //the total number of possible puzzles
+var STORY_LENGTH = 1; //the number of 'middle' phrases used to create the story
+var NUM_PUZZLES = 3; //the total number of possible puzzles
 
 //generate an array of the possible puzzle ids
 var puzzles = [];
@@ -61,6 +61,9 @@ function generate_story(student, theme_name, difficulty, done) {
 		story.phrases.push(choose_list_items(1, theme_obj.phrases.beginning));
 		//get middle phrases
 		var middles = choose_list_items(STORY_LENGTH, theme_obj.phrases.middle);
+		if(typeof middles == "string")
+			middles = [middles];
+		console.log(middles);
 		middles.forEach(function (phrase, i) { story.phrases.push(phrase) });
 		//get end phrase
 		story.phrases.push(choose_list_items(1, theme_obj.phrases.end));

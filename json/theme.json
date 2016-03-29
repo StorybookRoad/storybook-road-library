@@ -4,7 +4,7 @@
 		"phrases": {
 			"beginning": [
 				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
-				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place.",
+				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
 			],
 			"middle": [
 				"#character needs to cross a river! Help them use the #answer to get across.",
@@ -122,7 +122,7 @@
 		"name": "Westward Expanation",
 		"phrase": {
 			"beginning": [
-				"#character is moving toward the Pacific ocean with #supporting. Help #character find their way to their new home so they can build a #answer",
+				"#character is moving toward the Pacific ocean with #supporting. Help #character find their way to their new home so they can build a #answer"
 			],
 			"middle": [
 				"#supporting is looking for things to eat in the #place. Help #supporting find the #object and the base of the tree",
@@ -132,8 +132,7 @@
 				"The sun has gone down, spell #answer to help the explorers!"
 			],
 			"end": [
-				"#character and #supporting are almost there, but they need your help to find the #answer. They need a #answer to go in the right direction.",
-
+				"#character and #supporting are almost there, but they need your help to find the #answer. They need a #answer to go in the right direction."
 			]
 
 		},
