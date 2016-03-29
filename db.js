@@ -72,8 +72,10 @@ exports.find = function(collection, query, projection, done) {
 //function to find database objects by id
 exports.findById = function(collection, id, projection, done) {
 	var o_id = new ObjectID(id);
-	exports.find(collection, {_id: o_id}, projection, function(err, docs) {
-		done(err, docs);
+	exports.find(collection, { _id: o_id }, projection, function (err, docs) {
+		for (item in docs) break; //there will only be one doc returned
+		var doc = docs[item]; //get that doc
+		done(err, doc);
 	});
 }
 

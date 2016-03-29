@@ -51,7 +51,7 @@ function generate_story(student, theme_name, difficulty, done) {
 			answers: []
 		},
 		puzzles: [], //array of puzzle ids (must be in same order as phrases)
-		statistics: [] //to store statistics such as # of wrong answers, etc.
+		statistics: {} //to store statistics such as # of wrong answers, etc.
 	};
 	
 	//get the theme to populate the story object
@@ -86,11 +86,7 @@ function generate_story(student, theme_name, difficulty, done) {
 		story.phrases.forEach(function (phrase, i) {
 			var stat_key = "question_" + (i + 1);
 			var placeholder_text = "Placeholder statistics for question " + (i + 1);
-			story.statistics.push({
-				stat_key: {
-					placeholder: placeholder_text
-				}
-			});
+			story.statistics[stat_key] = { placeholder: placeholder_text };
 		});
 		done(undefined, story);
 	});
