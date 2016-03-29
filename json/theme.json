@@ -13,6 +13,7 @@
 				"#character needs to cross a river! Help them use the #answer to get across.",
 				"A dragon is blocking the path! #character can only slay it with #answer.",
 				"The sun is down! #character can't see in the dark. Spell #answer"
+				"A dragon is blocking the path! #character can only slay it with #answer."
 			],
 			"end": [
 				"#character is almost at #place! But the king won't let #character through the gate. #character must give the king the #answer to be allowed in.",
@@ -26,6 +27,7 @@
 		],
 		"supporting": [
 			"Tim the Toad",
+			"Time the Toad",
 			"Jordan the Jester"
 		],
 		"places": [
@@ -71,7 +73,8 @@
 			"middle": [
 				"At #place, #character finds a vicious predator! #character can only defeat the predator with the #answer.",
 				"#character and #supporting need to find something to eat. Help them find the #answer so they can continue their adventure!",
-				"It's time to go to sleep. Where should #character and #supporting sleep? "
+				"It's time to go to sleep. Where should #character and #supporting sleep?",
+				"#character and #supporting need to find something to eat. Help them find the #answer so they can continue their adventure!"
 			],
 			"end": [
 				"#character has finally reached #place with #supporting. However, they can't get past the bees! They need the #answer to drive the bees away.",
@@ -99,6 +102,7 @@
 				"nest",
 				"clover",
 				"tree"
+				"clover"
 			],
 			"level_2": [
 				"grass",
@@ -190,6 +194,5 @@
 				"blanket"
 			]
 		}
-
 	}
 }
