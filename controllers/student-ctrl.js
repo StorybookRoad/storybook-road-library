@@ -60,9 +60,4 @@ router.post('/stories-request', function (req, res, next) {
 	});
 });
 
-//handle request to create a new story
-router.post('/new-story-request', function (req, res, next) { 
-	var student = req.session.email;
-});
-
 module.exports = router;

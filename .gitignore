@@ -1,12 +1,4 @@
 /node_modules
-<<<<<<< HEAD
-*.dat
-*.njsproj
-*.sln
-*.suo
-/obj
-*.dll
-=======
 /Visual Studio
 /obj
 *.dat
@@ -17,4 +9,3 @@
 *.njsproj
 .gitattributes
 .commit
->>>>>>> express_gen
