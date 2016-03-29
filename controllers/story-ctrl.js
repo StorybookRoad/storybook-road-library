@@ -5,18 +5,8 @@ var assert = require('assert');
 var story = require('../models/user_story');
 var auth = require('../middlewares/auth');
 
-router.get('/', function(req, res, next) {
-  if(req.session.story == undefined){
-    story.getById("56f73e441bb4275b616cac9d", function(err, result){
-      req.session.story = result;
-      res.render('user_story', {user: req.session.user});
-    });
-  }
-  else{
-    console.log(req.session.story);
+router.get('/', auth.authStudent, function(req, res, next) {
     res.render('user_story', {user: req.session.user});
-  }
-
 });
 
 router.post('/retrieve_story', function(req, res, next){

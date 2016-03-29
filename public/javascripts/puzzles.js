@@ -39,6 +39,26 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
   this.display  = function(canvas_id){
     var canvas = $("#"+canvas_id)[0].getContext('2d');
     canvas.clearRect(0,0,canvas.width,canvas.height);
+
+
+    for(var i = 0; i < this.images.length; i++)
+    {
+      var image = new Image();
+      image.src = this.images[i];
+
+      image.onerror = function(){
+
+      }
+
+      image.onload = function(canvas_id){
+        console.log("This is an image");
+
+        console.log(this);
+      }
+
+    }
+
+
     this.text_id.innerHTML = this.story_text;
   }
 }
