@@ -1,0 +1,152 @@
+/* Coolors Exported Palette - coolors.co/f9e11c-7bbf47-dd664c-33b891-3b4d3c */
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic|Lato:400,700,400italic|Open+Sans:400,400italic,700);
+body {
+  color: #3b4d3c; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #3b4d3c; }
+
+button, input[type=submit] {
+  color: #FFFFFF; }
+
+.form-primary {
+  background-color: #dd664c;
+  color: #FFFFFF; }
+  .form-primary h1, .form-primary h2, .form-primary h3, .form-primary h4, .form-primary h5, .form-primary h6 {
+    color: #FFFFFF; }
+  .form-primary input[type=text], .form-primary input[type=password] {
+    color: #3b4d3c; }
+
+.option-collapsible {
+  color: #FFFFFF;
+  background-color: #3b4d3c; }
+  .option-collapsible h1, .option-collapsible h2, .option-collapsible h3, .option-collapsible h4, .option-collapsible h5, .option-collapsible h6 {
+    color: #FFFFFF; }
+  .option-collapsible .close {
+    color: #FFFFFF; }
+
+.list-content .active {
+  background-color: #dd664c !important; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: normal; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lora", serif;
+  font-weight: normal; }
+
+footer {
+  font-family: "Lato", sans-serif;
+  font-weight: normal; }
+
+button, input[type=submit] {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold; }
+
+body, html {
+  height: 100%; }
+
+body {
+  display: table;
+  width: 100%; }
+
+.page-row {
+  display: table-row;
+  height: 1px; }
+
+.page-row-expanded {
+  height: 100%; }
+
+.footer-wrap {
+  position: static;
+  display: block;
+  margin-top: 5%; }
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%; }
+
+.btn-inline {
+  margin-left: 3px;
+  margin-right: 3px; }
+
+.btn:focus {
+  outline: none !important; }
+
+.btn-primary {
+  background-color: #7bbf47;
+  border-color: #3b4d3c;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: thin; }
+  .btn-primary:hover {
+    background-color: #6faf3d; }
+  .btn-primary:focus {
+    background-color: #639d36;
+    outline: none; }
+  .btn-primary:disabled {
+    background-color: #3b4d3c; }
+    .btn-primary:disabled:hover {
+      background-color: #3b4d3c; }
+
+.btn-large {
+  border-radius: 7px; }
+
+.form-primary {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  margin-top: 3%;
+  padding-bottom: 5px;
+  border-radius: 12px;
+  font-size: 16px; }
+  .form-primary button, .form-primary input {
+    margin-bottom: 8px;
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 18px; }
+    .form-primary button:focus, .form-primary input:focus {
+      outline: none; }
+  .form-primary button, .form-primary input[type=submit] {
+    background-color: #33b891;
+    border-color: #3b4d3c;
+    width: 100%;
+    border-style: solid;
+    border-width: thin; }
+    .form-primary button:hover, .form-primary input[type=submit]:hover {
+      background-color: #2da481; }
+    .form-primary button:focus, .form-primary input[type=submit]:focus {
+      background-color: #289072;
+      outline: none; }
+    .form-primary button:disabled, .form-primary input[type=submit]:disabled {
+      background-color: #3b4d3c; }
+      .form-primary button:disabled:hover, .form-primary input[type=submit]:disabled:hover {
+        background-color: #3b4d3c; }
+  .form-primary textarea {
+    resize: vertical; }
+
+.title {
+  margin-top: 4%; }
+
+.list-content {
+  margin-top: 8%;
+  font-size: 16px; }
+
+.option-collapsible {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  border-radius: 12px;
+  padding-bottom: 5px; }
+  .option-collapsible button {
+    font-size: 18px;
+    padding: 5px;
+    margin: 5px; }
+  .option-collapsible .close {
+    position: relative;
+    font-size: 30px; }
+
+.close:focus {
+  outline: none; }
+
+.tooltip {
+  min-width: 128px; }

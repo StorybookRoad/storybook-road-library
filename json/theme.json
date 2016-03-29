@@ -1,0 +1,195 @@
+{
+	"fairytale": {
+		"name": "Fairytale",
+		"phrases": {
+			"beginning": [
+				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
+				
+				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place.",
+				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer.",
+				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
+			],
+			"middle": [
+				"#character needs to cross a river! Help them use the #answer to get across.",
+				"A dragon is blocking the path! #character can only slay it with #answer.",
+				"The sun is down! #character can't see in the dark. Spell #answer"
+			],
+			"end": [
+				"#character is almost at #place! But the king won't let #character through the gate. #character must give the king the #answer to be allowed in.",
+				"#character has found #supporting! But the troll won't let #supporting go. #character has to scare away the troll with the #answer."
+			]
+		},
+		"characters": [
+			"Knight Lancealot",
+			"Princess Pollyanna",
+			"Queen Margot"
+		],
+		"supporting": [
+			"Tim the Toad",
+			"Jordan the Jester"
+		],
+		"places": [
+			"the Lonely Mountain",
+			"Castle Black"
+		],
+		"adjectives": [
+			"poor",
+			"brave"
+		],
+		"answers": {
+			"level_1": [
+				"sword",
+				"coin",
+				"torch"
+			],
+			"level_2": [
+				"monster",
+				"diamond"
+			],
+			"level_3": [
+				"scarecrow",
+				"throne"
+			],
+			"level_4": [
+				"cannon",
+				"voyage"
+			],
+			"level_5": [
+				"mountain",
+				"plantation"
+			]
+		}
+	},
+
+	"science": {
+		"name": "Science",
+		"phrases": {
+			"beginning": [
+				"#character is looking for a mate, and really likes #supporting. Help #character find the #answer to win the heart of #supporting",
+				"The family of #character has started their migration, and #character got left behind! Help #character and #supporting get on the right path by using #answer"
+			],
+			"middle": [
+				"At #place, #character finds a vicious predator! #character can only defeat the predator with the #answer.",
+				"#character and #supporting need to find something to eat. Help them find the #answer so they can continue their adventure!",
+				"It's time to go to sleep. Where should #character and #supporting sleep? "
+			],
+			"end": [
+				"#character has finally reached #place with #supporting. However, they can't get past the bees! They need the #answer to drive the bees away.",
+				"At the end of their journey, #character and #supporting found a sad bear. Help them cheer it up with the #answer!"
+			]
+		},
+		"characters": [
+			"Benny the Beatle",
+			"Lexi the Ladybug"
+		],
+		"supporting": [
+			"Andy the Ant",
+			"Franklin the Fly"
+		],
+		"places": [
+			"the Grand Anthill",
+			"the Snug Burrow"
+		],
+		"adjectives": [
+			"Squirmy",
+			"Slimy"
+		],
+		"answers": {
+			"level_1": [
+				"nest",
+				"clover",
+				"tree"
+			],
+			"level_2": [
+				"grass",
+				"creek"
+			],
+			"level_3": [
+				"twig",
+				"flower"
+			],
+			"level_4": [
+				"branch",
+				"vegetable"
+			],
+			"level_5": [
+				"creature",
+				"mountain"
+			]
+		}
+	},
+
+	"western": {
+		"name": "Westward Expanation",
+		"phrase": {
+			"beginning": [
+				"#character is moving toward the Pacific ocean with #supporting. Help #character find their way to their new home so they can build a #answer",
+			],
+			"middle": [
+				"#supporting is looking for things to eat in the #place. Help #supporting find the #object and the base of the tree",
+				"#character is lost. Help them by through the wilderness by spelling #answer.",
+				"A tree has fallen! Spell #answer to move it out of the way!",
+				"The wagon is stuck, spell the #answer to get it moving!"
+				"The sun has gone down, spell #answer to help the explorers!"
+			],
+			"end": [
+				"#character and #supporting are almost there, but they need your help to find the #answer. They need a #answer to go in the right direction.",
+
+			]
+
+		},
+		"characters": [
+			"Charlo of the Salish",
+			"Elan of the Apache ",
+			"Jaya of the Cheyenne"
+		],
+		"supporting": [
+			"Rocky Raccoon",
+			"Oliver Otter",
+			"Claw Crow"
+		],
+		"places": [
+			"Grand Canyon",
+			"forest",
+			"marsh",
+			"Oregon Trail",
+			"Flathead Lake",
+			"Redrock Formations",
+			"Mississippi River"
+		],
+		"adjectives": [
+			"sloppy",
+			"messy",
+			"slimy",
+			"grimy",
+			"careless",
+			"clumsy"
+		],
+		"answers": {
+			"level_1": [
+				"cabin",
+				"lodge",
+				"teepee"
+			],
+			"level_2": [
+				"food",
+				"berries",
+				"mushrooms",
+				"corn,"
+				"carrots",
+				"seeds"
+			],
+			"level_3": [
+				"wheel",
+				"shovel",
+				"pickaxe",
+				"saw",
+				"rope",
+				"lattern",
+				"canvas",
+				"blanket"
+			]
+		}
+
+	}
+}

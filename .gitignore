@@ -1,5 +1,18 @@
 <<<<<<< HEAD
 /node_modules
+<<<<<<< Updated upstream
 =======
 */node_modules
 >>>>>>> Puzzles
+=======
+/Visual Studio
+/obj
+*.dat
+*.dll
+*.suo
+*.tmp
+*.sln
+*.njsproj
+.gitattributes
+.commit
+>>>>>>> Stashed changes
