@@ -1,9 +1,9 @@
 {
 	"name": "storybook-road",
-	"version": "0.2",
+	"version": "0.2.0",
 	"private": true,
 	"scripts": {
-		"prestart":  "start mongod",
+		
 		"start": "node ./bin/www"
 	},
   "dependencies": {

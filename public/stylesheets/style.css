@@ -204,7 +204,11 @@ body {
 
 .grid_square button {
   font-size: 30.72px;
-  color: #DB24D0;
+  color: #5AC84F;
+  text-shadow: -1px -1px 0 #FFF,
+  1px -1px 0 #FFF,
+  -1px 1px 0 #FFF,
+  1px 1px 0 #FFF;
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;

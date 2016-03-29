@@ -19,22 +19,35 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
   this.adjective = problem_info.words.adjectives[progress % problem_info.words.adjectives.length]
   this.background = "/images/background.gif";
   this.images = [];
+  this.found = []
 
   //Parses through the tags in a phrase, and adds the need files to the images list
   this.parse_tags = function(){
-    this.images = [this.background];
+    this.images = [{"name":this.background, "x": 0, "y":0}];
     var regex = /(#[a-zA-Z0-9]+)/g;
     var matches = this.phrase.match(regex);
+    var offsetX = 0;
+    var offsetY = 0;
     for(var i = 0; i < matches.length; i++)
     {
       var prop_name = matches[i].substr(1,matches[i].length);
       if(prop_name == "answer")
         continue;
 
+      offsetX += 200;
+
+      if(offsetX >= 824)
+      {
+        offsetX = 0;
+        offsetY += 150;
+      }
       this.phrase = this.phrase.replace(matches[i], this[prop_name]);
       var image_name = this[prop_name].toLowerCase().split(" ").join("_");
-      this.images.push("/images/" + image_name + ".png");
-      this.images.push("/images/" + image_name + ".gif");
+      if(this.found.indexOf(image_name) == -1){
+        this.found.push(image_name);
+        this.images.push({"name":"/images/" + image_name + ".png", "x":offsetX, "y":offsetY});
+        this.images.push({"name": "/images/" + image_name + ".gif", "x":offsetX, "y":offsetY});
+      }
     }
   }
   /*CURRENTLY UNUSED */
@@ -68,32 +81,26 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
   this.display  = function(canvas_id){
     var canvas = $("#"+canvas_id)[0].getContext('2d');
     canvas.clearRect(0,0,canvas.width,canvas.height);
-
-    var offsetX = 0;
-    var currentY = 0
-    var offsetY = 0;
+    console.log(this.images);
     for(var i = 0; i < this.images.length; i++)
     {
       var image = new Image();
-      image.src = this.images[i];
-      this.images[i] = image;
+      console.log(this.images[i].name)
+      image.src = this.images[i].name;
+      var x = this.images[i].x;
+      var y = this.images[i].y;
+      image.setAttribute("x",x);
+      image.setAttribute("y",y);
+
       image.onerror = function(){
         this.ready = true;
       }
 
       image.onload = function(){
         this.ready = true;
-        canvas.drawImage(this, offsetX, currentY);
-        offsetX += offsetX + image.width;
-        offsetY = offsetY > image.height ? offsetY : image.height;
 
-        //Causes use to move down a row.
-        if(offsetX > 768)
-        {
-          curentX = 0;
-          currentY = offsetY;
-        }
-        window.setTimeout(function(){}, 500);
+        canvas.drawImage(this,this.getAttribute("x"),this.getAttribute("y"));
+
       }
     }
     this.text_id.innerHTML = this.phrase;

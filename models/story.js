@@ -63,7 +63,6 @@ function generate_story(student, theme_name, difficulty, done) {
 		var middles = choose_list_items(STORY_LENGTH, theme_obj.phrases.middle);
 		if(typeof middles == "string")
 			middles = [middles];
-		console.log(middles);
 		middles.forEach(function (phrase, i) { story.phrases.push(phrase) });
 		//get end phrase
 		story.phrases.push(choose_list_items(1, theme_obj.phrases.end));
