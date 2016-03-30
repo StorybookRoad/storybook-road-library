@@ -3,11 +3,21 @@ var cp = require('child_process');
 
 var platform = os.platform();
 
-if (platform == 'win32')
+if (platform == 'win32') 
+{
 	cp.exec('start mongod');
-else if (platform == 'darwin')
-	cp.exec('open -a Terminal.app $mongod');
-else if (platform == 'linux')
-	cp.exec('gnome-terminal -e "mongod"')
+	var cmd = cp.spawn('cmd', ['/c', 'start', '/b', 'mongod'], {detached: true});
+	cmd.unref();
+}
 
-return;
+else if (platform == 'darwin')
+{
+	cp.exec('open -a Terminal.app $mongod');
+}
+
+else if (platform == 'linux')
+{
+	cp.exec('gnome-terminal -e "mongod"')
+}
+
+process.exit();
