@@ -4,7 +4,7 @@
 		"phrases": {
 			"beginning": [
 				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
-				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
+				"Once upon a time, #character was #adjective but had a #adjective friend named #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
 			],
 			"middle": [
 				"#character needs to cross a river! Help them use the #answer to get across.",
@@ -19,42 +19,109 @@
 		"characters": [
 			"Knight Lancealot",
 			"Princess Pollyanna",
-			"Queen Margot"
+			"Queen Margot",
+			"King Copperfield",
+			"William Wizard",
+			"Oscar Ogre",
+			"Melissa Mage",
+			"Jorden Jester"
 		],
 		"supporting": [
 			"Tim the Toad",
-			"Time the Toad",
-			"Jordan the Jester"
+			"Peter Pig",
+			"Freddy Frog",
+			"Sid Sloth",
+			"Bernie Bluejay",
+			"Prickly Pete",
+			"Willy Warthog"
 		],
 		"places": [
 			"the Lonely Mountain",
-			"Castle Black"
+			"Castle Black",
+			"Muddy Moat",
+			"Misty Mountains",
+			"Rusty Riverbank",
+			"Tricky Tree",
+			"Creepy Cravas",
+			"Frozen Forest",
+			"Mossy Rock",
+			"Magic Nest",
+			"Fruit Field"
 		],
 		"adjectives": [
 			"poor",
-			"brave"
+			"brave",
+			"yummy",
+			"tasty",
+			"bitter",
+			"sour",
+			"salty",
+			"slimy",
+			"soft",
+			"hard",
+			"wet",
+			"dry",
+			"furry",
+			"boring",
+			"sad",
+			"happy",
+			"funny",
+			"mad"
 		],
 		"answers": {
 			"level_1": [
 				"sword",
 				"coin",
-				"torch"
+				"torch",
+				"pouch",
+				"flute",
+				"ring",
+				"cloak",
+				"rope",
+				"axe",
+				"stones",
+				"shield",
+				"gem",
+				"tooth",
+				"wand",
+				"apple",
+				"staff"	
+
 			],
 			"level_2": [
 				"monster",
-				"diamond"
+				"diamond",
+				"necklace",
+				"hatchet",
+				"feather",
+				"plume",
+				"glasses",
+				"chair",
+				"mirror"
 			],
 			"level_3": [
 				"scarecrow",
-				"throne"
+				"vulture",
+				"giant",
+				"caldron",
+				"lizard",
+				"scroll"
 			],
 			"level_4": [
 				"cannon",
-				"voyage"
+				"voyage",
+				"church",
+				"candle",
+				"raven",
+				"vampire"
 			],
 			"level_5": [
 				"mountain",
-				"plantation"
+				"plantation",
+				"beanstalk",
+				"parchment",
+				"hourglass",
+				"toadstool"
 			]
 		}
 	},
@@ -78,20 +145,53 @@
 			]
 		},
 		"characters": [
-			"Benny the Beatle",
-			"Lexi the Ladybug"
+			"Benny Beatle",
+			"Lexi Ladybug",
+			"Danny Dear",
+			""
 		],
 		"supporting": [
-			"Andy the Ant",
-			"Franklin the Fly"
+			"Andy Ant",
+			"Franklin Fly"
+			"Billy Bunny",
+			"Roger Rabbit",
+			"Morten Morse",
+			"Woddy Worm",
+			"Thomas Termite",
+			"Stacey Spider",
+			"Steven Stickbug",
+			"Gary Grasshopper",
+			"Felecia Frog",
+			"Lenny Lizard",
+			"Sarah Sunflower",
+			"Caleb Catapillar",
+			"Sandy Salamander",
+			"Benny Beetle"
 		],
 		"places": [
 			"the Grand Anthill",
-			"the Snug Burrow"
+			"the Snug Burrow",
+			"Tarnished Tunnel",
+			"Green Glen",
+			"Frozen Forest",
+			""
 		],
 		"adjectives": [
-			"Squirmy",
-			"Slimy"
+			"squirmy",
+			"slimy",
+			"sloppy",
+			"messy",
+			"cripsy",
+			"rusty",
+			"busy",
+			"lazy",
+			"careless",
+			"clumsy",
+			"nimble",
+			"brave",
+			"mighty",
+
+
 		],
 		"answers": {
 			"level_1": [
