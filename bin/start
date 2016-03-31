@@ -1,0 +1,16 @@
+﻿var os = require('os');
+var cp = require('child_process');
+
+var platform = os.platform();
+
+if (platform == 'win32' ) {
+	cp.exec('set PORT=3000 & node ./bin/www')
+}
+
+else if (platform == 'darwin') {
+	cp.exec('PORT = 3000 node ./bin/www');
+}
+
+else if (platform == 'linux') {
+	cp.exec('PORT = 80 node ./bin/www')
+}
