@@ -24,7 +24,8 @@
 			"William Wizard",
 			"Oscar Ogre",
 			"Melissa Mage",
-			"Jorden Jester"
+			"Jorden Jester",
+
 		],
 		"supporting": [
 			"Tim the Toad",
@@ -33,11 +34,15 @@
 			"Sid Sloth",
 			"Bernie Bluejay",
 			"Prickly Pete",
-			"Willy Warthog"
+			"Willy Warthog",
+
 		],
 		"places": [
 			"the Lonely Mountain",
 			"Castle Black",
+			"The Shire",
+			"Rivendell",
+			"Castle Greyskull",
 			"Muddy Moat",
 			"Misty Mountains",
 			"Rusty Riverbank",
@@ -46,7 +51,8 @@
 			"Frozen Forest",
 			"Mossy Rock",
 			"Magic Nest",
-			"Fruit Field"
+			"Fruit Field",
+
 		],
 		"adjectives": [
 			"poor",
@@ -66,7 +72,8 @@
 			"sad",
 			"happy",
 			"funny",
-			"mad"
+			"mad",
+
 		],
 		"answers": {
 			"level_1": [
@@ -85,7 +92,7 @@
 				"tooth",
 				"wand",
 				"apple",
-				"staff"	
+				"staff",
 
 			],
 			"level_2": [
@@ -97,7 +104,8 @@
 				"plume",
 				"glasses",
 				"chair",
-				"mirror"
+				"mirror",
+
 			],
 			"level_3": [
 				"scarecrow",
@@ -105,7 +113,8 @@
 				"giant",
 				"caldron",
 				"lizard",
-				"scroll"
+				"scroll",
+
 			],
 			"level_4": [
 				"cannon",
@@ -113,7 +122,8 @@
 				"church",
 				"candle",
 				"raven",
-				"vampire"
+				"vampire",
+
 			],
 			"level_5": [
 				"mountain",
@@ -121,7 +131,8 @@
 				"beanstalk",
 				"parchment",
 				"hourglass",
-				"toadstool"
+				"toadstool",
+
 			]
 		}
 	},
@@ -148,7 +159,7 @@
 			"Benny Beatle",
 			"Lexi Ladybug",
 			"Danny Dear",
-			""
+			
 		],
 		"supporting": [
 			"Andy Ant",
@@ -166,7 +177,8 @@
 			"Sarah Sunflower",
 			"Caleb Catapillar",
 			"Sandy Salamander",
-			"Benny Beetle"
+			"Benny Beetle",
+
 		],
 		"places": [
 			"the Grand Anthill",
@@ -174,7 +186,7 @@
 			"Tarnished Tunnel",
 			"Green Glen",
 			"Frozen Forest",
-			""
+			
 		],
 		"adjectives": [
 			"squirmy",
@@ -197,23 +209,28 @@
 			"level_1": [
 				"nest",
 				"clover",
-				"tree"
+				"tree",
+
 			],
 			"level_2": [
 				"grass",
-				"creek"
+				"creek",
+
 			],
 			"level_3": [
 				"twig",
-				"flower"
+				"flower",
+
 			],
 			"level_4": [
 				"branch",
-				"vegetable"
+				"vegetable",
+
 			],
 			"level_5": [
 				"creature",
-				"mountain"
+				"mountain",
+
 			]
 		}
 	},
@@ -244,7 +261,8 @@
 		"supporting": [
 			"Rocky Raccoon",
 			"Oliver Otter",
-			"Claw Crow"
+			"Claw Crow",
+
 		],
 		"places": [
 			"Grand Canyon",
@@ -253,7 +271,8 @@
 			"Oregon Trail",
 			"Flathead Lake",
 			"Redrock Formations",
-			"Mississippi River"
+			"Mississippi River",
+
 		],
 		"adjectives": [
 			"sloppy",
@@ -261,13 +280,15 @@
 			"slimy",
 			"grimy",
 			"careless",
-			"clumsy"
+			"clumsy",
+
 		],
 		"answers": {
 			"level_1": [
 				"cabin",
 				"lodge",
-				"teepee"
+				"teepee",
+
 			],
 			"level_2": [
 				"food",
@@ -275,7 +296,9 @@
 				"mushrooms",
 				"corn",
 				"carrots",
-				"seeds"
+				"seeds",
+				"fish",
+
 			],
 			"level_3": [
 				"wheel",
@@ -285,7 +308,8 @@
 				"rope",
 				"lattern",
 				"canvas",
-				"blanket"
+				"blanket",
+				
 			]
 		}
 	}
