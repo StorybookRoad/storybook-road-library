@@ -24,11 +24,6 @@
 		"difficulty": "level_5",
 		"description": "Fairytale - Level Five"
 	},
-	"fairytale-6": {
-			"theme": "fairytale",
-			"difficulty": "level_6",
-			"description": "Fairytale - Level Six"
-		},
 	"science-1": {
 		"theme": "science",
 		"difficulty": "level_1",
