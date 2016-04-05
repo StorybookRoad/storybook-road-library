@@ -1,7 +1,7 @@
 //the MongoDB client
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID; //for finding an object by id
-var URL = 'mongodb://localhost:27017/storybook_road';
+var URL = 'mongodb://storybookroad:pr1cklypete@ds015700.mlab.com:15700/storybookroad_db';
 
 //this stores the state of the database - currently only the database object but we may want to change that later
 var state = {
