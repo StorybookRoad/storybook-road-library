@@ -1,0 +1,24 @@
+
+undefined:29
+		],
+		^
+SyntaxError: Unexpected token ]
+    at Object.parse (native)
+    at /home/storybookroad/library/models/theme.js:35:21
+    at fs.js:268:14
+    at Object.oncomplete (fs.js:107:15)
+04 [0m30.851 ms - 1984[0m
+[0mGET /login [36m304 [0m44.567 ms - -[0m
+[0mGET /javascripts/login.js [36m304 [0m0.990 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.344 ms - -[0m
+[0mGET /login [36m304 [0m18.845 ms - -[0m
+[0mGET /javascripts/login.js [36m304 [0m0.622 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.533 ms - -[0m
+[0mGET /login [32m200 [0m21.329 ms - 2152[0m
+[0mGET /javascripts/login.js [32m200 [0m0.679 ms - 1190[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.270 ms - -[0m
+[0mPOST /login/login-request [32m200 [0m3015.868 ms - 43[0m
+[0mGET /teacher [32m200 [0m37.201 ms - 3038[0m
+[0mGET /javascripts/teacher-home.js [32m200 [0m0.845 ms - 7640[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.526 ms - -[0m
+[0mPOST /teacher/classes-request [32m200 [0m2.152 ms - 12[0m
