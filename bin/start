@@ -8,10 +8,9 @@ if (platform == 'win32' ) {
 }
 
 else if (platform == 'darwin') {
-
 	cp.exec('node ./bin/www');
 }
 
 else if (platform == 'linux') {
-	cp.exec('node ./bin/www')
+	cp.exec('node ./bin/www > ./logs/log.txt 2> ./logs/log.txt &')
 }
