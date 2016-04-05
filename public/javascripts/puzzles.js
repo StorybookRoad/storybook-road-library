@@ -98,9 +98,7 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
 
       image.onload = function(){
         this.ready = true;
-
         canvas.drawImage(this,this.getAttribute("x"),this.getAttribute("y"));
-
       }
     }
     this.text_id.innerHTML = this.phrase;
