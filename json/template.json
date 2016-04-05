@@ -24,6 +24,7 @@
 		"difficulty": "level_5",
 		"description": "Fairytale - Level Five"
 	},
+	"test": "test",
 	"science-1": {
 		"theme": "science",
 		"difficulty": "level_1",
