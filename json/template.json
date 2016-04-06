@@ -1,5 +1,5 @@
 {
-	"fairytale-1": {
+	"fairytale-1": { "test":"test",
 		"theme": "fairytale",
 		"difficulty": "level_1",
 		"description": "Fairytale - Level One"
