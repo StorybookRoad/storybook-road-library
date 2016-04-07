@@ -2,6 +2,7 @@
 	"fairytale": {
 		"name": "Fairytale",
 		"phrases": {
+
 			"beginning": [
 				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
 				"Once upon a time, #character was #adjective but had a #adjective friend named #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
@@ -12,8 +13,70 @@
 				"The sun is down! #character can't see in the dark. Spell #answer"
 			],
 			"end": [
-				"#character is almost at #place! But the king won't let #character through the gate. #character must give the king the #answer to be allowed in.",
-				"#character has found #supporting! But the troll won't let #supporting go. #character has to scare away the troll with the #answer."
+				{"phrase":"#character is almost at #place! But the king won't let #character through the gate. #character must give the king the #answer to be allowed in.",
+				"answers":{
+					"level_1": [
+						"sword",
+						"coin",
+						"torch",
+						"pouch",
+						"flute",
+						"ring",
+						"cloak",
+						"rope",
+						"axe",
+						"stones",
+						"shield",
+						"gem",
+						"tooth",
+						"wand",
+						"apple",
+						"staff"
+
+					],
+					"level_2": [
+						"monster",
+						"diamond",
+						"necklace",
+						"hatchet",
+						"feather",
+						"plume",
+						"glasses",
+						"chair",
+						"mirror"
+
+					],
+					"level_3": [
+						"scarecrow",
+						"vulture",
+						"giant",
+						"caldron",
+						"lizard",
+						"scroll"
+
+					],
+					"level_4": [
+						"cannon",
+						"voyage",
+						"church",
+						"candle",
+						"raven",
+						"vampire"
+
+					],
+					"level_5": [
+						"mountain",
+						"plantation",
+						"beanstalk",
+						"parchment",
+						"hourglass",
+						"toadstool"
+
+					]
+				}
+			},
+				
+				{"#character has found #supporting! But the troll won't let #supporting go. #character has to scare away the troll with the #answer."}
 			]
 		},
 		"characters": [
