@@ -1,6 +1,7 @@
 /node_modules
 /Visual Studio
 /obj
+/logs
 *.dat
 *.dll
 *.suo
