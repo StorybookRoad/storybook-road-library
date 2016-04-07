@@ -135,6 +135,17 @@
 				"toadstool"
 
 			]
+		},
+		"background": {
+			"image_name": "fairytale.gif",
+			"start_point": {
+				"x": 700, 
+				"y": 500
+			},
+			"end_point": {
+				"x": 1024,
+				"y": 768
+			}
 		}
 	},
 
