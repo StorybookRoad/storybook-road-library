@@ -244,6 +244,17 @@
 				"mountain"
 
 			]
+		},
+		"background": {
+			"image_name": "science.gif",
+			"start_point": {
+				"x": 772, 
+				"y": 112
+			},
+			"end_point": {
+				"x": 964,
+				"y": 284
+			}
 		}
 	},
 
@@ -323,6 +334,17 @@
 				"blanket"
 
 			]
+		},
+		"background": {
+			"image_name": "western.gif",
+			"start_point": {
+				"x": 396, 
+				"y": 192
+			},
+			"end_point": {
+				"x": 489,
+				"y": 221
+			}
 		}
 	}
 }
