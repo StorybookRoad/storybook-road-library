@@ -58,7 +58,7 @@ function generate_story(student, theme_name, difficulty, done) {
 	theme.get(theme_name, function (err, theme_obj) {
 		if (err) return done(err, undefined);
 		//get beginning phrase
-		story.phrases.push(choose_list_items(1, theme_obj.phrases.beginning));
+		story.phrases.push(choose_list_items(1, theme_obj.phrases.beginning).phrase);
 		//get middle phrases
 		var middles = choose_list_items(STORY_LENGTH, theme_obj.phrases.middle);
 		if(typeof middles == "string")
@@ -78,7 +78,8 @@ function generate_story(student, theme_name, difficulty, done) {
 		theme_obj.adjectives.forEach(function (adj, i) { story.words.adjectives.push(adj) });
 
 		//get answers at the correct difficulty level
-		theme_obj.answers[difficulty_str].forEach(function (answer, i) { story.words.answers.push(answer) });
+	//	theme_obj.answers[difficulty_str].forEach(function (answer, i) { story.words.answers.push(answer) });
+			
 
 		//generate puzzle numbers
 		var puzzle_list = choose_list_items(story.phrases.length, puzzles); //one puzzle for each phrase
