@@ -4,14 +4,193 @@
 		"phrases": {
 
 			"beginning": [
-				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
-				"Once upon a time, #character was #adjective but had a #adjective friend named #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
-			],
+				{"phrase":"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
+					"answers":{
+						"level_1": [
+							"rock",
+							"bow",
+							"axe"
+
+						],
+						"level_2": [
+							"mace",
+							"arrow",
+							"staff",
+							"whip"
+
+						],
+						"level_3": [
+							"spear",
+							"torch",
+							"wand"
+	
+						],
+						"level_4": [
+							"spell",
+							"jewels"
+
+						],
+
+						"level_5": [
+							"dagger",
+							"incantation",
+							"shield"
+						]
+					}
+				},
+
+				{"phrase":"Once upon a time, #character was #adjective but had a #adjective friend named #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place.",
+					"answers":{
+						"level_1": [
+							"cow",
+							"pig",
+							"cat",
+							"corn",
+							"frog"
+						],
+						"level_2": [
+							"horse",
+							"goat",
+							"beans",
+							"grapes",
+							"milk",
+
+						],
+						"level_3": [
+							"apples",
+							"sword",
+							"crown",
+							"arrows"
+
+						],
+						"level_4": [
+							"shield",
+							"unicorn",
+							"chicken"
+
+						],
+						"level_5": [
+							"caldron",
+							"potion",
+							"pumpkin",
+							"dolphin",
+							"porpois"
+
+						]
+					}
+				}
+				],
 			"middle": [
-				"#character needs to cross a river! Help them use the #answer to get across.",
-				"A dragon is blocking the path! #character can only slay it with #answer.",
-				"The sun is down! #character can't see in the dark. Spell #answer"
+				{"phrase":"#character needs to cross a river! Help them use the #answer to get across.",
+					"answers":{
+						"level_1": [
+							"boat",
+							"raft",
+							"rope",
+							"tree",
+							"oar"
+
+						],
+						"level_2": [
+							"horse",
+							"paddle",
+							"bridge",
+							"branch"
+
+						],
+						"level_3": [
+							"tower",
+							"hook",
+							"stones",
+							"swing",
+
+						],
+						"level_4": [
+							"dragon",
+							"unicorn",
+							"serpant"
+
+						],
+						"level_5": [
+							"grapple",
+							"potion",
+							"spell",
+							"dolphin",
+							"porpois"
+
+						]
+					}
+				},
+				{"phrase":"A dragon is blocking the path! #character can only slay it with #answer.",
+					"answers":{
+						"level_1": [
+							"rock",
+							"bow",
+							"axe"
+
+						],
+						"level_2": [
+							"mace",
+							"arrow",
+							"staff",
+							"whip"
+
+						],
+						"level_3": [
+							"spear",
+							"torch",
+							"wand"
+	
+						],
+						"level_4": [
+							"spell",
+							"jewels"
+
+						],
+
+						"level_5": [
+							"dagger",
+							"incantation",
+							"shield"
+						]
+					}
+				},
+				
+				{"phrase":"The sun is down! #character can't see in the dark. Spell #answer",
+					"answers":{
+						"level_1": [
+							"wand",
+							"gem",
+							"light"
+
+						],
+						"level_2": [
+							"candle",
+							"spell",
+							"moon",
+							"torch"
+
+						],
+						"level_3": [
+							"torch",
+							"wand"
+	
+						],
+						"level_4": [
+							"spell",
+							"jewels"
+
+						],
+
+						"level_5": [
+							"lantern",
+							"incantation",
+							"flashlight"
+						]
+					}
+				}
 			],
+
 			"end": [
 				{"phrase":"#character is almost at #place! But the king won't let #character through the gate. #character must give the king the #answer to be allowed in.",
 				"answers":{
@@ -76,9 +255,72 @@
 				}
 			},
 				
-				{"#character has found #supporting! But the troll won't let #supporting go. #character has to scare away the troll with the #answer."}
+				{"phrase":"#character has found #supporting! But the troll won't let #supporting go. #character has to scare away the troll with the #answer.",
+					"answers": {
+						"level_1": [
+							"sword",
+							"coin",
+							"torch",
+							"pouch",
+							"flute",
+							"ring",
+							"cloak",
+							"rope",
+							"axe",
+							"stones",
+							"shield",
+							"gem",
+							"tooth",
+							"wand",
+							"apple",
+							"staff"
+
+						],
+						"level_2": [
+							"monster",
+							"diamond",
+							"necklace",
+							"hatchet",
+							"feather",
+							"plume",
+							"glasses",
+							"chair",
+							"mirror"
+
+						],
+						"level_3": [
+							"scarecrow",
+							"vulture",
+							"giant",
+							"caldron",
+							"lizard",
+							"scroll"
+
+						],
+						"level_4": [
+							"cannon",
+							"voyage",
+							"church",
+							"candle",
+							"raven",
+							"vampire"
+
+						],
+						"level_5": [
+							"spear",
+							"dolphin",
+							"incantation",
+							"parchment",
+							"hourglass",
+							"toadstool"
+
+						]
+
+					}
+				}
 			]
 		},
+
 		"characters": [
 			"Knight Lancealot",
 			"Princess Pollyanna",
