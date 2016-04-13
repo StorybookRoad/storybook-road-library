@@ -5,7 +5,8 @@ var assert = require('assert');
 var story = require('../models/user_story');
 var auth = require('../middlewares/auth');
 
-router.get('/', auth.authStudent, function(req, res, next) {
+router.get('/', auth.authStudent, function (req, res, next) {
+	console.log("current story: " + req.session.story);
     res.render('user_story', {user: req.session.user, story: req.session.story});
 });
 

@@ -61,18 +61,19 @@ function generate_story(student, theme_name, difficulty, done) {
 		var temp_phrase = [];
 		// get beginning phrase
 		temp_phrase.push(choose_list_items(1, theme_obj.phrases.beginning));
-		story.phrases.push(temp_phrase[0]);
+		story.phrases.push(temp_phrase[0].phrase);
 		// get middle phrases
 		var middles = choose_list_items(STORY_LENGTH, theme_obj.phrases.middle);
-		if(typeof middles == "string")
+		if(typeof !Array.isArray(middles))
 			middles = [middles];
-		middles.forEach(function (phrase, i) {
+		middles.forEach(function (phrase) {
 			temp_phrase.push(phrase);
-			story.phrases.push(phrase);
+			story.phrases.push(phrase.phrase);
 		});
-		//get end phrase
+
+		// get end phrase
 		temp_phrase.push(choose_list_items(1, theme_obj.phrases.end));
-		story.phrases.push(temp_phrase[temp_phrase.length - 1]); // push the last item of temp_phrase to phrases
+		story.phrases.push(temp_phrase[temp_phrase.length - 1].phrase); // push the last item of temp_phrase to phrases
 
 		//get character and supporting
 		story.words.character = choose_list_items(1, theme_obj.characters);
@@ -86,7 +87,7 @@ function generate_story(student, theme_name, difficulty, done) {
 
 		//get answers at the correct difficulty level
 		temp_phrase.forEach(function (phrase) { 
-			story.words.answers.push(choose_list_item(1, phrase.answers));
+			story.words.answers.push(choose_list_items(1, phrase.answers[difficulty_str]));
 		});	
 
 		//generate puzzle numbers
@@ -105,7 +106,7 @@ function generate_story(student, theme_name, difficulty, done) {
 
 //helper function to choose a random item from a list
 function choose_list_items(amount, list) {
-	if (list.length < 2) throw "@param list must be an array";
+	if (!Array.isArray(list)) throw list + " must be an array";
 	if (amount > list.length) throw "amount must be less than or equal list length";
 	var used_indicies = [];
 	var chosen_items = [];
