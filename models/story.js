@@ -40,7 +40,7 @@ function generate_story(student, theme_name, difficulty, done) {
 
 	//story object
 	var story = {
-		theme: "",
+		theme: theme_name,
 		student: student, //email of student
 		progress: 0, //question # of current question
 		phrases: [], //array of phrases (one for each puzzle)
@@ -59,8 +59,7 @@ function generate_story(student, theme_name, difficulty, done) {
 	// get the theme to populate the story object
 	theme.get(theme_name, function (err, theme_obj) {
 		if (err) return done(err, undefined);
-		// get theme name
-		story.theme = theme_obj.name.toLowerCase();
+
 		// container to hold phrase objects
 		var temp_phrase = [];
 		// get beginning phrase
