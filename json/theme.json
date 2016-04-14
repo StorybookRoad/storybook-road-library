@@ -854,9 +854,108 @@
 				}
 			],
 			"middle": [
-				"#supporting is looking for things to eat in the #place. Help #supporting find the #object and the base of the tree",
-				"#character is lost. Help them by through the wilderness by spelling #answer.",
-				"A tree has fallen! Spell #answer to move it out of the way!",
+				{"phrase":"#supporting is looking for things to eat in the #place. Help #supporting find the #object and the base of the tree",
+					"answers":{
+						"level_1": [
+							"",
+							"",
+							"",
+							""
+
+						],
+						"level_2": [
+							"",
+							"",
+							""
+
+						],
+						"level_3": [
+							"",
+							"",
+							""
+						],
+						"level_4": [
+							"",
+							"",
+							""
+
+						],
+						"level_5": [
+							"",
+							"",
+							"",
+							""
+						]
+					}	
+				},
+				{"phrase":"#character is lost. Help them by through the wilderness by spelling #answer.",
+					"answers":{
+						"level_1": [
+							"",
+							"",
+							"",
+							""
+
+						],
+						"level_2": [
+							"",
+							"",
+							""
+
+						],
+						"level_3": [
+							"",
+							"",
+							""
+						],
+						"level_4": [
+							"",
+							"",
+							""
+
+						],
+						"level_5": [
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				},	
+				{"phrase":"A tree has fallen! Spell #answer to move it out of the way!",
+					"answers":{
+						"level_1": [
+							"",
+							"",
+							"",
+							""
+
+						],
+						"level_2": [
+							"",
+							"",
+							""
+
+						],
+						"level_3": [
+							"",
+							"",
+							""
+						],
+						"level_4": [
+							"",
+							"",
+							""
+
+						],
+						"level_5": [
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				},	
 				"The wagon is stuck, spell the #answer to get it moving!",
 				"The sun has gone down, spell #answer to help the explorers!"
 			],
