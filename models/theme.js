@@ -17,7 +17,6 @@ exports.getList = function (names, done) {
 	fs.readFile(themePath, function (err, data) {
 		if (err) return done(err, undefined);
 		var themes = JSON.parse(data);
-		console.log(themes);
 		var result = {};
 		names.forEach(function (arg, i) {
 			var theme = themes[arg];
