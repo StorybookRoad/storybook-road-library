@@ -990,10 +990,76 @@
 						]
 					}
 				},	
-				"The sun has gone down, spell #answer to help the explorers!"
+				{"phrase":"The sun has gone down, spell #answer to help the explorers!",
+					"answers":{
+						"level_1": [
+							"",
+							"",
+							"",
+							""
+
+						],
+						"level_2": [
+							"",
+							"",
+							""
+
+						],
+						"level_3": [
+							"",
+							"",
+							""
+						],
+						"level_4": [
+							"",
+							"",
+							""
+
+						],
+						"level_5": [
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}	
 			],
 			"end": [
-				"#character and #supporting are almost there, but they need your help to find the #answer. They need a #answer to go in the right direction."
+				{"phrase":"#character and #supporting are almost there, but they need your help to find the #answer. They need a #answer to go in the right direction.",
+					"answers":{
+						"level_1": [
+							"",
+							"",
+							"",
+							""
+
+						],
+						"level_2": [
+							"",
+							"",
+							""
+
+						],
+						"level_3": [
+							"",
+							"",
+							""
+						],
+						"level_4": [
+							"",
+							"",
+							""
+
+						],
+						"level_5": [
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				},	
 			]
 
 		},
