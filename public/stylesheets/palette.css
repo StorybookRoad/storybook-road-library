@@ -1,6 +1,16 @@
 /* Coolors Exported Palette - coolors.co/f9e11c-7bbf47-dd664c-33b891-3b4d3c */
+.table-wrapper {
+  background-color: #FFFFFF; }
+
+.panel {
+  border-color: rgba(51, 184, 145, 0.5); }
+  .panel .panel-heading {
+    border-color: rgba(51, 184, 145, 0.5);
+    background-color: rgba(51, 184, 145, 0.5); }
+
 body {
-  color: #3b4d3c; }
+  color: #3b4d3c;
+  background-color: #3b4d3c; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #3b4d3c; }

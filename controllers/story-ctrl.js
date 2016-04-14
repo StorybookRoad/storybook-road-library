@@ -6,7 +6,6 @@ var story = require('../models/user_story');
 var auth = require('../middlewares/auth');
 var fs = require('fs');
 router.get('/', auth.authStudent, function(req, res, next) {
-    console.log(req);
     res.render('user_story', {user: req.session.user, story: req.session.story});
 });
 

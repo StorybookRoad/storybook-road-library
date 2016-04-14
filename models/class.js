@@ -12,7 +12,6 @@ exports.create = function(name, teacher, difficulty, themes, done) {
 				difficulty: difficulty,
 				themes: themes
 			};
-			console.log(classObj);
 			db.save(collection, classObj, function(err, saved_class, result) {
 				done(err, saved_class);
 			});
