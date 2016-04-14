@@ -956,7 +956,40 @@
 						]
 					}
 				},	
-				"The wagon is stuck, spell the #answer to get it moving!",
+				{"phrase":"The wagon is stuck, spell the #answer to get it moving!",
+					"answers":{
+						"level_1": [
+							"",
+							"",
+							"",
+							""
+
+						],
+						"level_2": [
+							"",
+							"",
+							""
+
+						],
+						"level_3": [
+							"",
+							"",
+							""
+						],
+						"level_4": [
+							"",
+							"",
+							""
+
+						],
+						"level_5": [
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				},	
 				"The sun has gone down, spell #answer to help the explorers!"
 			],
 			"end": [
