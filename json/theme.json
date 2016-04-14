@@ -822,31 +822,29 @@
 					"answers":{
 						"level_1": [
 							"saw",
-							"nail",
-							"",
-							""
+							"rope",
+							"tar"
 						],
 						"level_2": [
-							"",
-							"",
-							""
+							"paint",
+							"nail",
+							"axe"
 
 						],
 						"level_3": [
-							"",
-							"",
-							""
+							"hammer",
+							"timber",
+							"thatch"
 						],
 						"level_4": [
-							"",
+							"whitewash",
 							"",
 							""
 
 						],
 						"level_5": [
-							"",
-							"",
-							"",
+							"chinking",
+							"sledgehammer",
 							""
 						]
 					}	
