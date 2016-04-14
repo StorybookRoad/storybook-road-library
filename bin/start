@@ -12,5 +12,5 @@ else if (platform == 'darwin') {
 }
 
 else if (platform == 'linux') {
-	cp.exec('node ./bin/www > ./logs/log.txt 2> ./logs/log.txt &')
+	cp.exec('nodemon ./bin/www > ./logs/log.txt 2> ./logs/log.txt &')
 }
