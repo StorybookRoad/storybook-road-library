@@ -54,18 +54,26 @@ function generate_story(student, theme_name, difficulty, done) {
 		statistics: {} //to store statistics such as # of wrong answers, etc.
 	};
 
-	//get the theme to populate the story object
+	// get the theme to populate the story object
 	theme.get(theme_name, function (err, theme_obj) {
 		if (err) return done(err, undefined);
-		//get beginning phrase
-		story.phrases.push(choose_list_items(1, theme_obj.phrases.beginning).phrase);
-		//get middle phrases
+		// container to hold phrase objects
+		var temp_phrase = [];
+		// get beginning phrase
+		temp_phrase.push(choose_list_items(1, theme_obj.phrases.beginning));
+		story.phrases.push(temp_phrase[0].phrase);
+		// get middle phrases
 		var middles = choose_list_items(STORY_LENGTH, theme_obj.phrases.middle);
-		if(typeof middles == "string")
+		if(typeof !Array.isArray(middles))
 			middles = [middles];
-		middles.forEach(function (phrase, i) { story.phrases.push(phrase) });
-		//get end phrase
-		story.phrases.push(choose_list_items(1, theme_obj.phrases.end));
+		middles.forEach(function (phrase) {
+			temp_phrase.push(phrase);
+			story.phrases.push(phrase.phrase);
+		});
+
+		// get end phrase
+		temp_phrase.push(choose_list_items(1, theme_obj.phrases.end));
+		story.phrases.push(temp_phrase[temp_phrase.length - 1].phrase); // push the last item of temp_phrase to phrases
 
 		//get character and supporting
 		story.words.character = choose_list_items(1, theme_obj.characters);
@@ -78,8 +86,9 @@ function generate_story(student, theme_name, difficulty, done) {
 		theme_obj.adjectives.forEach(function (adj, i) { story.words.adjectives.push(adj) });
 
 		//get answers at the correct difficulty level
-	//	theme_obj.answers[difficulty_str].forEach(function (answer, i) { story.words.answers.push(answer) });
-			
+		temp_phrase.forEach(function (phrase) { 
+			story.words.answers.push(choose_list_items(1, phrase.answers[difficulty_str]));
+		});	
 
 		//generate puzzle numbers
 		var puzzle_list = choose_list_items(story.phrases.length, puzzles); //one puzzle for each phrase
@@ -97,7 +106,7 @@ function generate_story(student, theme_name, difficulty, done) {
 
 //helper function to choose a random item from a list
 function choose_list_items(amount, list) {
-	if (list.length < 2) throw "@param list must be an array";
+	if (!Array.isArray(list)) throw list + " must be an array";
 	if (amount > list.length) throw "amount must be less than or equal list length";
 	var used_indicies = [];
 	var chosen_items = [];
