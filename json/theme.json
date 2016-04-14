@@ -818,14 +818,13 @@
 		"name": "Westward Expansion",
 		"phrase": {
 			"beginning": [
-				{"phrase":"#character is moving toward the Pacific ocean with #supporting. Help #character find their way to their new home so they can build a #answer",
+				{"phrase":"#character is moving toward the Pacific ocean with #supporting. Help #character build their new home by spelling #answer",
 					"answers":{
 						"level_1": [
-							"",
-							"",
+							"saw",
+							"nail",
 							"",
 							""
-
 						],
 						"level_2": [
 							"",
