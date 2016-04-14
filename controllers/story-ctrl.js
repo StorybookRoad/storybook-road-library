@@ -4,11 +4,11 @@ var router = express.Router();
 var assert = require('assert');
 var story = require('../models/user_story');
 var auth = require('../middlewares/auth');
-
-router.get('/', auth.authStudent, function (req, res, next) {
-	console.log("current story: " + req.session.story);
+var fs = require('fs');
+router.get('/', auth.authStudent, function(req, res, next) {
     res.render('user_story', {user: req.session.user, story: req.session.story});
 });
+
 
 router.post('/update_story', function(req, res, next){
   //Process User information from the form, and then update the puzzle if needed

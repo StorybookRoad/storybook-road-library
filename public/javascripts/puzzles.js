@@ -1,3 +1,4 @@
+
 /* Define our namespace for Puzzles */
 var PUZZLES = PUZZLES || {};
 /* Puzzle is an abstract class which describes the key components of a Puzzle */
@@ -8,7 +9,6 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
     this.phrase = "Congrats on finishing!";
     return;
   }
-
   var progress = problem_info.progress;
   this.phrase = problem_info.phrases[progress % problem_info.phrases.length];
   this.question_id = $("#" + question_id)[0];
@@ -25,6 +25,7 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
   this.parse_tags = function(){
     this.images = [{"name":this.background, "x": 0, "y":0}];
     var regex = /(#[a-zA-Z0-9]+)/g;
+    console.log(this.phrase);
     var matches = this.phrase.match(regex);
     var offsetX = 0;
     var offsetY = 0;
@@ -34,7 +35,7 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
       if(prop_name == "answer")
         continue;
 
-      offsetX += 200;
+      offsetX += 300;
 
       if(offsetX >= 824)
       {
@@ -46,61 +47,42 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
       if(this.found.indexOf(image_name) == -1){
         this.found.push(image_name);
         this.images.push({"name":"/images/" + image_name + ".png", "x":offsetX, "y":offsetY});
-        this.images.push({"name": "/images/" + image_name + ".gif", "x":offsetX, "y":offsetY});
       }
     }
   }
-  /*CURRENTLY UNUSED */
-  this.drawPuzzle = function(canvas_context){
-    var offsetX = 0;
-    var currentY = 0
-    var offsetY = 0;
-    for(var i = 1; i < this.images.length; i++)
-    {
-
-      canvas.drawImage(this, offsetX, currentY);
-      offsetX += offsetX + image.width;
-      offsetY = offsetY > image.height ? offsetY : image.height;
-
-      //Causes use to move down a row.
-      if(offsetX > 768)
-      {
-        curentX = 0;
-        currentY = offsetY;
-      }
-
-    }
-
-  }
-
   this.generate_puzzle = function(canvas_id, grid){
     //For now, ignore the grid
     this.display(canvas_id);
   }
 
   this.display  = function(canvas_id){
+    window.images = [];
     var canvas = $("#"+canvas_id)[0].getContext('2d');
     canvas.clearRect(0,0,canvas.width,canvas.height);
-    console.log(this.images);
     for(var i = 0; i < this.images.length; i++)
     {
-      var image = new Image();
-      console.log(this.images[i].name)
-      image.src = this.images[i].name;
-      var x = this.images[i].x;
-      var y = this.images[i].y;
-      image.setAttribute("x",x);
-      image.setAttribute("y",y);
+      if(this.images[i].name.indexOf("gif") != -1){
+        var image = new Image();
+        image.src = this.images[i].name;
+        $("#story_parts").before(image);
+        bookmarklet();
+        image.click();
 
-      image.onerror = function(){
-        this.ready = true;
       }
+      else{
+        var image = new Image();
+        image.src = this.images[i].name;
+        var x = this.images[i].x;
+        var y = this.images[i].y;
+        image.setAttribute("x",x);
+        image.setAttribute("y",y);
+        image.onerror = function(){
+          this.ready = true;
+        }
 
-      image.onload = function(){
-        this.ready = true;
-
-        canvas.drawImage(this,this.getAttribute("x"),this.getAttribute("y"));
-
+        image.onload = function(){
+          window.images.push(this);
+        }
       }
     }
     this.text_id.innerHTML = this.phrase;
@@ -111,19 +93,22 @@ PUZZLES.Puzzle_1 = function(question_id, text_id, problem_info)
 {
   //Make Puzzle_1 inherit from Puzzle
   PUZZLES.Puzzle.call(this, question_id, text_id, problem_info);
+  this.parse_tags();
   var shuffled_answer = shuffle_string(problem_info.words.answers[problem_info.progress]);
   /* make sure the string is actually shuffled */
+
   while(shuffled_answer == problem_info.words.answers[problem_info.progress]){
       shuffled_answer = shuffle_string(problem_info.words.answers[problem_info.progress]);
   }
   this.shuffled = shuffled_answer;
-  this.parse_tags();
+
   this.phrase = this.phrase.replace("#answer", "<input id=\"problem\" name=\"problem\" value=\""+shuffled_answer+"\"></input>");
   console.log(this.phrase)
 }
 
 PUZZLES.Puzzle_2 = function(question_id, text_id, problem_info){
   PUZZLES.Puzzle.call(this, question_id, text_id, problem_info);
+  this.parse_tags();
   //Generate 3 different shuffled words
   var possible_answers = [problem_info.words.answers[problem_info.progress]];
   var problems_to_generate = problem_info.words.answers[problem_info.progress].length > 3 ? 3 : problem_info.words.answers[problem_info.progress].length;
@@ -149,7 +134,7 @@ PUZZLES.Puzzle_2 = function(question_id, text_id, problem_info){
   }
   replace_string += "</select>"
   this.phrase = this.phrase.replace("#answer", replace_string);
-  this.parse_tags();
+
 }
 
 PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
