@@ -956,69 +956,71 @@
 						]
 					}
 				},	
-				{"phrase":"The wagon is stuck, spell the #answer to get it moving!",
+				{"phrase":"The wagon is stuck, help the explorers get it out! Spell #answer.",
 					"answers":{
 						"level_1": [
-							"",
-							"",
-							"",
-							""
+							"rock",
+							"saw",
+							"peg",
+							"jack"
 
 						],
 						"level_2": [
-							"",
-							"",
-							""
+							"lodge",
+							"cabin",
+							"canvas",
+							"chest"
 
 						],
 						"level_3": [
-							"",
-							"",
-							""
+							"blanket",
+							"wedge",
+							"rats",
+							"spare"
 						],
 						"level_4": [
-							"",
-							"",
-							""
+							"chisel",
+							"glass",
+							"cask"
 
 						],
 						"level_5": [
-							"",
-							"",
-							"",
-							""
+							"barrel",
+							"crate",
+							"raccoon",
+							"crossbow"
 						]
 					}
 				},	
-				{"phrase":"The sun has gone down, spell #answer to help the explorers!",
+				{"phrase":"The sun has gone down, help the explorers find their way through the dark! Spell #answer.",
 					"answers":{
 						"level_1": [
-							"",
-							"",
-							"",
-							""
+							"boots",
+							"jug",
+							"tea"
 
 						],
 						"level_2": [
-							"",
-							"",
-							""
+							"match",
+							"bone",
+							"hide"
 
 						],
 						"level_3": [
-							"",
-							"",
-							""
+							"arrow",
+							"lattern",
+							"helmet",
+							"maize"
 						],
 						"level_4": [
-							"",
-							"",
-							""
+							"matchbook",
+							"flashlight",
+							"headlamp"
 
 						],
 						"level_5": [
-							"",
-							"",
+							"flintlock",
+							"pistol",
 							"",
 							""
 						]
@@ -1026,37 +1028,45 @@
 				}	
 			],
 			"end": [
-				{"phrase":"#character and #supporting are almost there, but they need your help to find the #answer. They need a #answer to go in the right direction.",
+				{"phrase":"#character and #supporting are almost there but they need your help to go in the right direction! Spell #answer to figure it out!",
 					"answers":{
 						"level_1": [
-							"",
-							"",
-							"",
-							""
+							"map",
+							"north",
+							"south",
+							"east",
+							"west",
+							"southwest",
+							"northwest",
+							"southeast",
+							"northeast"
 
 						],
 						"level_2": [
-							"",
-							"",
-							""
+							"compass",
+							"lantern",
+							"shovel",
+							"rope"
 
 						],
 						"level_3": [
-							"",
-							"",
-							""
+							"spyglass",
+							"sextant",
+							"pickaxe",
+							"knife",
+							"candle"
 						],
 						"level_4": [
-							"",
-							"",
-							""
+							"sifter",
+							"firewood",
+							"torch"
 
 						],
 						"level_5": [
-							"",
-							"",
-							"",
-							""
+							"astronomy",
+							"tinderbox",
+							"chinking",
+							"fireplace"
 						]
 					}
 				},	
