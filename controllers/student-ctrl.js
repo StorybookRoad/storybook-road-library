@@ -22,6 +22,7 @@ router.post('/new-story-request', function (req, res, next) {
 	var difficulty = req.session.user.difficulty;
 	var theme = req.body.theme;
 	story.create(email, theme, difficulty, function (err, result) {
+		console.log("new story: " + result);
 		assert.equal(err, null);
 		req.session.story = result;
 		res.redirect('/user_story');
@@ -55,6 +56,7 @@ router.post('/themes-request', function (req, res, next) {
 router.post('/stories-request', function (req, res, next) {
 	var student = req.session.user.email;
 	story.getByStudent(student, function (err, result) {
+		console.log("story result: " + result)
 		res.send(result);
 		assert.equal(err, null);
 	});

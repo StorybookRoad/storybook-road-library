@@ -19,7 +19,7 @@ exports.get = function (email, done) {
 
 //function to update the difficulty field of a student
 exports.updateDifficulty = function (email, new_difficulty, done) {
-	db.update(collection, { email: email, role: 'student' }, { difficulty: new_difficulty }, function (err, status) { 
+	db.updateOne(collection, { email: email, role: 'student' }, { $set: { difficulty: new_difficulty } }, function (err, status) { 
 		done(err, status);
 	});
 };

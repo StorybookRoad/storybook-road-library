@@ -9,9 +9,10 @@ body, html {
 	height: 100%;
 }
 
-body {
+.table-wrapper {
+	@include drop-shadow;
 	display: table;
-	width: 100%;
+	height: 100%;
 }
 
 .page-row {

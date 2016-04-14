@@ -2,60 +2,395 @@
 	"fairytale": {
 		"name": "Fairytale",
 		"phrases": {
+
 			"beginning": [
-				"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
-				"Once there was a miller named #character who was #adjective but had a #adjective child name #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place."
-			],
+				{"phrase":"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
+					"answers":{
+						"level_1": [
+							"rock",
+							"bow",
+							"axe"
+
+						],
+						"level_2": [
+							"mace",
+							"arrow",
+							"staff",
+							"whip"
+
+						],
+						"level_3": [
+							"spear",
+							"torch",
+							"wand"
+	
+						],
+						"level_4": [
+							"spell",
+							"jewels"
+
+						],
+
+						"level_5": [
+							"dagger",
+							"incantation",
+							"shield"
+						]
+					}
+				},
+
+				{"phrase":"Once upon a time, #character was #adjective but had a #adjective friend named #supporting. #supporting wanted to study magic at #place, but #character didn't have enough money! Help #character sell the #answer at the market so #supporting can go to #place.",
+					"answers":{
+						"level_1": [
+							"cow",
+							"pig",
+							"cat",
+							"corn",
+							"frog"
+						],
+						"level_2": [
+							"horse",
+							"goat",
+							"beans",
+							"grapes",
+							"milk"
+
+						],
+						"level_3": [
+							"apples",
+							"sword",
+							"crown",
+							"arrows"
+
+						],
+						"level_4": [
+							"shield",
+							"unicorn",
+							"chicken"
+
+						],
+						"level_5": [
+							"caldron",
+							"potion",
+							"pumpkin",
+							"dolphin",
+							"porpois"
+
+						]
+					}
+				}
+				],
 			"middle": [
-				"#character needs to cross a river! Help them use the #answer to get across.",
-				"A dragon is blocking the path! #character can only slay it with #answer.",
-				"The sun is down! #character can't see in the dark. Spell #answer"
+				{"phrase":"#character needs to cross a river! Help them use the #answer to get across.",
+					"answers":{
+						"level_1": [
+							"boat",
+							"raft",
+							"rope",
+							"tree",
+							"oar"
+
+						],
+						"level_2": [
+							"horse",
+							"paddle",
+							"bridge",
+							"branch"
+
+						],
+						"level_3": [
+							"tower",
+							"hook",
+							"stones",
+							"swing"
+
+						],
+						"level_4": [
+							"dragon",
+							"unicorn",
+							"serpant"
+
+						],
+						"level_5": [
+							"grapple",
+							"potion",
+							"spell",
+							"dolphin",
+							"porpois"
+
+						]
+					}
+				},
+				{"phrase":"A dragon is blocking the path! #character can only slay it with #answer.",
+					"answers":{
+						"level_1": [
+							"rock",
+							"bow",
+							"axe"
+
+						],
+						"level_2": [
+							"mace",
+							"arrow",
+							"staff",
+							"whip"
+
+						],
+						"level_3": [
+							"spear",
+							"torch",
+							"wand"
+	
+						],
+						"level_4": [
+							"spell",
+							"jewels"
+
+						],
+
+						"level_5": [
+							"dagger",
+							"incantation",
+							"shield"
+						]
+					}
+				},
+				
+				{"phrase":"The sun is down! #character can't see in the dark. Spell #answer",
+					"answers":{
+						"level_1": [
+							"wand",
+							"gem",
+							"light"
+
+						],
+						"level_2": [
+							"candle",
+							"spell",
+							"moon",
+							"torch"
+
+						],
+						"level_3": [
+							"torch",
+							"wand"
+	
+						],
+						"level_4": [
+							"spell",
+							"jewels"
+
+						],
+
+						"level_5": [
+							"lantern",
+							"incantation",
+							"flashlight"
+						]
+					}
+				}
 			],
+
 			"end": [
-				"#character is almost at #place! But the king won't let #character through the gate. #character must give the king the #answer to be allowed in.",
-				"#character has found #supporting! But the troll won't let #supporting go. #character has to scare away the troll with the #answer."
+				{"phrase":"#character is almost at #place! But the king won't let #character through the gate. #character must give the king the #answer to be allowed in.",
+				"answers":{
+					"level_1": [
+						"sword",
+						"coin",
+						"torch",
+						"pouch",
+						"flute",
+						"ring",
+						"cloak",
+						"rope",
+						"axe",
+						"stones",
+						"shield",
+						"gem",
+						"tooth",
+						"wand",
+						"apple",
+						"staff"
+
+					],
+					"level_2": [
+						"monster",
+						"diamond",
+						"necklace",
+						"hatchet",
+						"feather",
+						"plume",
+						"glasses",
+						"chair",
+						"mirror"
+
+					],
+					"level_3": [
+						"scarecrow",
+						"vulture",
+						"giant",
+						"caldron",
+						"lizard",
+						"scroll"
+
+					],
+					"level_4": [
+						"cannon",
+						"voyage",
+						"church",
+						"candle",
+						"raven",
+						"vampire"
+
+					],
+					"level_5": [
+						"mountain",
+						"plantation",
+						"beanstalk",
+						"parchment",
+						"hourglass",
+						"toadstool"
+
+					]
+				}
+			},
+				
+				{"phrase":"#character has found #supporting! But the troll won't let #supporting go. #character has to scare away the troll with the #answer.",
+					"answers": {
+						"level_1": [
+							"sword",
+							"coin",
+							"torch",
+							"pouch",
+							"flute",
+							"ring",
+							"cloak",
+							"rope",
+							"axe",
+							"stones",
+							"shield",
+							"gem",
+							"tooth",
+							"wand",
+							"apple",
+							"staff"
+
+						],
+						"level_2": [
+							"monster",
+							"diamond",
+							"necklace",
+							"hatchet",
+							"feather",
+							"plume",
+							"glasses",
+							"chair",
+							"mirror"
+
+						],
+						"level_3": [
+							"scarecrow",
+							"vulture",
+							"giant",
+							"caldron",
+							"lizard",
+							"scroll"
+
+						],
+						"level_4": [
+							"cannon",
+							"voyage",
+							"church",
+							"candle",
+							"raven",
+							"vampire"
+
+						],
+						"level_5": [
+							"spear",
+							"dolphin",
+							"incantation",
+							"parchment",
+							"hourglass",
+							"toadstool"
+
+						]
+
+					}
+				}
 			]
 		},
+
 		"characters": [
 			"Knight Lancealot",
 			"Princess Pollyanna",
-			"Queen Margot"
+			"Queen Margot",
+			"King Copperfield",
+			"William Wizard",
+			"Oscar Ogre",
+			"Melissa Mage",
+			"Jorden Jester",
+			"Bob the Builder"
+			
 		],
 		"supporting": [
-			"Tim the Toad",
-			"Time the Toad",
-			"Jordan the Jester"
+			"Tim Toad",
+			"Peter Pig",
+			"Freddy Frog",
+			"Sid Sloth",
+			"Bernie Bluejay",
+			"Prickly Pete",
+			"Willy Warthog"
+
 		],
 		"places": [
 			"the Lonely Mountain",
-			"Castle Black"
+			"Castle Black",
+			"The Shire",
+			"Rivendell",
+			"Castle Greyskull",
+			"Muddy Moat",
+			"Misty Mountains",
+			"Rusty Riverbank",
+			"Tricky Tree",
+			"Creepy Cravas",
+			"Frozen Forest",
+			"Mossy Rock",
+			"Magic Nest",
+			"Fruit Field"
+
 		],
 		"adjectives": [
 			"poor",
-			"brave"
+			"brave",
+			"yummy",
+			"tasty",
+			"bitter",
+			"sour",
+			"salty",
+			"slimy",
+			"soft",
+			"hard",
+			"wet",
+			"dry",
+			"furry",
+			"boring",
+			"sad",
+			"happy",
+			"funny",
+			"mad"
+
 		],
-		"answers": {
-			"level_1": [
-				"sword",
-				"coin",
-				"torch"
-			],
-			"level_2": [
-				"monster",
-				"diamond"
-			],
-			"level_3": [
-				"scarecrow",
-				"throne"
-			],
-			"level_4": [
-				"cannon",
-				"voyage"
-			],
-			"level_5": [
-				"mountain",
-				"plantation"
-			]
+		"background": {
+			"image_name": "fairytale.gif",
+			"start_point": {
+				"x": 700, 
+				"y": 500
+			},
+			"end_point": {
+				"x": 1024,
+				"y": 768
+			}
 		}
 	},
 
@@ -63,58 +398,419 @@
 		"name": "Science",
 		"phrases": {
 			"beginning": [
-				"#character is looking for a mate, and really likes #supporting. Help #character find the #answer to win the heart of #supporting",
-				"The family of #character has started their migration, and #character got left behind! Help #character and #supporting get on the right path by using #answer"
+				{"phrase":"#character is looking for a friend, and really likes #supporting. Help #character spell #answer to be friend with #supporting",
+					"answers":{
+						"level_1": [
+							"rock",
+							"leaf",
+							"bug",
+							"nest",
+							"log",
+							"fox",
+							"dirt"
+
+						],
+						"level_2": [
+							"flower",
+							"soil",
+							"nest",
+							"rose",
+							"worm",
+							"twig",
+							"tree"
+
+						],
+						"level_3": [
+							"pedal",
+							"moss",
+							"bird",
+							"stick",
+							"wolf",
+							"frog"
+	
+						],
+						"level_4": [
+							"pond",
+							"raven",
+							"warthog",
+							"panther",
+							"cheetah",
+							"badger"
+
+						],
+						"level_5": [
+							"elephant",
+							"whale",
+							"walrus",
+							"weasel",
+							"kangaroo",
+							"hedgehog"
+						]
+					}
+				},
+				{"phrase":"The family of #character has started their migration, and #character got left behind! Help #character and #supporting take the right path by spelling #answer",
+					"answers":{
+						"level_1": [
+							"egg",
+							"fish",
+							"bone",
+							"lake",
+							"cave",
+							"owl",
+							"bear"
+
+						],
+						"level_2": [
+							"water",
+							"river",
+							"snow",
+							"moss",
+							"moon",
+							"grass",
+							"flower"
+
+						],
+						"level_3": [
+							"creek",
+							"berries",
+							"salmon",
+							"trout",
+							"eagle",
+							"hawk"
+	
+						],
+						"level_4": [
+							"orca",
+							"elk",
+							"moose",
+							"robin",
+							"sparrow",
+							"geese",
+							"goose"
+
+						],
+						"level_5": [
+							"monkey",
+							"chimpanzee",
+							"giraffe",
+							"rhinoceros",
+							"jaguar",
+							"buffalo"
+						]
+					}
+				}
 			],
 			"middle": [
-				"At #place, #character finds a vicious predator! #character can only defeat the predator with the #answer.",
-				"#character and #supporting need to find something to eat. Help them find the #answer so they can continue their adventure!",
-				"It's time to go to sleep. Where should #character and #supporting sleep?",
-				"#character and #supporting need to find something to eat. Help them find the #answer so they can continue their adventure!"
+				{"phrase":"At #place, #character finds a vicious predator! You can help #character defeat the predator by spelling #answer.",
+					"answers":{
+						"level_1": [
+							"hoof",
+							"fang",
+							"bone",
+							"claw",
+							"cave"
+
+						],
+						"level_2": [
+							"branch",
+							"antler",
+							"talon",
+							"venom",
+							"snake",
+							"bear"
+
+						],
+						"level_3": [
+							"shark",
+							"cougar",
+							"spider",
+							"skunk",
+							"eagle",
+							"boulder"
+	
+						],
+						"level_4": [
+							"orca",
+							"grizzly",
+							"tiger",
+							"robin",
+							"sparrow",
+							"geese",
+							"goose"
+
+						],
+						"level_5": [
+							"hyena",
+							"wasp",
+							"alligator",
+							"otter",
+							"beaver",
+							"crocodile"
+						]
+					}
+				},
+				{"phrase":"#character and #supporting need to find something to eat. Help them find by spelling #answer so they can continue their adventure!",
+					"answers":{
+						"level_1": [
+							"nut",
+							"worm",
+							"bug",
+							"fish",
+							"cheese",
+							"corn",
+							"honey"
+
+						],
+						"level_2": [
+							"acorn",
+							"apple",
+							"banana",
+							"pear",
+							"grape",
+							"carrot"
+
+						],
+						"level_3": [
+							"walnut",
+							"blueberry",
+							"mushroom",
+							"squash",
+							"lettuce",
+							"grain"
+	
+						],
+						"level_4": [
+							"pumpkin",
+							"potatoe",
+							"tomatoe",
+							"onion",
+							"beans",
+							"peanut",
+							"almond"
+
+						],
+						"level_5": [
+							"pineapple",
+							"pumpkin",
+							"artichoke",
+							"zuccini",
+							"cucumber",
+							"pomagranate"
+						]
+					}
+				},
+				{"phrase":"It's time to go to sleep. Where should #character and #supporting sleep? Help by spelling #answer",
+					"answers":{
+						"level_1": [
+							"tree",
+							"bush",
+							"nest",
+							"cave",
+							"log"
+
+						],
+						"level_2": [
+							"field",
+							"forrest",
+							"blanket",
+							"pillow"
+
+						],
+						"level_3": [
+							"branch",
+							"cabin",
+							"woodshed",
+							"barn"
+	
+						],
+						"level_4": [
+							"burrow",
+							"grass",
+							"stall",
+							"loft",
+							"cottage"
+
+						],
+						"level_5": [
+							"treehouse",
+							"cavern",
+							"mineshaft"
+						]
+					}
+				},
+				{"phrase":"#character and #supporting are lost again! Help them find their way by spelling #answer.",
+					"answers":{
+						"level_1": [
+							"north",
+							"south",
+							"east",
+							"west",
+							"map"
+
+						],
+						"level_2": [
+							"acorn",
+							"apple",
+							"banana",
+							"pear",
+							"grape",
+							"carrot"
+
+						],
+						"level_3": [
+							"walnut",
+							"blueberry",
+							"mushroom",
+							"squash",
+							"lettuce",
+							"grain"
+	
+						],
+						"level_4": [
+							"sextant",
+							"compass",
+							"flashlight"
+
+						],
+						"level_5": [
+							"breadcrumbs",
+							"astrolabe",
+							"astronomy"
+						]
+					}
+				}
+
 			],
 			"end": [
-				"#character has finally reached #place with #supporting. However, they can't get past the bees! They need the #answer to drive the bees away.",
-				"At the end of their journey, #character and #supporting found a sad bear. Help them cheer it up with the #answer!"
+				{"phrase":"#character has finally reached #place with #supporting. However, they can't get past the bees! They need you help!! Spell #answer to drive the bees away.",
+					"answers":{
+						"level_1": [
+							"fire",
+							"horn",
+							"club",
+							"bear"
+
+						],
+						"level_2": [
+							"smoke",
+							"honey",
+							"stick"
+
+						],
+						"level_3": [
+							"snorkel",
+							"rain",
+							"snow"
+						],
+						"level_4": [
+							"sword",
+							"speaker",
+							"flashlight"
+
+						],
+						"level_5": [
+							"firehose",
+							"",
+							""
+						]
+					}
+				},
+				{"phrase":"At the end of their journey, #character and #supporting found a sad bear. Help them cheer it up with the #answer!",
+					"answers":{
+						"level_1": [
+							"cheese",
+							"honey",
+							"grapes",
+							"fish"
+
+						],
+						"level_2": [
+							"salmon",
+							"trout",
+							"flower"
+
+						],
+						"level_3": [
+							"berries",
+							"candy",
+							"hotdog"
+						],
+						"level_4": [
+							"picnic",
+							"pineapple",
+							"brownie"
+
+						],
+						"level_5": [
+							"lollipop",
+							"popcorn",
+							"bolagna",
+							"sandwich"
+						]
+					}
+				}
 			]
 		},
 		"characters": [
-			"Benny the Beatle",
-			"Lexi the Ladybug"
+			"Benny Beatle",
+			"Lexi Ladybug",
+			"Danny Dear"
+			
 		],
 		"supporting": [
-			"Andy the Ant",
-			"Franklin the Fly"
+			"Andy Ant",
+			"Franklin Fly",
+			"Billy Bunny",
+			"Roger Rabbit",
+			"Morten Morse",
+			"Woddy Worm",
+			"Thomas Termite",
+			"Stacey Spider",
+			"Steven Stickbug",
+			"Gary Grasshopper",
+			"Felecia Frog",
+			"Lenny Lizard",
+			"Sarah Sunflower",
+			"Caleb Catapillar",
+			"Sandy Salamander",
+			"Benny Beetle"
+
 		],
 		"places": [
 			"the Grand Anthill",
-			"the Snug Burrow"
+			"the Snug Burrow",
+			"Tarnished Tunnel",
+			"Green Glen",
+			"Frozen Forest"
+			
 		],
 		"adjectives": [
-			"Squirmy",
-			"Slimy"
+			"squirmy",
+			"slimy",
+			"sloppy",
+			"messy",
+			"cripsy",
+			"rusty",
+			"busy",
+			"lazy",
+			"careless",
+			"clumsy",
+			"nimble",
+			"brave",
+			"mighty"
+
+
 		],
-		"answers": {
-			"level_1": [
-				"nest",
-				"clover",
-				"tree"
-			],
-			"level_2": [
-				"grass",
-				"creek"
-			],
-			"level_3": [
-				"twig",
-				"flower"
-			],
-			"level_4": [
-				"branch",
-				"vegetable"
-			],
-			"level_5": [
-				"creature",
-				"mountain"
-			]
+		"background": {
+			"image_name": "science.gif",
+			"start_point": {
+				"x": 772, 
+				"y": 112
+			},
+			"end_point": {
+				"x": 964,
+				"y": 284
+			}
 		}
 	},
 
@@ -122,12 +818,144 @@
 		"name": "Westward Expansion",
 		"phrase": {
 			"beginning": [
-				"#character is moving toward the Pacific ocean with #supporting. Help #character find their way to their new home so they can build a #answer"
+				{"phrase":"#character is moving toward the Pacific ocean with #supporting. Help #character find their way to their new home so they can build a #answer",
+					"answers":{
+						"level_1": [
+							"",
+							"",
+							"",
+							""
+
+						],
+						"level_2": [
+							"",
+							"",
+							""
+
+						],
+						"level_3": [
+							"",
+							"",
+							""
+						],
+						"level_4": [
+							"",
+							"",
+							""
+
+						],
+						"level_5": [
+							"",
+							"",
+							"",
+							""
+						]
+					}	
+				}
 			],
 			"middle": [
-				"#supporting is looking for things to eat in the #place. Help #supporting find the #object and the base of the tree",
-				"#character is lost. Help them by through the wilderness by spelling #answer.",
-				"A tree has fallen! Spell #answer to move it out of the way!",
+				{"phrase":"#supporting is looking for things to eat in the #place. Help #supporting find the #object and the base of the tree",
+					"answers":{
+						"level_1": [
+							"",
+							"",
+							"",
+							""
+
+						],
+						"level_2": [
+							"",
+							"",
+							""
+
+						],
+						"level_3": [
+							"",
+							"",
+							""
+						],
+						"level_4": [
+							"",
+							"",
+							""
+
+						],
+						"level_5": [
+							"",
+							"",
+							"",
+							""
+						]
+					}	
+				},
+				{"phrase":"#character is lost. Help them by through the wilderness by spelling #answer.",
+					"answers":{
+						"level_1": [
+							"",
+							"",
+							"",
+							""
+
+						],
+						"level_2": [
+							"",
+							"",
+							""
+
+						],
+						"level_3": [
+							"",
+							"",
+							""
+						],
+						"level_4": [
+							"",
+							"",
+							""
+
+						],
+						"level_5": [
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				},	
+				{"phrase":"A tree has fallen! Spell #answer to move it out of the way!",
+					"answers":{
+						"level_1": [
+							"",
+							"",
+							"",
+							""
+
+						],
+						"level_2": [
+							"",
+							"",
+							""
+
+						],
+						"level_3": [
+							"",
+							"",
+							""
+						],
+						"level_4": [
+							"",
+							"",
+							""
+
+						],
+						"level_5": [
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				},	
 				"The wagon is stuck, spell the #answer to get it moving!",
 				"The sun has gone down, spell #answer to help the explorers!"
 			],
@@ -145,6 +973,7 @@
 			"Rocky Raccoon",
 			"Oliver Otter",
 			"Claw Crow"
+
 		],
 		"places": [
 			"Grand Canyon",
@@ -154,6 +983,7 @@
 			"Flathead Lake",
 			"Redrock Formations",
 			"Mississippi River"
+
 		],
 		"adjectives": [
 			"sloppy",
@@ -162,12 +992,14 @@
 			"grimy",
 			"careless",
 			"clumsy"
+
 		],
 		"answers": {
 			"level_1": [
 				"cabin",
 				"lodge",
 				"teepee"
+
 			],
 			"level_2": [
 				"food",
@@ -175,7 +1007,9 @@
 				"mushrooms",
 				"corn",
 				"carrots",
-				"seeds"
+				"seeds",
+				"fish"
+
 			],
 			"level_3": [
 				"wheel",
@@ -186,7 +1020,19 @@
 				"lattern",
 				"canvas",
 				"blanket"
+
 			]
+		},
+		"background": {
+			"image_name": "western.gif",
+			"start_point": {
+				"x": 396, 
+				"y": 192
+			},
+			"end_point": {
+				"x": 489,
+				"y": 221
+			}
 		}
 	}
 }

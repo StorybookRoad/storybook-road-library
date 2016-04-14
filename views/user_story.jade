@@ -6,6 +6,7 @@ head
       var story = !{JSON.stringify(story)}
     script(type="text/javascript", src="/javascripts/puzzles.js")
     script(type="text/javascript", src="/javascripts/game.js")
+    script(type="text/javascript", src="/javascripts/util.js")
   block content
     p #{user.fname} #{user.lname}'s Story.
 
@@ -15,7 +16,7 @@ head
     div(id="story_parts")
       form(id="puzzle_status")
         div(id="user_answer")
-        input(type="submit", name="game_submit", id="story_submit")
+        input(type="submit", name="game_submit", id="story_submit", class="btn btn-primary")
 
       div(id="storytext")
       div(id="errors")

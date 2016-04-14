@@ -1,0 +1,16 @@
+﻿var os = require('os');
+var cp = require('child_process');
+
+var platform = os.platform();
+
+if (platform == 'win32' ) {
+	cp.exec('node ./bin/www')
+}
+
+else if (platform == 'darwin') {
+	cp.exec('node ./bin/www');
+}
+
+else if (platform == 'linux') {
+	cp.exec('nodemon ./bin/www > ./logs/log.txt 2> ./logs/log.txt &')
+}
