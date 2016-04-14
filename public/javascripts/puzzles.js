@@ -4,7 +4,6 @@ var PUZZLES = PUZZLES || {};
 /* Puzzle is an abstract class which describes the key components of a Puzzle */
 PUZZLES.Puzzle = function( question_id, text_id, problem_info){
   /* Holds what string should be displayed to the user for the problem */
-
   if(problem_info.progress >= problem_info.phrases.length){
     this.phrase = "Congrats on finishing!";
     return;
@@ -17,9 +16,12 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
   this.supporting = problem_info.words.supporting;
   this.place = problem_info.words.places[progress % problem_info.words.places.length];
   this.adjective = problem_info.words.adjectives[progress % problem_info.words.adjectives.length]
+  //TODO: Set background based on template;
   this.background = "/images/background.gif";
+  //TODO: Set template based on template in the problem_info
+  this.template = "fairytale";
   this.images = [];
-  this.found = []
+  this.found = [];
 
   //Parses through the tags in a phrase, and adds the need files to the images list
   this.parse_tags = function(){
@@ -46,6 +48,7 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
       var image_name = this[prop_name].toLowerCase().split(" ").join("_");
       if(this.found.indexOf(image_name) == -1){
         this.found.push(image_name);
+        //TODO: Add our template to the file path
         this.images.push({"name":"/images/" + image_name + ".png", "x":offsetX, "y":offsetY});
       }
     }
