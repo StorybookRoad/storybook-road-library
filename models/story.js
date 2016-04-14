@@ -40,6 +40,7 @@ function generate_story(student, theme_name, difficulty, done) {
 
 	//story object
 	var story = {
+		theme: "",
 		student: student, //email of student
 		progress: 0, //question # of current question
 		phrases: [], //array of phrases (one for each puzzle)
@@ -51,12 +52,15 @@ function generate_story(student, theme_name, difficulty, done) {
 			answers: []
 		},
 		puzzles: [], //array of puzzle ids (must be in same order as phrases)
-		statistics: {} //to store statistics such as # of wrong answers, etc.
+		statistics: {}, //to store statistics such as # of wrong answers, etc.
+		background: {}
 	};
 
 	// get the theme to populate the story object
 	theme.get(theme_name, function (err, theme_obj) {
 		if (err) return done(err, undefined);
+		// get theme name
+		story.theme = theme_obj.name.toLowerCase();
 		// container to hold phrase objects
 		var temp_phrase = [];
 		// get beginning phrase
@@ -100,6 +104,10 @@ function generate_story(student, theme_name, difficulty, done) {
 			var placeholder_text = "Placeholder statistics for question " + (i + 1);
 			story.statistics[stat_key] = { placeholder: placeholder_text };
 		});
+		
+		// get background object
+		story.background = theme_obj.background;
+
 		done(undefined, story);
 	});
 }
