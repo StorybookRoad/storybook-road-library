@@ -838,27 +838,229 @@
 						],
 						"level_4": [
 							"whitewash",
-							"",
-							""
+							"teepee",
+							"lodge"
 
 						],
 						"level_5": [
 							"chinking",
 							"sledgehammer",
-							""
+							"canvas"
 						]
 					}	
 				}
 			],
 			"middle": [
-				"#supporting is looking for things to eat in the #place. Help #supporting find the #object and the base of the tree",
-				"#character is lost. Help them by through the wilderness by spelling #answer.",
-				"A tree has fallen! Spell #answer to move it out of the way!",
-				"The wagon is stuck, spell the #answer to get it moving!",
-				"The sun has gone down, spell #answer to help the explorers!"
+				{"phrase":"#supporting is looking for things to eat in the #place. Help feed #supporting by spelling #answer",
+					"answers":{
+						"level_1": [
+							"fish",
+							"elk",
+							"nut"
+
+						],
+						"level_2": [
+							"berry",
+							"corn",
+							"pear"
+
+						],
+						"level_3": [
+							"apple",
+							"honey",
+							"moose"
+						],
+						"level_4": [
+							"venison",
+							"currant",
+							"buffalo"
+
+						],
+						"level_5": [
+							"maize",
+							"cicada",
+							"salmon"
+						]
+					}	
+				},
+				{"phrase":"#character is lost. Help them by through the wilderness by spelling #answer.",
+					"answers":{
+						"level_1": [
+							"map",
+							"road",
+							"raft"
+
+						],
+						"level_2": [
+							"trail",
+							"river",
+							"guide"
+
+						],
+						"level_3": [
+							"stick",
+							"stream",
+							"wagon"
+						],
+						"level_4": [
+							"compass",
+							"landmark",
+							"mountain"
+
+						],
+						"level_5": [
+							"cartographer",
+							"altimeter",
+							"navigation"
+						]
+					}
+				},	
+				{"phrase":"A tree has fallen! Spell #answer to move it out of the way!",
+					"answers":{
+						"level_1": [
+							"saw",
+							"rope",
+							"axe"
+
+						],
+						"level_2": [
+							"lever",
+							"horse",
+							"work"
+
+						],
+						"level_3": [
+							"wagon",
+							"hitch",
+							"pulley"
+						],
+						"level_4": [
+							"teamwork",
+							"strength",
+							"sledge"
+
+						],
+						"level_5": [
+							"persistance",
+							"travois",
+							"heroic"
+						]
+					}
+				},	
+				{"phrase":"The wagon is stuck, help the explorers get it out! Spell #answer.",
+					"answers":{
+						"level_1": [
+							"rock",
+							"saw",
+							"peg",
+							"jack"
+
+						],
+						"level_2": [
+							"lodge",
+							"cabin",
+							"canvas",
+							"chest"
+
+						],
+						"level_3": [
+							"blanket",
+							"wedge",
+							"rats",
+							"spare"
+						],
+						"level_4": [
+							"chisel",
+							"glass",
+							"cask"
+
+						],
+						"level_5": [
+							"barrel",
+							"crate",
+							"raccoon",
+							"crossbow"
+						]
+					}
+				},	
+				{"phrase":"The sun has gone down, help the explorers find their way through the dark! Spell #answer.",
+					"answers":{
+						"level_1": [
+							"boots",
+							"jug",
+							"tea"
+
+						],
+						"level_2": [
+							"match",
+							"bone",
+							"hide"
+
+						],
+						"level_3": [
+							"arrow",
+							"lattern",
+							"helmet",
+							"maize"
+						],
+						"level_4": [
+							"matchbook",
+							"flashlight",
+							"headlamp"
+
+						],
+						"level_5": [
+							"flintlock",
+							"pistol",
+							"",
+							""
+						]
+					}
+				}	
 			],
 			"end": [
-				"#character and #supporting are almost there, but they need your help to find the #answer. They need a #answer to go in the right direction."
+				{"phrase":"#character and #supporting are almost there but they need your help to go in the right direction! Spell #answer to figure it out!",
+					"answers":{
+						"level_1": [
+							"map",
+							"north",
+							"south",
+							"east",
+							"west",
+							"southwest",
+							"northwest",
+							"southeast",
+							"northeast"
+
+						],
+						"level_2": [
+							"compass",
+							"lantern",
+							"shovel",
+							"rope"
+
+						],
+						"level_3": [
+							"spyglass",
+							"sextant",
+							"pickaxe",
+							"knife",
+							"candle"
+						],
+						"level_4": [
+							"sifter",
+							"firewood",
+							"torch"
+
+						],
+						"level_5": [
+							"astronomy",
+							"tinderbox",
+							"chinking",
+							"fireplace"
+						]
+					}
+				}	
 			]
 
 		},
