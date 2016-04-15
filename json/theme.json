@@ -2,7 +2,6 @@
 	"fairytale": {
 		"name": "Fairytale",
 		"phrases": {
-
 			"beginning": [
 				{"phrase":"Not too long ago, in a kingdom not too far away, #character and #supporting lived on the edge of #place. One day, #supporting disappeared! You must help #character find #supporting by finding the magical #answer",
 					"answers":{
@@ -816,7 +815,7 @@
 
 	"western": {
 		"name": "Westward Expansion",
-		"phrase": {
+		"phrases": {
 			"beginning": [
 				{"phrase":"#character is moving toward the Pacific ocean with #supporting. Help #character build their new home by spelling #answer",
 					"answers":{
