@@ -7,15 +7,6 @@ function parse_puzzle(puzzle_data)
     puzzle_data.words.answers = ["Test"];
 
   }
-console.log(puzzle_data);
-  for(var i = 0; i < puzzle_data.phrases.length; i++){
-    console.log(puzzle_data.phrases[i]);
-    if(puzzle_data.phrases[i] == null){
-      puzzle_data.phrases[i] = "This test is a #answer, #supporting, #place, #";
-      console.log("REPLACED NULL");
-    }
-  }
-
   if(puzzle_data.progress >= puzzle_data.phrases.length){
     $("#user_answer").html("Congratulations! You completed the story!");
     return ;
