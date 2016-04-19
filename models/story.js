@@ -100,8 +100,7 @@ function generate_story(student, theme_name, difficulty, done) {
 		//generate placeholder statistics
 		story.phrases.forEach(function (phrase, i) {
 			var stat_key = "question_" + (i + 1);
-			var placeholder_text = "Placeholder statistics for question " + (i + 1);
-			story.statistics[stat_key] = { placeholder: placeholder_text };
+			story.statistics[stat_key] = { missed: 0};
 		});
 		
 		// get background object
