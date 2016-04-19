@@ -887,30 +887,35 @@
 						"level_1": [
 							"map",
 							"road",
-							"raft"
+							"raft",
+							"boat"
 
 						],
 						"level_2": [
 							"trail",
 							"river",
-							"guide"
+							"guide",
+							"sack"
 
 						],
 						"level_3": [
 							"stick",
 							"stream",
-							"wagon"
+							"wagon",
+							"canvas"
 						],
 						"level_4": [
 							"compass",
 							"landmark",
-							"mountain"
+							"mountain",
+							"Wheel"
 
 						],
 						"level_5": [
 							"cartographer",
 							"altimeter",
-							"navigation"
+							"navigation",
+							"pickaxe"
 						]
 					}
 				},	
