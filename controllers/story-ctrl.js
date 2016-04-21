@@ -15,12 +15,12 @@ router.post('/update_story', function(req, res, next){
   var user_story = req.session.story;
   var story_id = user_story._id;
   var user_answer = req.body.user_answer;
-  console.log(story_id);
+
   //Retrieve the story from the database to check the answer.
   story.getById(story_id, function(err, result){
     assert.equal(null,err);
     //User correctly answered
-    console.log(result);
+
     var progress = result.progress;
     if(user_answer == result.words.answers[progress]){
       var update = {"$set": {"progress": progress + 1}};
@@ -35,12 +35,12 @@ router.post('/update_story', function(req, res, next){
     }
     else {
       //Alert the current page to update our current number of missses.
-      var o_id = new ObjectID(story_id);
-      var search_string = {"_id": o_id, "progress": progress};
-
-      var update = {"$inc":{"statistics.$":1}};
-      story.updateByQuery(search_string, update, function(err, results){
-        assert.equal(null)
+      var update_string = "statistics.question_"+(progress+1)+".missed";
+      var update_object = {};
+      update_object[update_string] = 1;
+      var update = {"$inc":update_object};
+      story.updateById(story_id, update, function(err, results){
+        assert.equal(null);
         res.send({message: "INCORRECT_ANSWER"});
       });
 

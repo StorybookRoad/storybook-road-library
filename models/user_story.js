@@ -24,6 +24,7 @@ exports.getById = function(id, done) {
 
 //Update a single stories status
 exports.updateById = function(id, to_update, done){
+	console.log(to_update);
   db.updateById(collection, id, to_update, done,function(err, result){
     done(err, result);
   });
