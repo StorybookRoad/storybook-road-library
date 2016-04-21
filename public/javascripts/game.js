@@ -9,6 +9,7 @@ function parse_puzzle(puzzle_data)
   }
   if(puzzle_data.progress >= puzzle_data.phrases.length){
     $("#user_answer").html("Congratulations! You completed the story!");
+    location.href="/"
     return ;
   }
 

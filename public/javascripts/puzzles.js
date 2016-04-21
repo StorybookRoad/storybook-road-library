@@ -15,22 +15,19 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
   this.character = problem_info.words.character;
   this.supporting = problem_info.words.supporting;
   this.place = problem_info.words.places[progress % problem_info.words.places.length];
-  this.adjective = problem_info.words.adjectives[progress % problem_info.words.adjectives.length]
-  //TODO: Set background based on template;
-  this.background = "/images/background.gif";
-  //TODO: Set template based on template in the problem_info
-  this.template = "fairytale";
+  this.adjective = problem_info.words.adjectives[progress % problem_info.words.adjectives.length];
+  this.background = problem_info.background;
+  this.template = problem_info.theme;
   this.images = [];
   this.found = [];
 
   //Parses through the tags in a phrase, and adds the need files to the images list
-  this.parse_tags = function(){
-    this.images = [{"name":this.background, "x": 0, "y":0}];
+  this.parse_tags = function(answer){
+    this.images = [{"name":"./images/"+this.background.image_name, "x": 0, "y":0}];
     var regex = /(#[a-zA-Z0-9]+)/g;
-    console.log(this.phrase);
     var matches = this.phrase.match(regex);
     var offsetX = 0;
-    var offsetY = 0;
+    var offsetY = 368;
     for(var i = 0; i < matches.length; i++)
     {
       var prop_name = matches[i].substr(1,matches[i].length);
@@ -42,16 +39,21 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
       if(offsetX >= 824)
       {
         offsetX = 0;
-        offsetY += 150;
+        offsetY -= 150;
       }
       this.phrase = this.phrase.replace(matches[i], this[prop_name]);
-      var image_name = this[prop_name].toLowerCase().split(" ").join("_");
+      var image_name = "/"+this.template+"/"+this[prop_name].split(" ").join("");
       if(this.found.indexOf(image_name) == -1){
         this.found.push(image_name);
-        //TODO: Add our template to the file path
-        this.images.push({"name":"/images/" + image_name + ".png", "x":offsetX, "y":offsetY});
+        this.images.push({"name":"/images" + image_name + ".png", "x":offsetX, "y":offsetY});
       }
     }
+    console.log(answer);
+
+    this.images.push({"name": "/images/" + this.template + "/" + answer + ".png", "x": offsetX, "y":offsetY});
+
+    console.log(this.images);
+
   }
   this.generate_puzzle = function(canvas_id, grid){
     //For now, ignore the grid
@@ -65,6 +67,8 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
     for(var i = 0; i < this.images.length; i++)
     {
       if(this.images[i].name.indexOf("gif") != -1){
+        if($(".jsgif").length != 0)
+          continue;
         var image = new Image();
         image.src = this.images[i].name;
         $("#story_parts").before(image);
@@ -96,7 +100,7 @@ PUZZLES.Puzzle_1 = function(question_id, text_id, problem_info)
 {
   //Make Puzzle_1 inherit from Puzzle
   PUZZLES.Puzzle.call(this, question_id, text_id, problem_info);
-  this.parse_tags();
+  this.parse_tags(problem_info.words.answers[problem_info.progress]);
   var shuffled_answer = shuffle_string(problem_info.words.answers[problem_info.progress]);
   /* make sure the string is actually shuffled */
 
@@ -106,12 +110,11 @@ PUZZLES.Puzzle_1 = function(question_id, text_id, problem_info)
   this.shuffled = shuffled_answer;
 
   this.phrase = this.phrase.replace("#answer", "<input id=\"problem\" name=\"problem\" value=\""+shuffled_answer+"\"></input>");
-  console.log(this.phrase)
 }
 
 PUZZLES.Puzzle_2 = function(question_id, text_id, problem_info){
   PUZZLES.Puzzle.call(this, question_id, text_id, problem_info);
-  this.parse_tags();
+  this.parse_tags(problem_info.words.answers[problem_info.progress]);
   //Generate 3 different shuffled words
   var possible_answers = [problem_info.words.answers[problem_info.progress]];
   var problems_to_generate = problem_info.words.answers[problem_info.progress].length > 3 ? 3 : problem_info.words.answers[problem_info.progress].length;
@@ -158,7 +161,7 @@ PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
   //Loop through and add the characters onto the canvas, will need to be gridded at some point
   //break up the answer and add characters to the array
   this.phrase = this.phrase.replace("#answer", replace_string)
-  this.parse_tags();
+  this.parse_tags(problem_info.words.answers[problem_info.progress]);
 
   this.generate_puzzle = function(canvas_id, grid){
 
