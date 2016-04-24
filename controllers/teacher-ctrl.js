@@ -4,6 +4,7 @@ var assert = require('assert');
 
 var teacher = require('../models/teacher');
 var student = require('../models/student');
+var story = require('../models/story');
 var classModel = require('../models/class');
 var theme = require('../models/theme');
 var auth = require('../middlewares/auth');
@@ -37,18 +38,55 @@ router.post('/classes-request', function(req, res, next) {
 router.post('/class-info-request', function (req, res, next) {
 	var email = req.session.user.email;
 	var class_name = req.body.class_name;
+	var numAttempts = 0;
+	var numPuzzles = 0;
 	student.getByClass(class_name, email, function (err, result) {
+		var numStudents = Object.keys(result).length;
 		assert.equal(err, null);
-		res.send({ class_stats: 'Statistics for ' + class_name + ' go here.', student_list: result });
+		var stuNum = 0;
+		for (stu_id in result) {
+			var stu = result[stu_id];
+			story.getByStudent(stu.email, function (err, stories) {
+				assert.equal(err, null);
+				for (story_id in stories) {
+					var story = stories[story_id];
+					// calculate class statistics
+					for (stat in story.statistics) {
+						numPuzzles++;
+						numAttempts += story.statistics[stat].missed;
+					}
+				}
+				// find the last student
+				if (stuNum == numStudents - 1) {
+					var attemptsPerPuzzle = numAttempts / numPuzzles;
+					res.send({ class_stats: 'Average attempts per puzzle: ' + attemptsPerPuzzle.toPrecision(3), student_list: result });
+					return;
+				}
+				stuNum++;
+			});
+		}
 	});
 });
 
-//handle requests for student statistics - PLACEHOLDER
+//handle requests for student statistics
 router.post('/student-info-request', function (req, res, next) {
 	var email = req.body.email;
-	student.get(email, function (err, result) {
+	var numAttempts = 0;
+	var numPuzzles = 0;
+	student.get(email, function (err, student) {
 		assert.equal(err, null);
-		res.send(result);
+		story.getByStudent(email, function (err, stories) {
+			assert.equal(err, null);
+			for (index in stories) {
+				var story = stories[index];
+				for (stat in story.statistics) {
+					numPuzzles++;
+					numAttempts += story.statistics[stat].missed;
+				}
+			}
+			var attemptsPerPuzzle = numAttempts / numPuzzles;
+			res.send({ 'student':student, statistics: 'Average attempts per puzzle: ' + attemptsPerPuzzle.toPrecision(3) });
+		});
 	});
 });
 

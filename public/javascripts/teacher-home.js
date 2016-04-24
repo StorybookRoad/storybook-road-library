@@ -53,6 +53,7 @@ $(document).ready(function () {
 			load_student_info(student);
 		});
 	});
+	
 	//handle class creation form submission
 	$('#new_class_form').submit(function(e) {
 		e.preventDefault();
@@ -146,22 +147,22 @@ function load_student_info(student_email) {
 			$('<div>').addClass('panel-heading').html(
 			$('<h3>', {
 				id: 'student_details',
-				text: result.fname + " " + result.lname + "'s Information:"
+				text: result.student.fname + " " + result.student.lname + "'s Information:"
 			}).addClass('panel-title')));
 		$('#student_info').append(
 			$('<ul>', { id: 'student_detail_list' }).addClass('list-group'));
 		$('#student_info').append($('<div>').addClass('panel-heading').append(
-			$('<h3>', {text: result.fname + ' ' + result.lname + "'s Statistics"}).addClass('panel-title')));
+			$('<h3>', {text: result.student.fname + ' ' + result.student.lname + "'s Statistics"}).addClass('panel-title')));
 		$('#student_info').append($('<div>', {
 			id: 'student_stats',
-			text: result.fname + "'s statistics will go here."
+			text: result.statistics
 		}).addClass('panel-body'));
 		//fill student details list
 		$('#student_detail_list').append(
-			$('<li>', { 'text': 'Puzzle difficulty level: ' + result.difficulty }).addClass('list-group-item').append(
+			$('<li>', { 'text': 'Puzzle difficulty level: ' + result.student.difficulty }).addClass('list-group-item').append(
 				$('<button>', {
 					'class': 'btn btn-primary btn-xs btn-inline pull-right minus_difficulty',
-					'data-student': result.email, 'data-difficulty': result.difficulty
+					'data-student': result.student.email, 'data-difficulty': result.student.difficulty
 				}).append(
 					$('<span>', {
 						'class': 'glyphicon glyphicon-minus',
@@ -169,7 +170,7 @@ function load_student_info(student_email) {
 					})),
 				$('<button>', {
 					'class': 'btn btn-primary btn-xs btn-inline pull-right plus_difficulty',
-					'data-student': result.email, 'data-difficulty': result.difficulty
+					'data-student': result.student.email, 'data-difficulty': result.student.difficulty
 				}).append(
 					$('<span>', {
 						'class': 'glyphicon glyphicon-plus',
@@ -177,10 +178,10 @@ function load_student_info(student_email) {
 				}))
 			));
 		//disable difficulty buttons when appropriate
-		if (result.difficulty === '1') {
+		if (result.student.difficulty === '1') {
 			$('.minus_difficulty').prop('disabled', true);
 		}
-		else if (result.difficulty === '5') {
+		else if (result.student.difficulty === '5') {
 			$('.plus_difficulty').prop('disabled', true);
 		}
 	});
