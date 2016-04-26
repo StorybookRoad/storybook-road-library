@@ -5,6 +5,7 @@ $(document).ready(function () {
 
 	//handle story selection
 	$(document).on('click', '.story_item', function (event) {
+		event.preventDefault();
 		$('.story_item').removeClass('active');
 		$(this).addClass('active');
 		selected_story = $(this).data('id');
@@ -40,6 +41,8 @@ function update_story_list() {
 		else {
 			for (item in result) {
 				var story = result[item];
+				if (story.progress === story.phrases.length)
+					continue;
 				$('#story_list').append($('<a>', {
 					href: '#',
 					class: "story_item list-group-item",
@@ -54,6 +57,9 @@ function update_story_list() {
 						})
 					)
 				));
+			}
+			if ($('#story_list').html() === "") {
+				$('#story_list').append($('<p>', { text: "You haven't started any stories yet!" }));
 			}
 		}
 	});
