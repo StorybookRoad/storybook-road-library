@@ -663,13 +663,11 @@
 							"squash",
 							"lettuce",
 							"grain"
-
 						],
 						"level_4": [
 							"sextant",
 							"compass",
 							"flashlight"
-
 						],
 						"level_5": [
 							"breadcrumbs",
@@ -694,7 +692,6 @@
 							"smoke",
 							"honey",
 							"stick"
-
 						],
 						"level_3": [
 							"snorkel",
@@ -705,12 +702,11 @@
 							"sword",
 							"speaker",
 							"flashlight"
-
 						],
 						"level_5": [
 							"firehose",
-							"",
-							""
+							"sprayer",
+							"repellent"
 						]
 					}
 				},
