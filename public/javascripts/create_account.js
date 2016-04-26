@@ -75,4 +75,17 @@ $(document).ready(function () {
 		}
 		e.preventDefault();
 	});
+
+	// empty password warning when passwords change
+	$('#password').on('input propertychange', function (event) { 
+		$('#password_warning').empty();
+	});
+
+	$('#confirm_password').on('input propertychange', function (event) {
+		$('#password_warning').empty();
+	});
+
+	$('#email').on('input propertychange', function (event) { 
+		$('#email_warning').empty();
+	});
 });
