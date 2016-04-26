@@ -42,18 +42,13 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
         offsetY -= 150;
       }
       this.phrase = this.phrase.replace(matches[i], this[prop_name]);
-      var image_name = "/"+this.template+"/"+this[prop_name].split(" ").join("");
+      var image_name = "/"+this.template+"/"+this[prop_name].toLowerCase().split(" ").join("_");
       if(this.found.indexOf(image_name) == -1){
         this.found.push(image_name);
         this.images.push({"name":"/images" + image_name + ".png", "x":offsetX, "y":offsetY});
       }
     }
-    console.log(answer);
-
     this.images.push({"name": "/images/" + this.template + "/" + answer + ".png", "x": offsetX, "y":offsetY});
-
-    console.log(this.images);
-
   }
   this.generate_puzzle = function(canvas_id, grid){
     //For now, ignore the grid
@@ -163,36 +158,56 @@ PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
   this.phrase = this.phrase.replace("#answer", replace_string)
   this.parse_tags(problem_info.words.answers[problem_info.progress]);
 
-  this.generate_puzzle = function(canvas_id, grid){
-
-      var calculated_points = generate_points(this.shuffled.length, grid.length);
-      console.log(calculated_points)
+  this.generate_puzzle = function(canvas_id){
+      var background = this.background;
+      var grid_size_x = background.end_point.x - background.start_point.x;
+      var grid_size_y = background.end_point.y - background.start_point.y;
+      var grid_size = grid_size_x < grid_size_y ? grid_size_x : grid_size_y;
+      grid_size = grid_size > 200 ? 10 : 9;
+      var calculated_points = generate_points(this.shuffled.length, grid_size);
       for(var i = 0; i < this.shuffled.length; i++)
       {
-        var button = document.createElement("BUTTON");
-        var text = document.createTextNode(this.shuffled[i]);
-        button.className = "puzzle_answer"
-        button.value = this.shuffled[i];
-        button.appendChild(text);
-        button.onclick = function(){
-          var answer = $("#problem").html();
-          var j = 0;
-          while(answer[j] != "_" && j <= answer.length)
-          {
-            j++;
-          }
-          if(j > answer.length)
-            return;
-          answer = answer.substr(0,j) + this.value + answer.substr(j+1, answer.length);
-          $("#problem").html(answer);
-        }
-        button.submit = null;
-
-        grid[calculated_points[i][0]][calculated_points[i][1]].html(button);
+        calculated_points[i][0] = background.start_point.x + (calculated_points[i][0] * 1.5 + 5) * grid_size;
+        calculated_points[i][1] = background.start_point.y + (calculated_points[i][1] * 1.25 + 5) * grid_size;
+        calculated_points[i][2] = this.shuffled[i];
       }
+      window.letters = calculated_points;
+      $("#"+canvas_id).mousemove(function(e){
+        var cursor = "default"
+        for(var i = 0; i < calculated_points.length; i++){
+          if(e.offsetX - calculated_points[i][0] < 6 &&
+            e.offsetX - calculated_points[i][0] > -6 &&
+            e.offsetY - calculated_points[i][1] < 6 &&
+            e.offsetY - calculated_points[i][1] > -6 ){
+            cursor = "pointer";
+          }
+        }
+        $("#"+canvas_id).css("cursor", cursor);
+      });
+
+      $("#"+canvas_id).click(function(e){
+        for(var i = 0; i < calculated_points.length; i++){
+          if(e.offsetX - calculated_points[i][0] <= 6 &&
+            e.offsetX - calculated_points[i][0] >= -6 &&
+            e.offsetY - calculated_points[i][1] <= 6 &&
+            e.offsetY - calculated_points[i][1] >= -6 ){
+            var answer = $("#problem").html();
+            var j = 0;
+            while(answer[j] != "_" && j <= answer.length)
+            {
+              j++;
+            }
+            if(j > answer.length)
+              return;
+            answer = answer.substr(0,j) + calculated_points[i][2] + answer.substr(j+1, answer.length);
+            $("#problem").html(answer);
+          }
+        }
+      });
 
       var button = document.createElement("BUTTON");
-      button.onclick = function(){
+      button.onclick = function(e){
+        e.preventDefault();
         var answer = $("#problem").html();
         var j = answer.length-1;
         while ((answer[j] == " " || answer[j] == "_") && j >= 0)
@@ -204,11 +219,13 @@ PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
         answer = answer.substr(0,j) + "_" + answer.substr(j+1,answer.length);
         $("#problem").html(answer);
       }
-      var text = document.createTextNode("<=");
-      button.className = "backspace";
-      button.appendChild(text);
 
-      $("#story_parts").append(button);
+      var text = document.createTextNode("&#8592");
+      button.className = "backspace btn btn-primary";
+      button.appendChild(text);
+      button.innerHTML = "&#8592;"
+      $("#puzzle_status").append(button);
+
       this.display(canvas_id);
   }
 }

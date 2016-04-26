@@ -9,14 +9,10 @@ head
     script(type="text/javascript", src="/javascripts/util.js")
   block content
     p #{user.fname} #{user.lname}'s Story.
-
     canvas(id="story_canvas", width=1024, height= 768)
-    table(id="canvas_grid")
-
-    div(id="story_parts")
+    div(id="story_parts" class="panel")
       form(id="puzzle_status")
         div(id="user_answer")
         input(type="submit", name="game_submit", id="story_submit", class="btn btn-primary")
-
       div(id="storytext")
       div(id="errors")
