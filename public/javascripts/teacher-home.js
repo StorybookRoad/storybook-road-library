@@ -132,12 +132,15 @@ function load_class_info(class_name) {
 				$('#student_list').append($('<a>', { href: '#' }).data('email', email).addClass('student list-group-item').html(name));
 			}
 		}
-		//load class stats
-		$('#class_panel').append(($('<div>').addClass('panel-heading class-panel-remove').html(
-			$('<h3>', { text: "Class Statistics" }).addClass('panel-title'))));
-		$('#class_panel').append($('<div>', { text: result.class_stats }).addClass('panel-body class-panel-remove'));
-		// load first student
-		$('#student_list').children().first().click();
+		if (result.class_stats) {
+			//load class stats
+			$('#class_panel').append(($('<div>').addClass('panel-heading class-panel-remove').html(
+				$('<h3>', { text: "Class Statistics" }).addClass('panel-title'))));
+			$('#class_panel').append($('<div>', { text: result.class_stats }).addClass('panel-body class-panel-remove'));
+		}
+		if (result.student_list !== "EMPTY_RESULT")
+			// load first student
+			$('#student_list').children().first().click();
 	});
 }
 

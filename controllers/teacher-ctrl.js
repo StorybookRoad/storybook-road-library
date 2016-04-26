@@ -44,29 +44,35 @@ router.post('/class-info-request', function (req, res, next) {
 	var numAttempts = 0;
 	var numPuzzles = 0;
 	student.getByClass(class_name, email, function (err, result) {
-		var numStudents = Object.keys(result).length;
 		assert.equal(err, null);
-		var stuNum = 0;
-		for (stu_id in result) {
-			var stu = result[stu_id];
-			story.getByStudent(stu.email, function (err, stories) {
-				assert.equal(err, null);
-				for (story_id in stories) {
-					var story = stories[story_id];
-					// calculate class statistics
-					for (stat in story.statistics) {
-						numPuzzles++;
-						numAttempts += story.statistics[stat].missed;
+		if (result !== "EMPTY_RESULT") {
+			var numStudents = Object.keys(result).length;
+			var stuNum = 0;
+			for (stu_id in result) {
+				var stu = result[stu_id];
+				story.getByStudent(stu.email, function (err, stories) {
+					assert.equal(err, null);
+					for (story_id in stories) {
+						var story = stories[story_id];
+						// calculate class statistics
+						for (stat in story.statistics) {
+							numPuzzles++;
+							numAttempts += story.statistics[stat].missed;
+						}
 					}
-				}
-				// find the last student
-				if (stuNum == numStudents - 1) {
-					var attemptsPerPuzzle = numAttempts / numPuzzles;
-					res.send({ class_stats: 'Average attempts per puzzle: ' + attemptsPerPuzzle.toPrecision(3), student_list: result });
-					return;
-				}
-				stuNum++;
-			});
+					// find the last student
+					if (stuNum == numStudents - 1) {
+						var attemptsPerPuzzle = numAttempts / numPuzzles;
+						res.send({ class_stats: 'Average attempts per puzzle: ' + attemptsPerPuzzle.toPrecision(3), student_list: result });
+						return;
+					}
+					stuNum++;
+				});
+			}
+		}
+		// handle empty student result
+		else {
+			res.send({ student_list: result });
 		}
 	});
 });
