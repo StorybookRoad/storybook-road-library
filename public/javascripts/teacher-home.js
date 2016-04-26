@@ -100,6 +100,7 @@ function update_class_list() {
 
 			}
 		}
+		$('#class_list').children().first().click();
 	});
 }
 
@@ -134,7 +135,9 @@ function load_class_info(class_name) {
 		//load class stats
 		$('#class_panel').append(($('<div>').addClass('panel-heading class-panel-remove').html(
 			$('<h3>', { text: "Class Statistics" }).addClass('panel-title'))));
-		$('#class_panel').append($('<div>',{text: result.class_stats}).addClass('panel-body class-panel-remove'));
+		$('#class_panel').append($('<div>', { text: result.class_stats }).addClass('panel-body class-panel-remove'));
+		// load first student
+		$('#student_list').children().first().click();
 	});
 }
 
