@@ -8,7 +8,10 @@ var theme = require('../models/theme');
 var story = require('../models/story');
 var auth = require('../middlewares/auth');
 
-router.get('/', auth.authStudent, function(req, res, next) {
+// handle authorization
+router.use(auth.authStudent);
+
+router.get('/', function(req, res, next) {
 	var email = req.session.user.email;
 	student.get(email, function(err, result) {
 		assert.equal(null, err);
@@ -41,6 +44,7 @@ router.post('/continue-story', function (req, res, next) {
 
 //handle request for themes
 router.post('/themes-request', function (req, res, next) {
+	console.log("in themes-request");
 	var class_name = req.session.user.class;
 	var teacher = req.session.user.teacher;
 	classModel.get(class_name, teacher, function (err, class_obj) {

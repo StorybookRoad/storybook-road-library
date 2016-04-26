@@ -9,7 +9,10 @@ var classModel = require('../models/class');
 var theme = require('../models/theme');
 var auth = require('../middlewares/auth');
 
-router.get('/', auth.authTeacher, function(req, res, next) {
+// handle authorization
+router.use(auth.authTeacher);
+
+router.get('/', function(req, res, next) {
 	var email = req.session.user.email;
 	teacher.get(email, function(err, result) {
 		assert.equal(null, err);

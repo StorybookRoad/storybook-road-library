@@ -10,6 +10,7 @@ router.use('/student', require('./student-ctrl'));
 router.use('/contact', require('./contact-ctrl.js'));
 router.use('/about', require('./about-ctrl.js'));
 router.use('/user_story', require('./story-ctrl'));
+router.use('/401', require('./401-ctrl'));
 
 
 /* GET home page. */
