@@ -8,11 +8,14 @@ head
     script(type="text/javascript", src="/javascripts/game.js")
     script(type="text/javascript", src="/javascripts/util.js")
   block content
-    p #{user.fname} #{user.lname}'s Story.
-    canvas(id="story_canvas", width=1024, height= 768)
-    div(id="story_parts" class="panel")
-      form(id="puzzle_status")
-        div(id="user_answer")
-        input(type="submit", name="game_submit", id="story_submit", class="btn btn-primary")
-      div(id="storytext")
-      div(id="errors")
+    p #{user.fname} #{user.lname}'s Story
+    p
+      a(href="./student") Return to Home
+    div(id="container" class="col-md-4 col-md4-offset4")
+      canvas(id="story_canvas", width=1024, height= 768)
+      div(id="story_parts" class="panel")
+        form(id="puzzle_status" class="form-inline")
+          div(id="user_answer")
+          input(type="submit", name="game_submit", id="story_submit", class="btn btn-primary")
+        div(id="storytext")
+        div(id="errors")

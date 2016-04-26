@@ -166,7 +166,9 @@ body, html {
 .backspace{
   margin-left: 25px;
 }
-
+#container{
+  min-height: 768px;
+}
 #story_parts{
   margin-top: 662px;
   padding: 5px;
@@ -174,8 +176,12 @@ body, html {
   background: rgba(255,255,255, 0.75);
   float: left;
   position: relative;
-  height: 106px;
+  max-height: 106px;
 }
 #story_canvas{
   position: absolute;
+}
+.resize-height{
+  font-size: 14px;
+  max-height: 30px;
 }
