@@ -163,3 +163,19 @@ body, html {
   min-width: 128px; }
 
 /*# sourceMappingURL=style.css.map */
+.backspace{
+  margin-left: 25px;
+}
+
+#story_parts{
+  margin-top: 662px;
+  padding: 5px;
+  width: 1024px;
+  background: rgba(255,255,255, 0.75);
+  float: left;
+  position: relative;
+  height: 106px;
+}
+#story_canvas{
+  position: absolute;
+}

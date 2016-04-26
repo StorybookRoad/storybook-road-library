@@ -562,8 +562,8 @@ var bookmarklet = function() {
         }());
 
         var putFrame = function() {
-          //TODO: PUT IN IMAGES FROM THE PUZZLES
           window.images = window.images || [];
+          window.letters = window.letters || [];
 
           ctx.putImageData(frames[i].data, 0, 0);
           for(var j = 0; j < window.images.length; j++){
@@ -571,6 +571,12 @@ var bookmarklet = function() {
             var x = image.getAttribute("x");
             var y = image.getAttribute("y");
             ctx.drawImage(image, x, y, image.width, image.height);
+          }
+          for(var j = 0; j < window.letters.length; j++){
+            var letter = window.letters[j];
+            ctx.font = "12px Lato";
+            ctx.fillText(letter[2], letter[0], letter[1]);
+
           }
         };
 
@@ -829,8 +835,8 @@ var bookmarklet = function() {
 
     var div = document.createElement('div');
     var canvas = $('#story_canvas')[0];
-    console.log(canvas.height);
     var ctx = canvas.getContext('2d');
+    ctx.font = "10px serif";
     var toolbar = document.createElement('div');
 
     var tmpCanvas = document.createElement('canvas');
@@ -863,8 +869,7 @@ var bookmarklet = function() {
     toolbar.className = 'jsgif_toolbar';
     div.appendChild(canvas);
     //div.appendChild(toolbar);
-
-    parent.insertBefore(div, gif);
+    parent.insertBefore(canvas, gif);
     parent.removeChild(gif);
 
     doText('Loading...');

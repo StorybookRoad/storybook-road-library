@@ -3,16 +3,6 @@ var grid_size = 10;
 
 function parse_puzzle(puzzle_data)
 {
-  if(puzzle_data.words.answers.length == 0){
-    puzzle_data.words.answers = ["Test"];
-
-  }
-  if(puzzle_data.progress >= puzzle_data.phrases.length){
-    $("#user_answer").html("Congratulations! You completed the story!");
-    location.href="/"
-    return ;
-  }
-
   switch (puzzle_data.puzzles[puzzle_data.progress])
   {
     case 1:
@@ -29,7 +19,6 @@ function parse_puzzle(puzzle_data)
 }
 
 function load_puzzle(){
-  $("#canvas_grid").html("");
   $(".backspace").remove();
   var grid = [];
 
@@ -37,14 +26,7 @@ function load_puzzle(){
   {
     if(!grid[i]){
       grid[i] = [];
-      $("#canvas_grid").append("<tr class=\"table_"+i+"\">");
     }
-    for(var j = 0; j < grid_size; j++){
-      grid[i][j] = $("<td class=\"grid_square\"></td>");
-      $(".table_"+i).append(grid[i][j]);
-    }
-
-    $("#canvas_grid").append("</tr>");
   }
 
 
@@ -79,9 +61,14 @@ $(document).ready(function() {
 
       $.post("/user_story/update_story", problem, function(result){
         if(result.message == "reload"){
+          window.letters = [];  
           story.progress++;
-          load_puzzle();
-          console.log("RELOAD");
+          if(story.progress == story.puzzles.length){
+            location.href="/student"
+          }
+          else{
+            load_puzzle();
+          }
         }
         else{
           $("#errors").html("Oops, it appears you have something wrong in your answer.");

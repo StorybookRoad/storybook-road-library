@@ -22,7 +22,7 @@
 							"spear",
 							"torch",
 							"wand"
-	
+
 						],
 						"level_4": [
 							"spell",
@@ -139,7 +139,7 @@
 							"spear",
 							"torch",
 							"wand"
-	
+
 						],
 						"level_4": [
 							"spell",
@@ -154,7 +154,7 @@
 						]
 					}
 				},
-				
+
 				{"phrase":"The sun is down! #character can't see in the dark. Spell #answer",
 					"answers":{
 						"level_1": [
@@ -173,7 +173,7 @@
 						"level_3": [
 							"torch",
 							"wand"
-	
+
 						],
 						"level_4": [
 							"spell",
@@ -253,7 +253,7 @@
 					]
 				}
 			},
-				
+
 				{"phrase":"#character has found #supporting! But the troll won't let #supporting go. #character has to scare away the troll with the #answer.",
 					"answers": {
 						"level_1": [
@@ -330,7 +330,7 @@
 			"Melissa Mage",
 			"Jorden Jester",
 			"Bob the Builder"
-			
+
 		],
 		"supporting": [
 			"Tim Toad",
@@ -383,12 +383,12 @@
 		"background": {
 			"image_name": "fairytale.gif",
 			"start_point": {
-				"x": 700, 
+				"x": 700,
 				"y": 500
 			},
 			"end_point": {
 				"x": 1024,
-				"y": 768
+				"y": 682
 			}
 		}
 	},
@@ -426,7 +426,7 @@
 							"stick",
 							"wolf",
 							"frog"
-	
+
 						],
 						"level_4": [
 							"pond",
@@ -476,7 +476,7 @@
 							"trout",
 							"eagle",
 							"hawk"
-	
+
 						],
 						"level_4": [
 							"orca",
@@ -526,7 +526,7 @@
 							"skunk",
 							"eagle",
 							"boulder"
-	
+
 						],
 						"level_4": [
 							"orca",
@@ -576,7 +576,7 @@
 							"squash",
 							"lettuce",
 							"grain"
-	
+
 						],
 						"level_4": [
 							"pumpkin",
@@ -620,7 +620,7 @@
 							"cabin",
 							"woodshed",
 							"barn"
-	
+
 						],
 						"level_4": [
 							"burrow",
@@ -663,7 +663,7 @@
 							"squash",
 							"lettuce",
 							"grain"
-	
+
 						],
 						"level_4": [
 							"sextant",
@@ -754,7 +754,7 @@
 			"Benny Beatle",
 			"Lexi Ladybug",
 			"Danny Dear"
-			
+
 		],
 		"supporting": [
 			"Andy Ant",
@@ -781,7 +781,7 @@
 			"Tarnished Tunnel",
 			"Green Glen",
 			"Frozen Forest"
-			
+
 		],
 		"adjectives": [
 			"squirmy",
@@ -803,7 +803,7 @@
 		"background": {
 			"image_name": "science.gif",
 			"start_point": {
-				"x": 772, 
+				"x": 772,
 				"y": 112
 			},
 			"end_point": {
@@ -846,7 +846,7 @@
 							"sledgehammer",
 							"canvas"
 						]
-					}	
+					}
 				}
 			],
 			"middle": [
@@ -880,7 +880,7 @@
 							"cicada",
 							"salmon"
 						]
-					}	
+					}
 				},
 				{"phrase":"#character is lost. Help them by through the wilderness by spelling #answer.",
 					"answers":{
@@ -918,7 +918,7 @@
 							"pickaxe"
 						]
 					}
-				},	
+				},
 				{"phrase":"A tree has fallen! Spell #answer to move it out of the way!",
 					"answers":{
 						"level_1": [
@@ -950,7 +950,7 @@
 							"heroic"
 						]
 					}
-				},	
+				},
 				{"phrase":"The wagon is stuck, help the explorers get it out! Spell #answer.",
 					"answers":{
 						"level_1": [
@@ -986,7 +986,7 @@
 							"crossbow"
 						]
 					}
-				},	
+				},
 				{"phrase":"The sun has gone down, help the explorers find their way through the dark! Spell #answer.",
 					"answers":{
 						"level_1": [
@@ -1020,7 +1020,7 @@
 							""
 						]
 					}
-				}	
+				}
 			],
 			"end": [
 				{"phrase":"#character and #supporting are almost there but they need your help to go in the right direction! Spell #answer to figure it out!",
@@ -1064,7 +1064,7 @@
 							"fireplace"
 						]
 					}
-				}	
+				}
 			]
 
 		},
@@ -1130,7 +1130,7 @@
 		"background": {
 			"image_name": "western.gif",
 			"start_point": {
-				"x": 396, 
+				"x": 396,
 				"y": 192
 			},
 			"end_point": {
