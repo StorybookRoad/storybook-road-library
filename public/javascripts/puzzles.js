@@ -24,37 +24,48 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
   //Parses through the tags in a phrase, and adds the need files to the images list
   this.parse_tags = function(answer){
     this.images = [{"name":"./images/"+this.background.image_name, "x": 0, "y":0}];
+    //find image names, and give them their position on the canvas
     var regex = /(#[a-zA-Z0-9]+)/g;
     var matches = this.phrase.match(regex);
-    var offsetX = 0;
-    var offsetY = 368;
+    var offsetX = -200;
+    var offsetY = 400;
     for(var i = 0; i < matches.length; i++)
     {
       var prop_name = matches[i].substr(1,matches[i].length);
       if(prop_name == "answer")
         continue;
-
-      offsetX += 300;
-
-      if(offsetX >= 824)
+      offsetX += 200;
+      if(offsetX > 1000)
       {
         offsetX = 0;
-        offsetY -= 150;
+        offsetY -= 400;
       }
       this.phrase = this.phrase.replace(matches[i], this[prop_name]);
       var image_name = "/"+this.template+"/"+this[prop_name].toLowerCase().split(" ").join("_");
       if(this.found.indexOf(image_name) == -1){
         this.found.push(image_name);
-        this.images.push({"name":"/images" + image_name + ".png", "x":offsetX, "y":offsetY});
+        //Place should always be located on the top left of the map
+        if(prop_name == "place")
+        {
+          this.images.push({"name":"/images" + image_name + ".png", "x":824, "y":0});
+          offsetX -= 200;
+        }
+        else {
+          this.images.push({"name":"/images" + image_name + ".png", "x":offsetX, "y":offsetY});
+        }
+
+
       }
     }
     this.images.push({"name": "/images/" + this.template + "/" + answer + ".png", "x": offsetX, "y":offsetY});
   }
-  this.generate_puzzle = function(canvas_id, grid){
+  //A method overwritten later
+  this.generate_puzzle = function(canvas_id){
     //For now, ignore the grid
     this.display(canvas_id);
   }
 
+  //Generic display code to load images and ready them for the canvas
   this.display  = function(canvas_id){
     window.images = [];
     var canvas = $("#"+canvas_id)[0].getContext('2d');
@@ -62,14 +73,14 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
     for(var i = 0; i < this.images.length; i++)
     {
       if(this.images[i].name.indexOf("gif") != -1){
-        if($(".jsgif").length != 0)
+        if(window.isBackgroundSet)
           continue;
         var image = new Image();
         image.src = this.images[i].name;
         $("#story_parts").before(image);
         bookmarklet();
         image.click();
-
+        window.isBackgroundSet = true;
       }
       else{
         var image = new Image();
@@ -90,7 +101,7 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
     this.text_id.innerHTML = this.phrase;
   }
 }
-
+// Create simple text based shuffled puzzle
 PUZZLES.Puzzle_1 = function(question_id, text_id, problem_info)
 {
   //Make Puzzle_1 inherit from Puzzle
@@ -98,15 +109,14 @@ PUZZLES.Puzzle_1 = function(question_id, text_id, problem_info)
   this.parse_tags(problem_info.words.answers[problem_info.progress]);
   var shuffled_answer = shuffle_string(problem_info.words.answers[problem_info.progress]);
   /* make sure the string is actually shuffled */
-
   while(shuffled_answer == problem_info.words.answers[problem_info.progress]){
       shuffled_answer = shuffle_string(problem_info.words.answers[problem_info.progress]);
   }
   this.shuffled = shuffled_answer;
-
-  this.phrase = this.phrase.replace("#answer", "<input id=\"problem\" name=\"problem\" value=\""+shuffled_answer+"\"></input>");
+  this.phrase = this.phrase.replace("#answer", "<input id=\"problem\" class=\"form-control resize-height\" name=\"problem\" value=\""+shuffled_answer+"\"></input>");
 }
 
+//Create a group of selection based shuffled words
 PUZZLES.Puzzle_2 = function(question_id, text_id, problem_info){
   PUZZLES.Puzzle.call(this, question_id, text_id, problem_info);
   this.parse_tags(problem_info.words.answers[problem_info.progress]);
@@ -128,7 +138,7 @@ PUZZLES.Puzzle_2 = function(question_id, text_id, problem_info){
   this.shuffled = possible_answers;
 
   //Generate our html string to replace the answer with
-  var replace_string = "<select id=\"problem\">"
+  var replace_string = "<select id=\"problem\" class=\"form-control resize-height\">"
   for(var i = 0; i < possible_answers.length; i++)
   {
     replace_string += "<option value=\""+possible_answers[i]+"\">"+possible_answers[i]+"</option>";
@@ -137,12 +147,15 @@ PUZZLES.Puzzle_2 = function(question_id, text_id, problem_info){
   this.phrase = this.phrase.replace("#answer", replace_string);
 
 }
-
+// Create a puzzle that puts the answer and random letters onto the canvas
+// These letters then function as the portions of the answer
 PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
   PUZZLES.Puzzle.call(this, question_id, text_id, problem_info);
 
+  //Generate a list of random characters
   this.shuffled = generate_random_chars(10);
   var str = problem_info.words.answers[problem_info.progress].split('');
+  //Add the answer to the shuffled list
   this.answer_length = str.length;
   var replace_string = "<span id=\"problem\">";
   for(var i = 0; i < str.length; i++)
@@ -158,11 +171,13 @@ PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
   this.phrase = this.phrase.replace("#answer", replace_string)
   this.parse_tags(problem_info.words.answers[problem_info.progress]);
 
+  // Override the generate_puzzle to build a grid
   this.generate_puzzle = function(canvas_id){
       var background = this.background;
       var grid_size_x = background.end_point.x - background.start_point.x;
       var grid_size_y = background.end_point.y - background.start_point.y;
       var grid_size = grid_size_x < grid_size_y ? grid_size_x : grid_size_y;
+      //Set up a 9x9 or 10x10 grid
       grid_size = grid_size > 200 ? 10 : 9;
       var calculated_points = generate_points(this.shuffled.length, grid_size);
       for(var i = 0; i < this.shuffled.length; i++)
@@ -171,8 +186,10 @@ PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
         calculated_points[i][1] = background.start_point.y + (calculated_points[i][1] * 1.25 + 5) * grid_size;
         calculated_points[i][2] = this.shuffled[i];
       }
+      //Add our list of possible choices to be drawn by the canvas
       window.letters = calculated_points;
       $("#"+canvas_id).mousemove(function(e){
+        //Determine if the user has hovered a letter, and change the cursor
         var cursor = "default"
         for(var i = 0; i < calculated_points.length; i++){
           if(e.offsetX - calculated_points[i][0] < 6 &&
@@ -186,6 +203,7 @@ PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
       });
 
       $("#"+canvas_id).click(function(e){
+        //Add the letter to the answer if it has been clicked
         for(var i = 0; i < calculated_points.length; i++){
           if(e.offsetX - calculated_points[i][0] <= 6 &&
             e.offsetX - calculated_points[i][0] >= -6 &&
