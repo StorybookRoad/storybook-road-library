@@ -4,7 +4,6 @@ $(document).ready(function () {
 	//show type div when new account button clicked
 	$('#create_account_button').click(function(e) {
 		$('#account_type').show();
-		typeIsShowing = true;
 	});
 
 	//hid type div when 'x' is clicked
@@ -39,5 +38,14 @@ $(document).ready(function () {
 			else //log response if error
 				console.log(response);
 		});
+	});
+
+	// clear warning on new input
+	$('#email').on('input propertychange', function (event) { 
+		$('#warning').empty();
+	});
+
+	$('#password').on('input propertychange', function (event) {
+		$('#warning').empty();
 	});
 });
