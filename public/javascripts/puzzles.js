@@ -28,7 +28,7 @@ PUZZLES.Puzzle = function( question_id, text_id, problem_info){
     var regex = /(#[a-zA-Z0-9]+)/g;
     var matches = this.phrase.match(regex);
     var offsetX = -200;
-    var offsetY = 400;
+    var offsetY = 350;
     for(var i = 0; i < matches.length; i++)
     {
       var prop_name = matches[i].substr(1,matches[i].length);
@@ -182,8 +182,8 @@ PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
       var calculated_points = generate_points(this.shuffled.length, grid_size);
       for(var i = 0; i < this.shuffled.length; i++)
       {
-        calculated_points[i][0] = background.start_point.x + (calculated_points[i][0] * 1.5 + 5) * grid_size;
-        calculated_points[i][1] = background.start_point.y + (calculated_points[i][1] * 1.25 + 5) * grid_size;
+        calculated_points[i][0] = background.start_point.x + (calculated_points[i][0] * 1.65 + 5) * grid_size;
+        calculated_points[i][1] = background.start_point.y + (calculated_points[i][1] * 1.35 + 5) * grid_size;
         calculated_points[i][2] = this.shuffled[i];
       }
       //Add our list of possible choices to be drawn by the canvas
@@ -192,10 +192,10 @@ PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
         //Determine if the user has hovered a letter, and change the cursor
         var cursor = "default"
         for(var i = 0; i < calculated_points.length; i++){
-          if(e.offsetX - calculated_points[i][0] < 6 &&
-            e.offsetX - calculated_points[i][0] > -6 &&
-            e.offsetY - calculated_points[i][1] < 6 &&
-            e.offsetY - calculated_points[i][1] > -6 ){
+          if(e.offsetX - calculated_points[i][0] < 5 &&
+            e.offsetX - calculated_points[i][0] > -8 &&
+            e.offsetY - calculated_points[i][1] < 5 &&
+            e.offsetY - calculated_points[i][1] > -8 ){
             cursor = "pointer";
           }
         }
@@ -205,10 +205,10 @@ PUZZLES.Puzzle_3 = function(question_id, text_id, problem_info){
       $("#"+canvas_id).click(function(e){
         //Add the letter to the answer if it has been clicked
         for(var i = 0; i < calculated_points.length; i++){
-          if(e.offsetX - calculated_points[i][0] <= 6 &&
-            e.offsetX - calculated_points[i][0] >= -6 &&
-            e.offsetY - calculated_points[i][1] <= 6 &&
-            e.offsetY - calculated_points[i][1] >= -6 ){
+          if(e.offsetX - calculated_points[i][0] <= 5 &&
+            e.offsetX - calculated_points[i][0] >= -8 &&
+            e.offsetY - calculated_points[i][1] <= 5 &&
+            e.offsetY - calculated_points[i][1] >= -8 ){
             var answer = $("#problem").html();
             var j = 0;
             while(answer[j] != "_" && j <= answer.length)

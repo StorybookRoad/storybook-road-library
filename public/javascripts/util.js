@@ -574,7 +574,10 @@ var bookmarklet = function() {
           }
           for(var j = 0; j < window.letters.length; j++){
             var letter = window.letters[j];
-            ctx.font = "12px Lato";
+            ctx.strokeStyle = "white";
+            ctx.fillStyle = "green";
+            ctx.font = "16px Lato";
+            ctx.strokeText(letter[2], letter[0], letter[1]);
             ctx.fillText(letter[2], letter[0], letter[1]);
 
           }
